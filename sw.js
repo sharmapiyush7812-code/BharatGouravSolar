@@ -1,10 +1,10 @@
 /* Gourav Bharat Solar – service worker
    Makes the site installable and lets it open offline.
-   When you change Index.html or other files, bump VERSION so users get the update. */
-const VERSION = 'gbs-v2';
+   When you change index.html or other files, bump VERSION so users get the update. */
+const VERSION = 'gbs-v3';
 const SHELL = [
   './',
-  './Index.html',
+  './index.html',
   './manifest.webmanifest',
   './logo-icon.svg',
   './logo.svg',
@@ -36,8 +36,8 @@ self.addEventListener('fetch', e => {
   if (req.mode === 'navigate') {
     e.respondWith(
       fetch(req)
-        .then(res => { const copy = res.clone(); caches.open(VERSION).then(c => c.put('./Index.html', copy)); return res; })
-        .catch(() => caches.match('./Index.html'))
+        .then(res => { const copy = res.clone(); caches.open(VERSION).then(c => c.put('./index.html', copy)); return res; })
+        .catch(() => caches.match('./index.html'))
     );
     return;
   }
