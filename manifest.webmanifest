@@ -1,0 +1,26 @@
+{
+  "name": "Gourav Bharat Solar",
+  "short_name": "GB Solar",
+  "description": "Rooftop solar for homes, shops and factories. Savings calculator, shop and free quotes.",
+  "id": "./Index.html",
+  "start_url": "./Index.html?source=app",
+  "scope": "./",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
+  "orientation": "portrait",
+  "background_color": "#0a131a",
+  "theme_color": "#0a131a",
+  "lang": "en-IN",
+  "categories": ["business", "shopping", "utilities"],
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "logo-icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ],
+  "shortcuts": [
+    { "name": "Savings calculator", "short_name": "Calculator", "url": "./Index.html#calculator", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Shop", "url": "./Index.html#products", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] },
+    { "name": "Get a free quote", "short_name": "Quote", "url": "./Index.html#quote", "icons": [{ "src": "icons/icon-192.png", "sizes": "192x192" }] }
+  ]
+}

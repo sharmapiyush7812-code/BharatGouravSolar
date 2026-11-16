@@ -1,0 +1,1405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Gourav Bharat Solar – Rooftop Solar, Panels, Batteries & Savings Calculator</title>
+<meta name="description" content="Gourav Bharat Solar – Empowering India with Clean Energy. Rooftop, commercial and industrial solar, batteries, inverters, a free savings calculator and quotes.">
+<meta property="og:title" content="Gourav Bharat Solar – Power Your Future With Clean Solar Energy">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#0a131a">
+<link rel="icon" type="image/svg+xml" href="logo-icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GB Solar">
+<meta name="application-name" content="GB Solar">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,600;12..96,700;12..96,800&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<script>try{var t=JSON.parse(localStorage.getItem('gbs_theme'));if(t==='dark'||t==='light')document.documentElement.dataset.theme=t}catch(e){}document.documentElement.classList.add('js')</script>
+<style>
+/* =====================================================================
+   DESIGN TOKENS  (light = warm ivory, dark = deep night; hero/bands always dark)
+   ===================================================================== */
+:root{
+  --bg:#f6f2ea;--bg2:#eee7d9;--surface:#fffdf9;--surface2:#f3ede1;--ink:#101c25;--ink2:#2c3c48;--mut:#65727c;--line:#e4dccb;
+  --sun:#ffa51f;--sun2:#ff6914;--navy:#0d2c6b;--green:#14905a;--teal:#0e8585;--red:#d9452b;--blue:#2f7fe0;
+  --dk:#0a131a;--dk2:#0f1c25;
+  --grad:linear-gradient(135deg,#ffc043 0%,#ff8a1f 52%,#ff5f14 100%);
+  --r:14px;--rs:10px;
+  --sh:0 1px 2px rgba(16,28,37,.05),0 14px 34px -18px rgba(16,28,37,.22);
+  --sh2:0 34px 64px -30px rgba(16,28,37,.42);
+  --fd:'Bricolage Grotesque',system-ui,sans-serif;--fs:'Instrument Serif',Georgia,serif;--fb:Manrope,system-ui,sans-serif;
+  color-scheme:light;
+}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#070e13;--bg2:#0b151c;--surface:#0e1a22;--surface2:#13222c;--ink:#ecf2ef;--ink2:#c2cfd5;--mut:#8b9ca6;--line:#1d2d38;--green:#3fcf8e;--teal:#3cc4c4;
+  --sh:0 14px 34px -18px rgba(0,0,0,.75);--sh2:0 34px 64px -30px rgba(0,0,0,.9);color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#070e13;--bg2:#0b151c;--surface:#0e1a22;--surface2:#13222c;--ink:#ecf2ef;--ink2:#c2cfd5;--mut:#8b9ca6;--line:#1d2d38;--green:#3fcf8e;--teal:#3cc4c4;
+  --sh:0 14px 34px -18px rgba(0,0,0,.75);--sh2:0 34px 64px -30px rgba(0,0,0,.9);color-scheme:dark}
+/* dark band: always night-toned so light theme gets a light/dark rhythm */
+.band{--surface:#0f1c25;--surface2:#142530;--ink:#ecf2ef;--ink2:#c2cfd5;--mut:#8fa1ab;--line:#20323e;--green:#3fcf8e;color-scheme:dark;color:var(--ink);
+  background:var(--dk)}
+
+/* =====================================================================  BASE */
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+html{scroll-behavior:smooth;scroll-padding-top:100px;-webkit-text-size-adjust:100%}
+body{margin:0;font:400 16px/1.65 var(--fb);background:var(--bg);color:var(--ink);-webkit-font-smoothing:antialiased;overflow-x:hidden;transition:background-color .4s,color .4s}
+h1,h2,h3,h4{font-family:var(--fd);font-weight:700;line-height:1.1;letter-spacing:-.015em;margin:0}
+h1 em,h2 em,h3 em{font-style:normal}
+p{margin:0}a{color:inherit}button{font:inherit;color:inherit}
+.ic{display:inline-block;width:1.15em;height:1.15em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex:none;vertical-align:-.2em}
+i.ico{display:inline-flex;font-style:normal}
+.muted{color:var(--mut)}
+::selection{background:var(--sun);color:#1a0f00}
+:focus-visible{outline:3px solid var(--sun);outline-offset:3px;border-radius:6px}
+.skip{position:absolute;left:-999px;z-index:200}.skip:focus{left:12px;top:12px;background:var(--sun);color:#000;padding:10px 14px;border-radius:10px}
+.grad-text{background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
+#progress{position:fixed;top:0;left:0;right:0;height:3px;transform-origin:0 50%;transform:scaleX(0);background:var(--grad);z-index:100}
+
+/* =====================================================================  NAV */
+#nav{position:fixed;top:0;left:0;right:0;z-index:60;pointer-events:none}
+.nav-in{pointer-events:auto;display:flex;align-items:center;gap:12px;padding:10px max(16px,4vw);background:rgba(9,17,23,.35);border-bottom:1px solid rgba(255,255,255,.08);backdrop-filter:blur(18px) saturate(1.4);-webkit-backdrop-filter:blur(18px) saturate(1.4);color:#eef3f1;transition:background .35s,box-shadow .35s;position:relative}
+#nav.solid .nav-in,body.cartmode #nav .nav-in{background:#0b161e}
+.logo{display:flex;align-items:center;gap:10px;text-decoration:none;flex:none}
+.logo .mark{width:42px;height:42px;border-radius:50%;background:#fff;padding:2px}
+.brand{display:grid;font:800 1rem/1.05 var(--fd);letter-spacing:.03em;text-transform:uppercase;white-space:nowrap}
+.brand b{color:var(--sun);font-weight:800}.brand small{font:600 .62rem var(--fb);text-transform:none;letter-spacing:.02em;opacity:.65;margin-top:3px}
+#links{display:flex;gap:2px;margin:0 auto}
+#links a{padding:9px 12px;border-radius:0;text-decoration:none;font-size:.9rem;font-weight:600;color:rgba(238,243,241,.72);transition:color .2s,background .2s}
+#links a:hover{color:#fff;background:rgba(255,255,255,.08)}#links a.on{color:#fff;box-shadow:inset 0 -2px 0 var(--sun)}
+.m-only{display:none}
+.actions{display:flex;align-items:center;gap:6px;position:relative}
+.icon-btn{position:relative;height:42px;min-width:42px;padding:0 12px;border-radius:8px;display:inline-flex;align-items:center;justify-content:center;gap:8px;border:1px solid rgba(255,255,255,.14);background:rgba(255,255,255,.05);color:#eef3f1;cursor:pointer;font-weight:700;font-size:.86rem;transition:background .2s,transform .2s}
+.icon-btn:hover{background:rgba(255,255,255,.13)}.icon-btn:active{transform:scale(.95)}
+.icon-btn .ic{width:19px;height:19px}
+#themeBtn .ic{transition:transform .5s}#themeBtn:hover .ic{transform:rotate(40deg)}
+#cartCount{position:absolute;top:-5px;right:-5px;min-width:21px;height:21px;padding:0 5px;border-radius:99px;background:var(--sun2);color:#1a0f00;font:800 .7rem/21px var(--fb);text-align:center;box-shadow:0 0 0 2px #0b141b}
+#cartCount[hidden]{display:none}#cartCount.bump{animation:bump .55s}
+@keyframes bump{35%{transform:scale(1.5)}}
+.avatar{width:28px;height:28px;border-radius:50%;background:#ffb23e;color:#1a0f00;display:grid;place-items:center;font:800 .75rem var(--fd);flex:none}
+.avatar.lg{width:46px;height:46px;font-size:1rem}
+#menuBtn{display:none}
+.pop{position:absolute;right:0;top:calc(100% + 12px);width:300px;padding:18px;border-radius:22px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--sh2);animation:pop .25s cubic-bezier(.2,.8,.2,1);display:grid;gap:14px;z-index:5}
+.pop[hidden]{display:none}
+.acct-h{display:flex;gap:12px;align-items:center}.acct-h b{display:block;font-family:var(--fd);font-size:1.05rem}.acct-h small{color:var(--mut);font-size:.8rem;word-break:break-all}
+.acct-s{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;text-align:center}.acct-s div{padding:10px 4px;border-radius:14px;background:var(--surface2)}.acct-s b{display:block;font:800 1.2rem var(--fd)}.acct-s span{font-size:.72rem;color:var(--mut)}
+.acct-o{display:grid;gap:6px;font-size:.84rem}.acct-o div{display:flex;justify-content:space-between;padding:8px 10px;border-radius:10px;background:var(--surface2)}
+@keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.97)}}
+
+/* =====================================================================  BUTTONS & FIELDS */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:8px;border:0;background:var(--sun2);color:#1a0f00;font:700 .95rem var(--fb);text-decoration:none;cursor:pointer;transition:background .15s;white-space:nowrap}
+.btn:hover{background:#ff8a3d}.btn:active{transform:translateY(1px)}
+.btn .ic{transition:transform .2s}.btn:hover .ic.go{transform:translateX(4px)}
+.btn.alt{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px var(--line)}.btn.alt:hover{background:var(--surface2)}
+.btn.dark{background:var(--ink);color:var(--bg);box-shadow:none}
+.btn.sm{padding:10px 18px;font-size:.86rem}.btn.block{width:100%}
+.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+input,select,textarea{font:500 .95rem var(--fb);color:var(--ink);background:var(--surface2);border:1.5px solid transparent;border-radius:var(--rs);padding:13px 15px;width:100%;transition:border-color .2s,box-shadow .2s,background .2s}
+input::placeholder,textarea::placeholder{color:var(--mut);opacity:.8}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sun);background:var(--surface);box-shadow:0 0 0 5px rgba(255,165,31,.16)}
+.fld{display:grid;gap:7px;font-size:.82rem;font-weight:700;color:var(--ink2);letter-spacing:.01em}
+.bad{border-color:var(--red)!important;box-shadow:0 0 0 5px rgba(217,69,43,.12)!important}.err{color:var(--red);font-size:.78rem;font-weight:600}
+.chip{padding:9px 16px;border-radius:8px;border:1px solid var(--line);background:var(--surface);font-weight:700;font-size:.85rem;cursor:pointer;color:var(--ink2);transition:background .2s,color .2s,border-color .2s,transform .2s;white-space:nowrap}
+.chip:hover{border-color:var(--sun)}.chip[aria-pressed="true"]{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.chk{display:flex;gap:10px;align-items:center;font-size:.88rem;cursor:pointer;color:var(--ink2);font-weight:600}.chk input{width:18px;height:18px;accent-color:var(--sun2);flex:none;padding:0}
+input[type=range]{-webkit-appearance:none;appearance:none;height:8px;padding:0;border:0;border-radius:99px;background:linear-gradient(90deg,var(--sun) 0,var(--sun2) var(--p,50%),var(--line) var(--p,50%));cursor:pointer;box-shadow:none}
+input[type=range]:focus{box-shadow:0 0 0 5px rgba(255,165,31,.16)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:24px;height:24px;border-radius:50%;background:#fff;border:3px solid var(--sun2);box-shadow:0 4px 12px rgba(255,105,20,.45);transition:transform .15s}
+input[type=range]::-webkit-slider-thumb:hover{transform:scale(1.15)}
+input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;background:#fff;border:3px solid var(--sun2)}
+
+/* =====================================================================  HERO */
+.hero{position:relative;min-height:100svh;display:grid;align-items:center;color:#fff;overflow:hidden;background:radial-gradient(110% 80% at 78% 0%,#1b5b78 0%,transparent 55%),radial-gradient(60% 50% at 100% 100%,rgba(255,120,30,.32),transparent 60%),linear-gradient(180deg,#060f15 0%,#0c2a3a 60%,#1d2a22 100%)}
+#scene{position:absolute;inset:0;width:100%;height:100%;display:block}
+.hero::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;background:linear-gradient(90deg,rgba(5,13,19,.82) 0%,rgba(5,13,19,.4) 42%,transparent 68%)}
+.hero::after{content:"";position:absolute;inset:auto 0 0;height:160px;z-index:1;pointer-events:none;background:linear-gradient(transparent,var(--dk))}
+.hero-text{position:relative;z-index:2;max-width:720px;padding:150px max(20px,5vw) 200px;pointer-events:none}
+.hero-text .row,.hero-text a{pointer-events:auto}
+.pill{display:inline-flex;align-items:center;gap:10px;padding:7px 16px 7px 10px;border-radius:999px;background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.16);backdrop-filter:blur(8px);font-size:.85rem;font-weight:600;margin-bottom:26px}
+.dot{width:8px;height:8px;border-radius:50%;background:#3fcf8e;animation:ping 2s infinite;flex:none}
+@keyframes ping{0%{box-shadow:0 0 0 0 rgba(63,207,142,.6)}80%,100%{box-shadow:0 0 0 10px rgba(63,207,142,0)}}
+.hero h1{font-size:clamp(2.6rem,6vw,4.8rem);font-weight:800;letter-spacing:-.025em;line-height:1.04}
+.hero h1 .hl{color:#ffb547}
+.lead{font-size:1.16rem;max-width:44ch;color:rgba(255,255,255,.76);margin:26px 0 34px}
+.row{display:flex;flex-wrap:wrap;gap:12px}
+.hero .btn.alt{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);background:rgba(255,255,255,.05);backdrop-filter:blur(6px)}.hero .btn.alt:hover{background:rgba(255,255,255,.14)}
+.trust{display:flex;flex-wrap:wrap;gap:10px 24px;margin:34px 0 0;padding:0;list-style:none;font-size:.88rem;color:rgba(255,255,255,.75);font-weight:600}
+.trust li{display:flex;align-items:center;gap:8px}.trust .ic{color:#3fcf8e}
+.sunbar{position:absolute;z-index:3;left:max(20px,5vw);right:max(20px,5vw);bottom:30px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:16px 24px;border-radius:12px;background:rgba(8,18,24,.6);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
+.sunbar label{font-weight:700;font-size:.9rem;display:flex;align-items:center;gap:8px;white-space:nowrap}.sunbar label .ic{color:var(--sun)}
+#clock{color:var(--sun);font-variant-numeric:tabular-nums}
+.out{text-align:right;line-height:1.2}.out b{font:800 1.8rem var(--fd);color:var(--sun);font-variant-numeric:tabular-nums}.out small{display:block;color:rgba(255,255,255,.6);font-size:.78rem}
+.ns{position:relative;z-index:4;padding:20px}
+
+/* ticker */
+.ticker{background:var(--dk);color:#d6e1e6;overflow:hidden;padding:20px 0;border-bottom:1px solid rgba(255,255,255,.06)}
+.ticker-track{display:flex;width:max-content;animation:marq 42s linear infinite}
+.ticker span{display:inline-flex;align-items:center;font:600 1.15rem var(--fd);white-space:nowrap;padding-right:44px;opacity:.85}
+.ticker span::after{content:"✦";color:var(--sun);margin-left:44px;font-size:.9rem}
+.ticker:hover .ticker-track{animation-play-state:paused}
+@keyframes marq{to{transform:translateX(-50%)}}
+
+/* =====================================================================  SECTIONS */
+.sec{position:relative;padding:120px 20px}
+.inner{max-width:1240px;margin:auto;position:relative}
+.head{display:flex;flex-wrap:wrap;align-items:end;justify-content:space-between;gap:20px 40px;margin-bottom:48px}
+.head h2{font-size:clamp(2rem,4vw,3rem);max-width:20ch}
+.head>p{max-width:40ch;color:var(--mut);font-size:1.05rem}
+.eyebrow{display:block;font:700 .92rem var(--fb);color:var(--sun2);margin-bottom:10px}
+.gridbg::before{display:none;content:"";position:absolute;inset:0;pointer-events:none;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:64px 64px;-webkit-mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 15%,transparent 75%);mask-image:radial-gradient(ellipse 75% 55% at 50% 0%,#000 15%,transparent 75%);opacity:.7}
+.band.gridbg::before{opacity:.5}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh)}
+
+/* =====================================================================  BENTO */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);grid-auto-rows:minmax(210px,auto);gap:16px}
+.tile{position:relative;overflow:hidden;padding:26px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);box-shadow:var(--sh);isolation:isolate;display:flex;flex-direction:column;gap:10px;transition:transform .35s,box-shadow .35s}
+.tile::after{content:"";position:absolute;inset:0;z-index:-1;background:radial-gradient(420px circle at var(--mx,50%) var(--my,50%),rgba(255,165,31,.14),transparent 45%);opacity:0;transition:opacity .3s}
+.tile h3{font-size:1.25rem}.tile p{color:var(--mut);font-size:.92rem}
+.tile .k{font:800 clamp(2.4rem,4vw,3.2rem)/1 var(--fd);letter-spacing:-.02em;margin-top:auto}
+.tile .lbl{font:700 .85rem var(--fb);color:var(--mut)}
+.t-a{grid-column:span 2;grid-row:span 2}.t-d,.t-g{grid-column:span 2}
+.t-dark{--surface:#0f1f2a;--line:#20323e;--mut:#93a4ad;background:#0f2230;color:#eef3f1;border-color:transparent}
+.t-sun{background:#ffb23e;color:#1a0f00;border:0}.t-sun p,.t-sun .lbl{color:rgba(26,15,0,.7)}
+.t-green{background:#0f3d2b;color:#eafff4;border:0}.t-green p,.t-green .lbl{color:rgba(234,255,244,.7)}
+.ic-badge{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--surface2);color:var(--sun2)}.ic-badge .ic{width:22px;height:22px}
+.t-sun .ic-badge{background:rgba(255,255,255,.3);color:#1a0f00}
+.curve-wrap{margin-top:auto;position:relative}
+.curve{width:100%;height:auto;overflow:visible}
+.curve .ax{stroke:rgba(255,255,255,.1);stroke-dasharray:3 5}
+.curve text{fill:rgba(255,255,255,.45);font:600 11px var(--fb)}
+.cread{display:flex;gap:28px;flex-wrap:wrap}.cread b{display:block;font:800 2rem/1 var(--fd);color:var(--sun);font-variant-numeric:tabular-nums}.cread span{font-size:.78rem;color:#93a4ad;font-weight:600}
+.t-a input[type=range]{--line:#20323e;margin-top:6px}
+.ba{display:flex;align-items:flex-end;gap:16px;height:130px;margin-top:auto}
+.ba div{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:6px;height:100%}
+.ba i{display:block;border-radius:14px 14px 6px 6px;transform-origin:bottom;transform:scaleY(0);transition:transform 1.2s cubic-bezier(.2,.8,.2,1)}
+.seen .ba i{transform:scaleY(1)}
+.ba .b1 i{height:100%;background:repeating-linear-gradient(-45deg,var(--surface2) 0 8px,var(--line) 8px 16px)}
+.ba .b2 i{height:12%;background:var(--grad);transition-delay:.3s}
+.ba small{font-size:.78rem;color:var(--mut);font-weight:700}.ba b{font:800 1.15rem var(--fd)}
+.ring{width:110px;height:110px;margin-top:auto;align-self:flex-start}
+.ring circle{fill:none;stroke-width:10}.ring .rb{stroke:rgba(26,15,0,.15)}.ring .rf{stroke:#1a0f00;stroke-linecap:round;stroke-dasharray:302;stroke-dashoffset:302;transition:stroke-dashoffset 1.8s cubic-bezier(.2,.8,.2,1);transform:rotate(-90deg);transform-origin:center}
+.seen .ring .rf{stroke-dashoffset:0}
+.ring text{font:800 26px var(--fd);fill:#1a0f00;text-anchor:middle}
+.batt{position:relative;width:130px;height:60px;border:3px solid currentColor;border-radius:14px;padding:5px;margin-top:auto}
+.batt::after{content:"";position:absolute;right:-10px;top:17px;width:6px;height:20px;border-radius:0 4px 4px 0;background:currentColor}
+.batt i{display:block;height:100%;border-radius:8px;background:linear-gradient(90deg,#3fcf8e,#8bd346);animation:charge 4s ease-in-out infinite}
+@keyframes charge{0%{width:12%}70%,100%{width:100%}}
+.svc{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto}.svc span{padding:7px 13px;border-radius:999px;background:var(--surface2);font-size:.8rem;font-weight:700;display:inline-flex;align-items:center;gap:6px}.svc .ic{color:var(--green)}
+.minis{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}.minis b{display:block;font:800 1.7rem var(--fd);letter-spacing:-.03em}.minis span{font-size:.78rem;color:var(--mut);font-weight:600}
+
+/* =====================================================================  HOW IT WORKS */
+.work{display:grid;grid-template-columns:1.35fr 1fr;gap:18px;align-items:stretch}
+.diagram{padding:18px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);display:flex;flex-direction:column;gap:12px}
+.diagram>svg{width:100%;height:auto}
+.wire{fill:none;stroke:var(--line);stroke-width:4;stroke-linecap:round}
+.flow{fill:none;stroke:var(--sun);stroke-width:4;stroke-linecap:round;stroke-dasharray:3 15;opacity:0;transition:opacity .5s;animation:flow .8s linear infinite}
+.flow.on{opacity:1}.flow.rev{animation-direction:reverse}.flow.g{stroke:#3fcf8e}.flow.b{stroke:#5aa9ff}
+@keyframes flow{to{stroke-dashoffset:-18}}
+.node .bg{fill:var(--surface2);stroke:var(--line);stroke-width:2;transition:stroke .4s,fill .4s}
+.node .halo{fill:rgba(255,165,31,.14);opacity:0;transition:opacity .4s;transform-origin:center;transform-box:fill-box}
+.node.on .bg{stroke:var(--sun)}.node.on .halo{opacity:1;animation:halo 2.4s ease-in-out infinite}
+.node.off .bg{stroke:var(--red);stroke-dasharray:6 6}
+.node .nic{fill:none;stroke:var(--mut);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:stroke .4s}
+.node.on .nic{stroke:var(--sun)}.node.off .nic{stroke:var(--red)}
+.node text{fill:var(--ink);font:700 15px var(--fd);text-anchor:middle}
+.val{fill:var(--sun);font:800 13px var(--fb)}.val.g{fill:#3fcf8e}.val.b{fill:#5aa9ff}.val.r{fill:var(--red)}
+@keyframes halo{50%{transform:scale(1.12);opacity:.5}}
+.modes{display:flex;gap:4px;padding:5px;border-radius:999px;background:var(--surface2);border:1px solid var(--line);align-self:flex-start;max-width:100%;overflow-x:auto}
+.modes button{border:0;background:none;padding:10px 16px;border-radius:999px;font-weight:800;font-size:.85rem;color:var(--mut);cursor:pointer;white-space:nowrap;display:inline-flex;gap:8px;align-items:center;transition:background .25s,color .25s}
+.modes button[aria-selected="true"]{background:var(--sun2);color:#1a0f00}
+.explain{padding:30px;display:flex;flex-direction:column;gap:20px}
+.explain h3{font-size:1.7rem}.explain>p{color:var(--mut)}
+.explain ol{list-style:none;margin:0;padding:0;display:grid;gap:12px;counter-reset:e}
+.explain li{display:flex;gap:14px;align-items:flex-start;font-weight:600;font-size:.95rem;animation:up .4s both}
+.explain li::before{counter-increment:e;content:counter(e);flex:none;width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:rgba(255,165,31,.15);color:var(--sun);font:800 .8rem var(--fd)}
+.readout{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:auto}
+.readout div{padding:12px 14px;border-radius:14px;background:var(--surface2)}.readout b{display:block;font:800 1.25rem var(--fd);font-variant-numeric:tabular-nums}.readout span{font-size:.75rem;color:var(--mut);font-weight:700}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:18px;list-style:none;padding:0;counter-reset:s}
+.steps li{padding:24px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);position:relative}
+.steps li::before{counter-increment:s;content:"0" counter(s);display:block;font:800 2.4rem/1 var(--fd);color:transparent;-webkit-text-stroke:1.5px var(--sun);margin-bottom:14px}
+.steps h4{font-size:1.1rem;margin-bottom:6px}.steps p{color:var(--mut);font-size:.9rem}
+
+/* =====================================================================  SOLUTIONS */
+.sgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.sol{padding:28px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:hidden;transition:transform .35s,box-shadow .35s,border-color .35s}
+.sol:hover{border-color:var(--sun)}
+.sol::before{display:none;content:"";position:absolute;inset:0 0 auto;height:3px;background:var(--grad);transform:scaleX(0);transform-origin:left;transition:transform .45s}
+.sol:hover::before{transform:scaleX(1)}
+.sol .ic-badge{width:52px;height:52px;border-radius:10px;background:rgba(255,140,30,.12)}
+.sol .ic-badge .ic{width:26px;height:26px}
+.sol h3{font-size:1.35rem}.sol p{color:var(--mut);font-size:.94rem}
+.sol .more{margin-top:auto;padding-top:6px;color:var(--sun2);font-weight:800;font-size:.9rem;text-decoration:none;display:inline-flex;gap:6px;align-items:center}
+.sol .more:hover .ic{transform:translateX(4px)}.sol .more .ic{transition:transform .2s}
+
+/* =====================================================================  SHOP */
+.shopbar{display:flex;flex-wrap:wrap;gap:12px;align-items:center;margin-bottom:24px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding-bottom:2px;flex:1 1 auto}
+.searchbox{position:relative;flex:0 1 280px}.searchbox .ic{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mut)}
+.searchbox input{padding-left:44px;border-radius:999px;background:var(--surface);border-color:var(--line)}
+#sort{width:auto;border-radius:999px;background:var(--surface);border-color:var(--line);font-weight:700}
+#pcount{font-size:.85rem;color:var(--mut);font-weight:700;margin-bottom:12px}
+.pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:16px}
+.prod{display:flex;flex-direction:column;overflow:hidden;transition:transform .35s,box-shadow .35s;animation:up .5s both}
+.prod:hover{box-shadow:var(--sh2)}
+.pimg{position:relative;aspect-ratio:16/11;display:grid;place-items:center;color:#fff;overflow:hidden}
+.pimg::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:26px 26px}
+.pimg::after{content:"";position:absolute;width:60%;aspect-ratio:1;border-radius:50%;background:radial-gradient(rgba(255,255,255,.22),transparent 65%)}
+.pimg .ic{width:66px;height:66px;stroke-width:1.3;position:relative;z-index:1;filter:drop-shadow(0 10px 18px rgba(0,0,0,.35));transition:transform .5s cubic-bezier(.2,.8,.2,1)}
+.tag{position:absolute;z-index:2;top:12px;left:12px;font-size:.7rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:#fff;background:rgba(0,0,0,.3);backdrop-filter:blur(6px);padding:5px 10px;border-radius:999px}
+.c-Panels{background:linear-gradient(145deg,#2559b8,#0a1f4d)}.c-Inverters{background:linear-gradient(145deg,#118080,#06363b)}.c-Batteries{background:linear-gradient(145deg,#1d9a5b,#0a3a24)}.c-Accessories{background:linear-gradient(145deg,#56677a,#1b2530)}.c-Kits{background:linear-gradient(145deg,#ffab3d,#c2410c)}
+.pbody{padding:18px 20px 20px;display:flex;flex-direction:column;gap:6px;flex:1}
+.prod h3{font-size:1.12rem;letter-spacing:-.015em}
+.stars{color:#ffb020;font-size:.82rem;letter-spacing:1px}.stars small{color:var(--mut);font-weight:700;letter-spacing:0;margin-left:4px}
+.pfoot{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-top:auto;padding-top:14px;min-height:58px}
+.price{font:800 1.35rem var(--fd);letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.noresult{grid-column:1/-1;text-align:center;padding:50px;color:var(--mut)}
+.qty{display:inline-flex;align-items:center;border:1.5px solid var(--line);border-radius:99px;padding:3px;background:var(--surface)}
+.qty button{width:32px;height:32px;border-radius:50%;border:0;background:transparent;cursor:pointer;font-size:1.1rem;font-weight:700;transition:background .2s}
+.qty button:hover{background:var(--sun);color:#1a0f00}.qty span{min-width:26px;text-align:center;font-weight:800;font-variant-numeric:tabular-nums}
+
+/* =====================================================================  CALCULATOR */
+.calc{display:grid;grid-template-columns:1fr 1.15fr;gap:18px}
+.calc-in{padding:32px;display:grid;gap:26px;align-content:start}
+.rng{display:grid;gap:12px}.rng .top{display:flex;justify-content:space-between;align-items:baseline;font-weight:700;font-size:.9rem;color:var(--ink2)}
+.rng output{font:800 1.3rem var(--fd);color:var(--ink);font-variant-numeric:tabular-nums}
+.seg{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;padding:5px;border-radius:16px;background:var(--surface2)}
+.seg button,.seg label{border:0;background:none;padding:11px 8px;border-radius:12px;font-weight:800;font-size:.85rem;color:var(--mut);cursor:pointer;text-align:center;transition:background .25s,color .25s}
+.seg button[aria-pressed="true"],.seg label:has(input:checked){background:var(--surface);color:var(--ink);box-shadow:0 6px 14px -8px rgba(0,0,0,.3)}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.calc-out{padding:32px;display:flex;flex-direction:column;gap:18px}
+.big{display:flex;align-items:flex-end;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.big b{font:800 clamp(3.4rem,6vw,4.8rem)/.9 var(--fd);letter-spacing:-.05em}.big b small{font-size:.38em;color:var(--sun);letter-spacing:0}
+.big>span{color:var(--mut);font-weight:700;font-size:.85rem}
+.metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.metrics div{padding:14px;border-radius:16px;background:var(--surface2)}.metrics b{display:block;font:800 1.2rem var(--fd);letter-spacing:-.02em;font-variant-numeric:tabular-nums}.metrics span{font-size:.74rem;color:var(--mut);font-weight:700}
+.metrics .hl{background:#ffb23e;color:#1a0f00}.metrics .hl span{color:rgba(26,15,0,.7)}
+.lchart{width:100%;height:auto}
+.lchart .cost{stroke:var(--mut);stroke-dasharray:5 6;stroke-width:1.5}
+.lchart .sv{fill:none;stroke:var(--sun);stroke-width:3;stroke-linecap:round}
+.lchart text{fill:var(--mut);font:700 10px var(--fb)}
+.note{font-size:.78rem;color:var(--mut)}
+.warn{display:flex;gap:8px;align-items:center;padding:10px 14px;border-radius:12px;background:rgba(255,165,31,.12);color:var(--sun);font-size:.84rem;font-weight:700}
+.warn[hidden]{display:none}
+
+/* =====================================================================  FAQ / QUOTE / CTA / FOOTER */
+.faq{display:grid;grid-template-columns:1fr 1.5fr;gap:48px;align-items:start}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font:700 1.15rem var(--fd);letter-spacing:-.015em}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:500 1.3rem var(--fb);transition:transform .3s,background .3s}
+.faq details[open] summary::after{transform:rotate(45deg);background:var(--sun);color:#1a0f00}
+.faq details p{padding:0 50px 22px 0;color:var(--mut);animation:up .3s}
+.qgrid{display:grid;grid-template-columns:1.45fr 1fr;gap:18px;align-items:start}
+.form{display:grid;grid-template-columns:1fr 1fr;gap:16px;padding:32px}
+.form .full,.form>.btn,.form>h3,.form>p{grid-column:1/-1}
+.side-q{display:grid;gap:18px}
+.why{padding:28px;display:grid;gap:16px}.why h3{font-size:1.35rem}
+.why li{display:flex;gap:14px;align-items:flex-start}.why ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.why li b{display:block}.why li small{color:var(--mut)}
+#trackOut:empty{display:none}#trackOut{padding:12px 14px;border-radius:12px;background:var(--surface2);font-size:.9rem;font-weight:600}
+.cta{padding:0 20px 120px}
+.cta-in{max-width:1240px;margin:auto;border-radius:14px;padding:48px max(28px,5vw);display:flex;flex-wrap:wrap;gap:28px;align-items:center;justify-content:space-between;color:#1a0f00;background:#ffb23e;position:relative;overflow:hidden}
+.cta-in::before{display:none;content:"";position:absolute;right:-90px;top:-120px;width:380px;height:380px;border-radius:50%;border:60px solid rgba(255,255,255,.16)}
+.cta-in::after{display:none;content:"";position:absolute;left:30%;bottom:-160px;width:300px;height:300px;border-radius:50%;background:rgba(255,255,255,.12)}
+.cta h2{font-size:clamp(1.7rem,3.4vw,2.6rem);max-width:24ch;position:relative;z-index:1}.cta p{margin-top:12px;opacity:.75;font-weight:600;position:relative;z-index:1}
+.cta .btn{background:#0a131a;color:#fff;position:relative;z-index:1}.cta .btn:hover{background:#1c2c37}
+footer.band{padding:80px 20px 30px;overflow:hidden}
+.fgrid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1.5fr;gap:36px}
+footer h4{font-size:.95rem;margin-bottom:16px;font-family:var(--fb);font-weight:800;letter-spacing:.06em;text-transform:uppercase;color:var(--mut)}
+footer ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}footer ul a{text-decoration:none;color:var(--ink2);font-weight:600}footer ul a:hover{color:var(--sun)}
+footer .about{color:var(--mut);margin-top:16px;max-width:34ch}
+#news{display:flex;gap:6px;margin-top:14px;padding:5px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}#news input{background:transparent;border:0;box-shadow:none;padding:10px 14px}
+.wordmark{font:800 clamp(3rem,13.5vw,13rem)/.8 var(--fd);letter-spacing:-.06em;text-align:center;margin:70px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.12),rgba(255,255,255,0) 85%);-webkit-background-clip:text;background-clip:text;color:transparent;user-select:none;white-space:nowrap}
+.fbot{margin-top:48px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:10px;padding-top:24px;border-top:1px solid var(--line);font-size:.84rem;color:var(--mut)}
+
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:12px}
+.gallery figure{margin:0;border-radius:var(--r);overflow:hidden;background:var(--surface);border:1px solid var(--line)}
+.gallery img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block}.gallery figcaption{padding:10px 14px;font-size:.88rem;color:var(--mut)}
+.contact{list-style:none;margin:18px 0 0;padding:0;display:grid;gap:8px;font-weight:600}.contact a{text-decoration:none;display:inline-flex;gap:8px;align-items:center}.contact a:hover{color:var(--sun)}
+
+/* =====================================================================  CART DRAWER + CHECKOUT */
+.scrim{position:fixed;inset:0;background:rgba(4,10,14,.55);backdrop-filter:blur(4px);z-index:90;opacity:0;pointer-events:none;transition:opacity .35s}
+.scrim.on{opacity:1;pointer-events:auto}
+.drawer{position:fixed;top:0;right:0;bottom:0;width:min(450px,100%);z-index:91;background:var(--surface);color:var(--ink);display:flex;flex-direction:column;transform:translateX(105%);transition:transform .5s cubic-bezier(.2,.8,.2,1);box-shadow:-40px 0 80px -40px rgba(0,0,0,.6)}
+.drawer.on{transform:none}
+.dr-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--line)}
+.dr-head h3{font-size:1.5rem}.dr-head h3 small{font:700 1rem var(--fb);color:var(--mut)}
+.x-btn{width:42px;height:42px;border-radius:50%;border:1px solid var(--line);background:var(--surface2);cursor:pointer;display:grid;place-items:center;transition:transform .3s,background .2s}.x-btn:hover{transform:rotate(90deg);background:var(--sun);color:#1a0f00}
+.dr-body{flex:1;overflow:auto;padding:6px 24px}
+.dr-foot{padding:20px 24px 24px;border-top:1px solid var(--line);display:grid;gap:12px;background:var(--surface2)}
+.dr-foot[hidden]{display:none}
+.dr-tot{display:flex;justify-content:space-between;align-items:baseline;font-weight:700}.dr-tot b{font:800 1.5rem var(--fd)}
+.ship{padding:16px 0 6px;display:grid;gap:10px;font-size:.88rem}
+.ship-bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}.ship-bar i{display:block;height:100%;width:var(--p);background:var(--green);border-radius:99px;transition:width .6s cubic-bezier(.2,.8,.2,1)}
+.line{display:grid;grid-template-columns:68px 1fr auto;gap:14px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);animation:up .35s both}
+.line:last-child{border-bottom:0}
+.thumb{width:68px;height:68px;border-radius:18px;display:grid;place-items:center;color:#fff;position:relative;overflow:hidden}.thumb .ic{width:30px;height:30px;stroke-width:1.5}
+.nm{display:grid;gap:6px;justify-items:start;min-width:0}.nm b{font:700 1rem var(--fd);letter-spacing:-.01em}.nm small{color:var(--mut);font-weight:600}
+.lr{display:grid;justify-items:end;gap:10px}.lr b{font:800 1.05rem var(--fd);font-variant-numeric:tabular-nums}
+.x{width:34px;height:34px;border-radius:50%;border:0;background:transparent;color:var(--mut);cursor:pointer;display:grid;place-items:center;transition:background .2s,color .2s}.x:hover{background:rgba(217,69,43,.12);color:var(--red)}
+.empty{text-align:center;padding:56px 20px;display:grid;gap:12px;justify-items:center}
+.empty .eic{width:96px;height:96px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);color:var(--sun2);margin-bottom:6px}.empty .eic .ic{width:42px;height:42px}
+#cartView{display:none;min-height:100svh;padding:120px 20px 80px}
+body.cartmode #cartView{display:block}body.cartmode main,body.cartmode .cta{display:none}
+.back{display:inline-flex;gap:8px;align-items:center;color:var(--mut);text-decoration:none;font-weight:700;font-size:.9rem}.back:hover{color:var(--sun2)}
+#cartView h2{font-size:clamp(2.2rem,4.5vw,3.4rem);margin-top:12px}#cartView h2 small{font:700 1.05rem var(--fb);color:var(--mut);margin-left:6px;letter-spacing:0}
+.stepper{display:flex;align-items:center;gap:12px;margin:22px 0 32px;padding:0;list-style:none;flex-wrap:wrap}
+.stepper li{display:flex;align-items:center;gap:10px;font-weight:800;font-size:.9rem;color:var(--mut)}
+.stepper li b{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1.5px solid var(--line);font-family:var(--fd)}
+.stepper li.done b{background:var(--green);border-color:transparent;color:#fff}.stepper li.cur{color:var(--ink)}.stepper li.cur b{background:var(--sun2);border:0;color:#1a0f00}
+.stepper .sep{width:44px;border-top:2px dashed var(--line)}
+#orderForm .full{grid-column:1/-1}
+.cartgrid{display:grid;grid-template-columns:1.55fr 1fr;gap:18px;align-items:start}
+.cartgrid[hidden]{display:none}
+.co-main{display:grid;gap:18px}
+.co-sec{padding:28px}.co-sec>h3{display:flex;align-items:center;gap:12px;font-size:1.3rem;margin-bottom:18px}
+.n{width:30px;height:30px;border-radius:50%;display:grid;place-items:center;background:var(--surface2);font:800 .85rem var(--fd);color:var(--sun2)}
+.cartfoot{display:flex;justify-content:space-between;align-items:center;padding-top:14px;font-size:.85rem}.cartfoot button{background:none;border:0;color:var(--mut);cursor:pointer;font-weight:700;text-decoration:underline}
+#orderForm{padding:0;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;border:0;padding:0;margin:0}
+.paygrid legend{font-size:.82rem;font-weight:700;color:var(--ink2);margin-bottom:8px;padding:0}
+.payopt{position:relative}.payopt input{position:absolute;opacity:0;pointer-events:none}
+.payopt span{display:flex;align-items:center;gap:12px;padding:16px;border-radius:16px;border:1.5px solid var(--line);cursor:pointer;font-weight:800;font-size:.92rem;transition:border-color .2s,background .2s,box-shadow .2s}
+.payopt span .ic{width:22px;height:22px;color:var(--mut)}
+.payopt input:checked+span{border-color:var(--sun);background:rgba(255,165,31,.09);box-shadow:0 0 0 4px rgba(255,165,31,.12)}.payopt input:checked+span .ic{color:var(--sun2)}
+.payopt input:focus-visible+span{outline:3px solid var(--sun);outline-offset:2px}
+.summary{position:sticky;top:100px;padding:28px;display:grid;gap:16px}
+.summary h3{font-size:1.3rem}
+.coupon{display:flex;gap:6px;padding:5px;border-radius:999px;background:var(--surface2)}.coupon input{background:transparent;border:0;box-shadow:none;padding:10px 14px;text-transform:uppercase}
+.ctag{display:inline-flex;align-items:center;gap:8px;padding:6px 8px 6px 12px;border-radius:999px;background:rgba(20,144,90,.12);color:var(--green);font-weight:800;font-size:.8rem;justify-self:start}
+.ctag button{border:0;background:none;cursor:pointer;color:inherit;display:grid;place-items:center;padding:2px}
+.ctag[hidden]{display:none}
+.switch{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 16px;border-radius:16px;background:var(--surface2);cursor:pointer;font-weight:700;font-size:.9rem}
+.switch small{display:block;color:var(--mut);font-weight:600;font-size:.78rem}
+.switch input{appearance:none;-webkit-appearance:none;width:48px;height:28px;border-radius:99px;background:var(--line);position:relative;cursor:pointer;transition:background .25s;flex:none;padding:0;border:0;box-shadow:none}
+.switch input::after{content:"";position:absolute;top:3px;left:3px;width:22px;height:22px;border-radius:50%;background:#fff;transition:left .25s;box-shadow:0 2px 6px rgba(0,0,0,.25)}
+.switch input:checked{background:var(--green)}.switch input:checked::after{left:23px}
+#cartSum{display:grid;gap:8px}#cartSum div{display:flex;justify-content:space-between;font-size:.94rem;font-weight:600}#cartSum div span:first-child{color:var(--mut)}
+#cartSum .ok span:last-child{color:var(--green)}
+#cartSum .tot{border-top:1.5px dashed var(--line);margin-top:6px;padding-top:14px;align-items:baseline}#cartSum .tot span:first-child{color:var(--ink);font-weight:800}#cartSum .tot span:last-child{font:800 1.7rem var(--fd);letter-spacing:-.02em}
+.trustrow{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.78rem;color:var(--mut);font-weight:700}.trustrow span{display:inline-flex;gap:6px;align-items:center}.trustrow .ic{color:var(--green)}
+.okcard{max-width:620px;margin:20px auto 0;padding:48px 32px;text-align:center;display:grid;gap:14px;justify-items:center}
+.tick{width:96px;height:96px}.tick circle{fill:none;stroke:var(--green);stroke-width:4;stroke-dasharray:283;stroke-dashoffset:283;animation:draw .8s forwards}
+.tick path{fill:none;stroke:var(--green);stroke-width:5;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:60;stroke-dashoffset:60;animation:draw .5s .6s forwards}
+@keyframes draw{to{stroke-dashoffset:0}}
+.okcard h3{font-size:2rem}.oid{font:800 1.1rem var(--fd);padding:8px 16px;border-radius:12px;background:var(--surface2);letter-spacing:.04em}
+
+/* =====================================================================  AUTH */
+#authDlg{padding:0;border:0;border-radius:14px;width:min(900px,94vw);max-height:94vh;background:var(--surface);color:var(--ink);overflow:hidden;box-shadow:0 60px 120px -40px rgba(0,0,0,.7)}
+#authDlg[open]{display:grid;grid-template-columns:1fr 1.1fr;animation:dlg .45s cubic-bezier(.2,.8,.2,1)}
+#authDlg::backdrop{background:rgba(4,10,14,.6);backdrop-filter:blur(6px)}
+@keyframes dlg{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.auth-art{position:relative;padding:40px;color:#eef3f1;display:flex;flex-direction:column;gap:28px;overflow:hidden;background:#0f2230}
+.auth-art::before{display:none;content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.05) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.05) 1px,transparent 1px);background-size:40px 40px;-webkit-mask-image:linear-gradient(180deg,#000,transparent);mask-image:linear-gradient(180deg,#000,transparent)}
+.auth-art>*{position:relative}
+.auth-art .mark{width:72px;height:72px;border-radius:50%;background:#fff;padding:3px}
+@keyframes float{50%{transform:translateY(-8px)}}
+.auth-art h3{font-size:2.4rem;letter-spacing:-.035em}.auth-art h3 em{color:#ffd27a}.auth-art p{color:rgba(238,243,241,.7);margin-top:10px}
+.auth-art ul{list-style:none;margin:auto 0 0;padding:0;display:grid;gap:12px;font-weight:600;font-size:.92rem}.auth-art li{display:flex;gap:10px;align-items:center}
+.auth-art li .ic{color:#3fcf8e;width:20px;height:20px;padding:3px;border-radius:50%;background:rgba(63,207,142,.15);box-sizing:content-box}
+.auth-art small{color:rgba(238,243,241,.45);font-size:.75rem}
+.auth-main{padding:36px 38px;overflow:auto;position:relative;max-height:94vh}
+.auth-main .x-btn{position:absolute;top:18px;right:18px}
+.tabs{display:grid;grid-template-columns:1fr 1fr;padding:5px;border-radius:999px;background:var(--surface2);margin:4px 56px 26px 0;position:relative}
+.tabs::before{content:"";position:absolute;top:5px;bottom:5px;left:5px;width:calc(50% - 5px);border-radius:999px;background:var(--surface);box-shadow:0 6px 14px -8px rgba(0,0,0,.35);transition:transform .35s cubic-bezier(.2,.8,.2,1)}
+.tabs[data-m="signup"]::before{transform:translateX(100%)}
+.tabs button{border:0;background:none;padding:11px;border-radius:999px;font-weight:800;cursor:pointer;color:var(--mut);position:relative;z-index:1;transition:color .3s}
+.tabs button[aria-selected="true"]{color:var(--ink)}
+.auth-main h2{font-size:2rem}.auth-main .sub{color:var(--mut);margin:6px 0 22px}
+#authForm{display:grid;gap:13px}
+#authForm[data-mode="login"] .su-only,#authForm[data-mode="signup"] .li-only{display:none}
+.inp{position:relative;display:block}.inp>.ico{position:absolute;left:15px;top:50%;transform:translateY(-50%);color:var(--mut);pointer-events:none}.inp>.ico .ic{width:18px;height:18px}
+.inp input{padding-left:46px;padding-right:46px}.inp:focus-within>.ico{color:var(--sun2)}
+.eye{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;cursor:pointer;color:var(--mut);padding:8px;border-radius:10px;display:grid}.eye:hover{color:var(--ink)}
+.lrow{display:flex;justify-content:space-between;align-items:center}.lrow a{color:var(--sun2);font-weight:700;text-decoration:none;font-size:.8rem}
+.meter{display:grid;grid-template-columns:repeat(4,1fr) auto;gap:5px;align-items:center}.meter i{height:5px;border-radius:3px;background:var(--line);transition:background .3s}
+.meter small{font-size:.75rem;font-weight:700;color:var(--mut);margin-left:6px;min-width:56px;text-align:right}
+.meter[data-s="1"] i:nth-child(-n+1){background:#e5533d}.meter[data-s="2"] i:nth-child(-n+2){background:#f2a33a}.meter[data-s="3"] i:nth-child(-n+3){background:#9bc53d}.meter[data-s="4"] i{background:var(--green)}
+.role.seg{grid-template-columns:1fr 1fr}
+.auth-err{padding:12px 14px;border-radius:12px;background:rgba(217,69,43,.1);color:var(--red);font-weight:700;font-size:.86rem;display:flex;gap:8px;align-items:center}
+.auth-err[hidden]{display:none}
+.auth-info{padding:12px 14px;border-radius:12px;background:rgba(255,165,31,.12);color:var(--ink2);font-weight:600;font-size:.84rem}
+.auth-info[hidden]{display:none}
+.swp{text-align:center;font-size:.9rem;color:var(--mut)}.swp a{color:var(--sun2);font-weight:800;text-decoration:none}
+
+/* =====================================================================  CHATBOT */
+#chatFab{position:fixed;right:22px;bottom:22px;z-index:85;width:64px;height:64px;border-radius:50%;border:0;background:var(--sun2);color:#1a0f00;cursor:pointer;box-shadow:0 10px 24px -10px rgba(0,0,0,.45);display:grid;place-items:center;transition:transform .2s}
+#chatFab:hover{transform:scale(1.05)}
+#chatFab::before{content:none}
+@keyframes ring{0%{box-shadow:0 0 0 0 rgba(255,140,30,.55)}80%,100%{box-shadow:0 0 0 18px rgba(255,140,30,0)}}
+#chatFab .ic{width:28px;height:28px;stroke-width:2}
+#chatFab .c2{display:none}#chatFab.on .c1{display:none}#chatFab.on .c2{display:block}#chatFab.on::before{animation:none}
+.fab-tip{position:fixed;right:98px;bottom:34px;z-index:84;padding:10px 16px;border-radius:16px 16px 4px 16px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--sh2);font-weight:700;font-size:.88rem;animation:up .4s both;cursor:pointer}
+.fab-tip[hidden]{display:none}
+#chat{position:fixed;right:22px;bottom:100px;z-index:86;width:min(400px,calc(100vw - 24px));height:min(640px,calc(100svh - 130px));display:flex;flex-direction:column;border-radius:28px;overflow:hidden;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:0 50px 100px -30px rgba(0,0,0,.6);transform-origin:bottom right;transform:scale(.5) translateY(40px);opacity:0;pointer-events:none;visibility:hidden;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s,visibility 0s .45s}
+#chat.on{transform:none;opacity:1;pointer-events:auto;visibility:visible;transition:transform .45s cubic-bezier(.2,.8,.2,1),opacity .3s,visibility 0s}
+.ch-head{display:flex;align-items:center;gap:12px;padding:16px 16px 16px 18px;background:#0f2230;color:#eef3f1}
+.ch-head .mark{width:44px;height:44px;border-radius:50%;background:#fff;padding:2px;flex:none}
+.ch-head div{flex:1;min-width:0}.ch-head b{display:block;font:800 1.08rem var(--fd)}
+.ch-head small{display:flex;align-items:center;gap:6px;color:rgba(238,243,241,.7);font-weight:600;font-size:.76rem}.ch-head small i{width:7px;height:7px;border-radius:50%;background:#3fcf8e}
+.ch-head .x-btn{border-color:rgba(255,255,255,.14);background:rgba(255,255,255,.06);color:#fff;width:38px;height:38px}
+.ch-body{flex:1;overflow-y:auto;padding:18px 16px;display:flex;flex-direction:column;gap:10px;background:var(--bg);scroll-behavior:smooth}
+.msg{max-width:86%;padding:11px 15px;border-radius:20px;font-size:.92rem;line-height:1.55;animation:up .3s both;overflow-wrap:anywhere}
+.msg.bot{background:var(--surface);border:1px solid var(--line);border-bottom-left-radius:6px;align-self:flex-start}
+.msg.me{background:var(--sun2);color:#1a0f00;border-bottom-right-radius:6px;align-self:flex-end;font-weight:700}
+.msg a{color:var(--sun2);font-weight:800}
+.msg .mini{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin:10px 0 4px}.msg .mini div{background:var(--surface2);padding:9px 11px;border-radius:12px;font-size:.76rem;color:var(--mut);font-weight:700}.msg .mini b{display:block;font:800 1.05rem var(--fd);color:var(--ink)}
+.typing{display:inline-flex;gap:4px;padding:4px 2px}.typing i{width:7px;height:7px;border-radius:50%;background:var(--mut);animation:typ 1.2s infinite}.typing i:nth-child(2){animation-delay:.15s}.typing i:nth-child(3){animation-delay:.3s}
+@keyframes typ{0%,60%,100%{opacity:.3;transform:none}30%{opacity:1;transform:translateY(-4px)}}
+.ch-chips{display:flex;gap:6px;overflow-x:auto;padding:12px 14px 2px;background:var(--surface);scrollbar-width:none}.ch-chips::-webkit-scrollbar{display:none}
+.ch-chips .chip{padding:8px 13px;font-size:.8rem}
+.ch-form{display:flex;gap:8px;padding:10px 14px 14px;background:var(--surface)}
+.ch-form input{border-radius:999px;background:var(--surface2)}
+.ch-form button{width:48px;height:48px;border-radius:50%;border:0;background:var(--sun2);color:#1a0f00;cursor:pointer;display:grid;place-items:center;flex:none}
+.ch-note{text-align:center;font-size:.7rem;color:var(--mut);padding:0 0 10px;background:var(--surface)}
+
+/* toasts */
+#toasts{position:fixed;left:50%;bottom:26px;transform:translateX(-50%);z-index:150;display:grid;gap:8px;justify-items:center;width:max-content;max-width:calc(100vw - 32px)}
+.toast{display:flex;align-items:center;gap:12px;padding:10px 10px 10px 16px;border-radius:999px;background:#0f1c25;color:#eef3f1;box-shadow:0 22px 44px -18px rgba(0,0,0,.65);font-weight:700;font-size:.9rem;animation:up .35s cubic-bezier(.2,.8,.2,1);border:1px solid rgba(255,255,255,.08)}
+.toast>.ic{color:var(--sun)}.toast span{padding-right:6px}
+.toast button{border:0;border-radius:99px;padding:7px 14px;background:var(--sun2);color:#1a0f00;font-weight:800;cursor:pointer;font-size:.82rem}
+
+/* motion */
+@keyframes up{from{opacity:0;transform:translateY(16px)}}
+.js .reveal{opacity:0;transform:translateY(14px);transition:opacity .8s cubic-bezier(.2,.8,.2,1),transform .8s cubic-bezier(.2,.8,.2,1)}
+.js .reveal.in{opacity:1;transform:none}
+
+/* =====================================================================  RESPONSIVE */
+@media(max-width:1100px){
+  #links{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;gap:2px;padding:10px;border-radius:0 0 12px 12px;background:rgba(9,17,23,.96);border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 60px -20px rgba(0,0,0,.7)}
+  #links.open{display:flex;animation:pop .25s}#links a{padding:13px 16px}
+  #menuBtn{display:inline-flex;order:5}.actions{margin-left:auto}
+  .bento{grid-template-columns:repeat(2,1fr)}
+  .work,.calc,.faq,.qgrid,.cartgrid{grid-template-columns:1fr}
+  .summary{position:static}.sgrid{grid-template-columns:1fr 1fr}.steps{grid-template-columns:1fr 1fr}
+  .fgrid{grid-template-columns:1fr 1fr}
+}
+@media(max-width:720px){
+  .sec{padding:84px 16px}.cta{padding:0 16px 84px}
+  .brand small{display:none}.actions .btn{display:none}.icon-btn .lbl{display:none}
+  .hero-text{padding:120px 20px 260px;align-self:end}
+  .hero::before{background:linear-gradient(180deg,rgba(5,13,19,.25),rgba(5,13,19,.85) 65%)}
+  .trust{display:none}.sunbar{grid-template-columns:1fr;gap:10px;padding:16px 18px}.out{text-align:left}
+  .bento{grid-template-columns:1fr}.t-a,.t-d,.t-g{grid-column:auto;grid-row:auto}
+  .sgrid,.steps,.fgrid{grid-template-columns:1fr}
+  .pgrid{grid-template-columns:1fr 1fr;gap:10px}.pbody{padding:14px}.prod h3{font-size:.98rem}.price{font-size:1.1rem}
+  .pfoot{flex-wrap:wrap}.pfoot .btn{width:100%}.searchbox{flex:1 1 100%}
+  .metrics{grid-template-columns:1fr 1fr}
+  .form,#orderForm{grid-template-columns:1fr;padding:22px}#orderForm{padding:0}.co-sec,.summary,.calc-in,.calc-out,.explain{padding:22px}
+  .paygrid{grid-template-columns:1fr}
+  #authDlg[open]{grid-template-columns:1fr}.auth-art{display:none}.auth-main{padding:28px 22px}
+  .faq details p{padding-right:0}
+  #toasts{bottom:auto;top:84px}#chat{right:12px;bottom:88px;height:calc(100svh - 110px)}#chatFab{right:16px;bottom:16px;width:58px;height:58px}.fab-tip{right:86px;bottom:26px}
+  .line{grid-template-columns:56px 1fr auto}.thumb{width:56px;height:56px}
+}
+@media(max-width:520px){
+  #links .m-only{display:block}#loginBtn{display:none}
+  .brand{white-space:normal;width:8.4em;font-size:.78rem;line-height:1.12}.logo .mark{width:38px;height:38px}
+  .nav-in{gap:6px}.icon-btn{min-width:40px;height:40px;padding:0 10px}
+}
+
+/* =====================================================================  APP (installable PWA) */
+html{-webkit-tap-highlight-color:transparent}
+body{overscroll-behavior-y:none}
+.nav-in{padding-top:max(10px,env(safe-area-inset-top))}
+#tabbar{display:none}
+.install-bar{position:fixed;left:12px;right:12px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:84;display:flex;align-items:center;gap:12px;padding:12px 10px 12px 12px;border-radius:14px;background:var(--surface);color:var(--ink);border:1px solid var(--line);box-shadow:var(--sh2);max-width:470px;margin:auto;animation:up .35s}
+.install-bar img{width:44px;height:44px;border-radius:10px;flex:none;border:1px solid var(--line)}
+.install-bar div{flex:1;min-width:0;font-size:.84rem;line-height:1.35;color:var(--mut)}.install-bar div b{display:block;font-size:.95rem;color:var(--ink)}
+@media(max-width:720px){
+  input,select,textarea{font-size:16px}
+  #tabbar{display:grid;grid-template-columns:repeat(5,1fr);position:fixed;left:0;right:0;bottom:0;z-index:70;padding:6px 6px calc(6px + env(safe-area-inset-bottom));background:rgba(11,22,30,.97);backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);border-top:1px solid rgba(255,255,255,.08)}
+  #tabbar a,#tabbar button{display:grid;justify-items:center;gap:3px;padding:6px 2px;border:0;background:none;color:rgba(238,243,241,.62);font:700 .68rem var(--fb);text-decoration:none;cursor:pointer;position:relative;border-radius:10px;min-width:0}
+  #tabbar span{max-width:100%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  #tabbar .ico .ic{width:22px;height:22px}
+  #tabbar .on{color:var(--sun)}
+  #tabCount{position:absolute;top:1px;left:calc(50% + 5px);min-width:18px;height:18px;padding:0 4px;border-radius:99px;background:var(--sun2);color:#1a0f00!important;font:800 .65rem/18px var(--fb)}
+  body{padding-bottom:calc(68px + env(safe-area-inset-bottom))}
+  #cartBtn{display:none}
+  .sunbar{bottom:calc(80px + env(safe-area-inset-bottom))}
+  .hero-text{padding-bottom:330px}
+  #chatFab{bottom:calc(80px + env(safe-area-inset-bottom))}
+  .fab-tip{bottom:calc(90px + env(safe-area-inset-bottom))}
+  #chat{left:0;right:0;top:0;bottom:calc(68px + env(safe-area-inset-bottom));width:auto;height:auto;border-radius:0;border:0}
+  .ch-head{padding-top:max(16px,env(safe-area-inset-top))}
+  .install-bar{bottom:calc(80px + env(safe-area-inset-bottom))}
+  .drawer{padding-bottom:env(safe-area-inset-bottom)}
+}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}.ring .rf{stroke-dashoffset:0}.ba i{transform:none}}
+</style>
+</head>
+<body>
+<div id="progress" aria-hidden="true"></div>
+<a class="skip" href="#why">Skip to content</a>
+
+<header id="nav"><div class="nav-in">
+  <a class="logo" href="#home" aria-label="Gourav Bharat Solar home"><img class="mark" src="logo-icon.svg" alt="" width="42" height="42"><span class="brand">Gourav Bharat <b>Solar</b><small>Empowering India with Clean Energy</small></span></a>
+  <nav id="links" aria-label="Main">
+    <a href="#home">Home</a><a href="#why">Why us</a><a href="#working">How it works</a><a href="#solutions">Solutions</a><a href="#products">Shop</a><a href="#calculator">Calculator</a><a href="#quote">Quote</a>
+    <a href="#" id="loginLink" class="m-only">Login / Sign up</a>
+  </nav>
+  <div class="actions">
+    <button id="themeBtn" class="icon-btn" type="button" aria-label="Toggle theme"></button>
+    <button id="loginBtn" class="icon-btn" type="button" aria-expanded="false"></button>
+    <button id="cartBtn" class="icon-btn" type="button" aria-label="Open cart"><i class="ico" data-i="cart"></i><span id="cartCount" hidden>0</span></button>
+    <a href="#quote" class="btn sm">Get a Quote</a>
+    <button id="menuBtn" class="icon-btn" type="button" aria-label="Menu" aria-expanded="false" aria-controls="links"><i class="ico" data-i="menu"></i></button>
+    <div id="acctMenu" class="pop" hidden></div>
+  </div>
+</div></header>
+
+<main>
+<!-- ============================ HERO ============================ -->
+<section id="home" class="hero">
+  <canvas id="scene" aria-hidden="true"></canvas>
+  <div class="hero-text">
+    <span class="pill"><i class="dot"></i>Free site visit before every quote</span>
+    <h1 lang="hi-Latn">Apni chhat se,<br><span class="hl">apni bijli.</span></h1>
+    <p class="lead">Your roof, your power. We design, install and look after rooftop solar for homes, shops and factories. From the first site visit to yearly cleaning, it's one team you can call.</p>
+    <div class="row">
+      <a class="btn" href="#calculator">Check your savings <i class="ico" data-i="arrow" data-c="go"></i></a>
+      <a class="btn alt" href="#working">See how it works</a>
+    </div>
+    <ul class="trust">
+      <li><i class="ico" data-i="check"></i>25-year system life</li><li><i class="ico" data-i="check"></i>App monitoring</li><li><i class="ico" data-i="check"></i>End-to-end installation</li>
+    </ul>
+  </div>
+  <div class="sunbar" aria-label="3D solar demo controls">
+    <label for="tod"><i class="ico" data-i="sun"></i>Move the sun <span id="clock">12:00</span></label>
+    <input id="tod" type="range" min="0" max="100" value="50">
+    <div class="out"><b id="kw">0.0</b> kW <small>live output of this 12-panel array</small></div>
+  </div>
+  <noscript><p class="ns">Enable JavaScript to see the 3D demo, shop and assistant.</p></noscript>
+</section>
+
+<!-- ============================ WHY (BENTO) ============================ -->
+<section id="why" class="sec gridbg">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">Why us</span><h2>What you get when you go solar with us</h2></div><p>The same team does the survey, design, paperwork, installation and servicing. You won't be passed between contractors.</p></div>
+  <div class="bento">
+    <article class="tile t-a t-dark reveal">
+      <span class="lbl">Drag the slider to change the time</span>
+      <h3>What a 12-panel roof makes in one day</h3>
+      <div class="cread"><div><b id="dcKw">0.0</b><span>kW right now</span></div><div><b id="dcKwh">0.0</b><span>kWh so far today</span></div><div><b id="dcTime">12:00</b><span>time of day</span></div></div>
+      <div class="curve-wrap">
+        <svg class="curve" viewBox="0 0 400 180" aria-hidden="true">
+          <defs><linearGradient id="dcG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa51f" stop-opacity=".55"/><stop offset="1" stop-color="#ffa51f" stop-opacity="0"/></linearGradient></defs>
+          <line class="ax" x1="0" y1="170" x2="400" y2="170"/><line class="ax" x1="0" y1="95" x2="400" y2="95"/><line class="ax" x1="0" y1="20" x2="400" y2="20"/>
+          <path id="dcArea" fill="url(#dcG)"/><path id="dcLine" fill="none" stroke="#ffa51f" stroke-width="3" stroke-linecap="round"/>
+          <line id="dcRule" y1="10" y2="170" stroke="rgba(255,255,255,.35)" stroke-dasharray="3 4"/>
+          <circle id="dcDot" r="7" fill="#fff" stroke="#ff6914" stroke-width="4"/>
+          <text x="0" y="178" dy="2">6 AM</text><text x="186" y="178" dy="2">NOON</text><text x="362" y="178" dy="2">6 PM</text>
+        </svg>
+      </div>
+      <input id="tod2" type="range" min="0" max="100" value="50" aria-label="Time of day">
+    </article>
+    <article class="tile reveal"><span class="ic-badge"><i class="ico" data-i="home"></i></span><div class="k"><span data-n="10000" data-s="+">0</span></div><p>Solar installations completed</p></article>
+    <article class="tile t-sun reveal"><span class="ic-badge"><i class="ico" data-i="bolt"></i></span><div class="k"><span data-n="500" data-s=" MW">0</span></div><p>Total capacity installed</p></article>
+    <article class="tile t-d reveal">
+      <span class="lbl">Example</span><h3>A ₹4,000 monthly bill, before and after</h3>
+      <div class="ba" id="ba"><div class="b1"><i></i><b>₹4,000</b><small>Before solar</small></div><div class="b2"><i></i><b>~₹450</b><small>After solar*</small></div><div style="flex:1.4;justify-content:center"><p>*A 4.2 kW home system at ₹8/unit. You still pay your DISCOM's fixed charges.</p></div></div>
+    </article>
+    <article class="tile t-sun reveal"><span class="lbl">Built to last</span>
+      <svg class="ring" viewBox="0 0 110 110" aria-hidden="true"><circle class="rb" cx="55" cy="55" r="48"/><circle class="rf" cx="55" cy="55" r="48"/><text x="55" y="64">25y</text></svg>
+      <p>Panels keep producing for 25 years and more</p></article>
+    <article class="tile t-green reveal"><span class="lbl">Battery backup</span><div class="batt" aria-hidden="true"><i></i></div><p>Fans, lights and the fridge stay on during power cuts</p></article>
+    <article class="tile t-g reveal">
+      <span class="lbl">Start to finish</span><h3>One team, from site visit to servicing</h3>
+      <div class="minis"><div><b data-n="98" data-s="%">0</b><span>Customer satisfaction</span></div><div><b data-n="100" data-s="+">0</b><span>Cities served</span></div><div><b data-n="25" data-s="+">0</b><span>Years of experience</span></div></div>
+      <div class="svc"><span><i class="ico" data-i="check"></i>Site survey</span><span><i class="ico" data-i="check"></i>Design</span><span><i class="ico" data-i="check"></i>Installation</span><span><i class="ico" data-i="check"></i>Net metering</span><span><i class="ico" data-i="check"></i>Maintenance</span></div>
+    </article>
+  </div>
+ </div>
+</section>
+
+<!-- ============================ HOW IT WORKS ============================ -->
+<section id="working" class="sec band gridbg">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">How it works</span><h2>Where your electricity comes from</h2></div><p>Switch between day, night and a power cut to see how power moves between the panels, inverter, battery, your home and the grid.</p></div>
+  <div class="work">
+    <div class="diagram reveal">
+      <div class="modes" role="tablist" aria-label="Scenario">
+        <button role="tab" data-mode="day" aria-selected="true"><i class="ico" data-i="sun"></i>Sunny day</button>
+        <button role="tab" data-mode="night" aria-selected="false"><i class="ico" data-i="moon"></i>Night</button>
+        <button role="tab" data-mode="cut" aria-selected="false"><i class="ico" data-i="bolt"></i>Power cut</button>
+      </div>
+      <div id="diagram"></div>
+    </div>
+    <div class="card explain reveal" aria-live="polite">
+      <span class="eyebrow" id="exTag">Scenario</span>
+      <h3 id="exTitle"></h3>
+      <p id="exText"></p>
+      <ol id="exSteps"></ol>
+      <div class="readout"><div><b id="roSolar">–</b><span>Solar output</span></div><div><b id="roHome">–</b><span>Home load</span></div><div><b id="roBat">–</b><span>Battery</span></div><div><b id="roGrid">–</b><span>Grid</span></div></div>
+    </div>
+  </div>
+  <ol class="steps">
+    <li class="reveal"><h4>Free consultation</h4><p>Share your bill and we size the right system for your roof.</p></li>
+    <li class="reveal"><h4>Site survey &amp; design</h4><p>Engineers check shading and structure, then plan the layout.</p></li>
+    <li class="reveal"><h4>Installation &amp; net metering</h4><p>Certified team installs, then we help with net-meter approval.</p></li>
+    <li class="reveal"><h4>Monitor &amp; save</h4><p>Track output on the app while we handle maintenance.</p></li>
+  </ol>
+ </div>
+</section>
+
+<!-- ============================ SOLUTIONS ============================ -->
+<section id="solutions" class="sec">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">What we install</span><h2>Homes, shops and factories</h2></div><p>Whatever the size of the roof, we size the system to your bill and your budget.</p></div>
+  <div id="solGrid" class="sgrid"></div>
+ </div>
+</section>
+
+<!-- ============================ OUR WORK (shows only when photos exist) ============================ -->
+<section id="work" class="sec" hidden>
+ <div class="inner">
+  <div class="head"><div><span class="eyebrow">Our work</span><h2>Recent installations</h2></div><p>A few of the rooftops we've worked on.</p></div>
+  <div class="gallery" id="gallery"></div>
+ </div>
+</section>
+
+<!-- ============================ SHOP ============================ -->
+<section id="products" class="sec gridbg" style="background:var(--bg2)">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">Shop</span><h2>Panels, inverters and batteries</h2></div><p>Order parts or a complete kit. Add installation at checkout and our team will fit it for you.</p></div>
+  <div class="shopbar">
+    <div class="chips" id="catChips" role="group" aria-label="Filter by category"></div>
+    <label class="searchbox"><i class="ico" data-i="search"></i><input id="search" type="search" placeholder="Search products" aria-label="Search products"></label>
+    <select id="sort" aria-label="Sort products"><option value="">Featured</option><option value="lo">Price: low to high</option><option value="hi">Price: high to low</option><option value="rt">Top rated</option></select>
+  </div>
+  <p id="pcount" aria-live="polite"></p>
+  <div id="prodGrid" class="pgrid"></div>
+ </div>
+</section>
+
+<!-- ============================ CALCULATOR ============================ -->
+<section id="calculator" class="sec band">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">Savings calculator</span><h2>How much could you save?</h2></div><p>Rough numbers from your bill and roof size. We'll give you exact figures after the site visit.</p></div>
+  <div class="calc">
+    <form id="calcForm" class="card calc-in reveal">
+      <div class="rng"><div class="top"><span>Monthly electricity bill</span><output id="billV">₹4,000</output></div><input name="bill" type="range" min="500" max="30000" step="100" value="4000" aria-label="Monthly electricity bill in rupees"></div>
+      <div class="rng"><div class="top"><span>Tariff per unit</span><output id="tarV">₹8.0</output></div><input name="tariff" type="range" min="3" max="15" step="0.1" value="8" aria-label="Tariff in rupees per unit"></div>
+      <div class="rng"><div class="top"><span>Shade-free roof area</span><output id="roofV">600 sq ft</output></div><input name="roof" type="range" min="100" max="5000" step="50" value="600" aria-label="Roof area in square feet"></div>
+      <div class="rng"><div class="top"><span>Property type</span></div>
+        <div class="seg" role="group" aria-label="Property type" id="ptype"><button type="button" aria-pressed="true">Residential</button><button type="button" aria-pressed="false">Commercial</button><button type="button" aria-pressed="false">Industrial</button></div></div>
+      <button type="button" class="btn" id="calcQuote">Get a quote for this system <i class="ico" data-i="arrow" data-c="go"></i></button>
+    </form>
+    <div class="card calc-out reveal" aria-live="polite">
+      <div class="big"><b><span id="rKw">0</span><small> kW</small></b><span>Recommended system</span></div>
+      <div class="warn" id="rWarn" hidden><i class="ico" data-i="info"></i>Your roof area limits the system size.</div>
+      <div class="metrics">
+        <div class="hl"><b id="rSave">–</b><span>Savings / month</span></div>
+        <div><b id="rCost">–</b><span>Cost before subsidy</span></div>
+        <div><b id="rPay">–</b><span>Payback</span></div>
+        <div><b id="rGen">–</b><span>Units / month</span></div>
+        <div><b id="rCo2">–</b><span>CO₂ avoided / yr</span></div>
+        <div><b id="rLife">–</b><span>25-year savings</span></div>
+      </div>
+      <svg class="lchart" id="lchart" viewBox="0 0 340 130" aria-label="Cumulative savings over 25 years compared with system cost"></svg>
+      <p class="note">Estimate only. Assumes 4.5 sun-hours a day and today's tariff. Final design needs a site survey.</p>
+    </div>
+  </div>
+ </div>
+</section>
+
+<!-- ============================ FAQ ============================ -->
+<section id="faq" class="sec">
+ <div class="inner faq">
+  <div class="reveal"><span class="eyebrow">FAQ</span><h2 style="font-size:clamp(2rem,4vw,3rem)">Questions people ask us</h2><p class="muted" style="margin:16px 0 24px">Can't find yours here? Ask our assistant, or send an enquiry and we'll call you.</p><button class="btn alt" type="button" id="faqChat"><i class="ico" data-i="chat"></i>Ask the assistant</button></div>
+  <div id="faqList" class="reveal"></div>
+ </div>
+</section>
+
+<!-- ============================ QUOTE ============================ -->
+<section id="quote" class="sec gridbg" style="background:var(--bg2)">
+ <div class="inner">
+  <div class="head reveal"><div><span class="eyebrow">Talk to us</span><h2>Get a free quote</h2></div><p>Leave your details. We'll call you to understand what you need and fix a date for the site visit.</p></div>
+  <div class="qgrid">
+  <form id="quoteForm" class="card form reveal" novalidate>
+    <label class="fld">Name<input name="name" autocomplete="name" required></label>
+    <label class="fld">Phone<input name="phone" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile" required></label>
+    <label class="fld">Email<input name="email" type="email" autocomplete="email" required></label>
+    <label class="fld">City<input name="city" autocomplete="address-level2" required></label>
+    <label class="fld">Property type<select name="ptype"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></label>
+    <label class="fld">Preferred date<input name="date" type="date"></label>
+    <label class="fld full">Requirements<textarea name="notes" rows="3" placeholder="Roof type, monthly bill, battery backup needs…"></textarea></label>
+    <button class="btn">Submit enquiry <i class="ico" data-i="arrow" data-c="go"></i></button>
+  </form>
+  <div class="side-q">
+    <div class="card why reveal">
+      <h3>What happens next</h3>
+      <ul>
+        <li><span class="ic-badge"><i class="ico" data-i="phone"></i></span><div><b>1. We call you</b><small>To understand your bill, roof and budget</small></div></li>
+        <li><span class="ic-badge"><i class="ico" data-i="home"></i></span><div><b>2. Free site visit</b><small>We check the roof, shading and wiring</small></div></li>
+        <li><span class="ic-badge"><i class="ico" data-i="shield"></i></span><div><b>3. Written quote</b><small>A clear price for every part, before any work starts</small></div></li>
+      </ul>
+    </div>
+    <form id="trackForm" class="card form reveal" style="padding:28px">
+      <h3>Track your enquiry</h3>
+      <label class="fld full">Enquiry ID<input name="id" placeholder="SN-XXXXXX" required></label>
+      <button class="btn alt">Track enquiry</button><p id="trackOut" class="full" aria-live="polite"></p>
+    </form>
+  </div>
+  </div>
+ </div>
+</section>
+</main>
+
+<!-- ============================ CHECKOUT PAGE ============================ -->
+<section id="cartView" aria-label="Your cart">
+ <div class="inner">
+  <a class="back" href="#products"><i class="ico" data-i="back"></i>Continue shopping</a>
+  <h2>Checkout <small id="cartSub"></small></h2>
+  <ol class="stepper" id="stepper"><li class="done"><b>✓</b>Cart</li><li class="sep" aria-hidden="true"></li><li class="cur"><b>2</b>Delivery</li><li class="sep" aria-hidden="true"></li><li><b>3</b>Payment</li></ol>
+  <div id="cartEmpty" class="card empty" hidden>
+    <span class="eic"><i class="ico" data-i="cart"></i></span>
+    <h3>Your cart is empty</h3>
+    <p class="muted">Add panels, inverters, batteries or a complete kit to get started.</p>
+    <a class="btn" href="#products">Browse products</a>
+  </div>
+  <div id="cartLayout" class="cartgrid">
+    <div class="co-main">
+      <div class="card co-sec"><h3><span class="n">1</span>Your items</h3><div id="cartLines"></div></div>
+      <div class="card co-sec"><h3><span class="n">2</span>Delivery details</h3>
+        <form id="orderForm" novalidate>
+          <label class="fld">Full name<input name="name" autocomplete="name" required></label>
+          <label class="fld">Phone<input name="phone" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile" required></label>
+          <label class="fld full">Address<textarea name="addr" rows="2" autocomplete="street-address" required></textarea></label>
+          <label class="fld">Pincode<input name="pin" inputmode="numeric" maxlength="6" autocomplete="postal-code" required></label>
+          <label class="fld">City<input name="city" autocomplete="address-level2" required></label>
+          <fieldset class="full paygrid" id="paySec"><legend><span class="n" style="display:inline-grid;margin-right:8px">3</span>Payment method</legend>
+            <label class="payopt"><input type="radio" name="pay" value="UPI" checked><span><i class="ico" data-i="phone"></i>UPI</span></label>
+            <label class="payopt"><input type="radio" name="pay" value="Card"><span><i class="ico" data-i="card"></i>Credit / debit card</span></label>
+            <label class="payopt"><input type="radio" name="pay" value="Net banking"><span><i class="ico" data-i="bank"></i>Net banking</span></label>
+            <label class="payopt"><input type="radio" name="pay" value="Pay on delivery"><span><i class="ico" data-i="truck"></i>Pay on delivery</span></label>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <aside class="card summary">
+      <h3>Order summary</h3>
+      <form id="couponForm" class="coupon"><input id="couponIn" placeholder="Coupon (try SOLAR10)" aria-label="Coupon code"><button class="btn sm dark">Apply</button></form>
+      <span class="ctag" id="couponTag" hidden></span>
+      <label class="switch"><span>Professional installation<small>+₹8,000 · certified team</small></span><input type="checkbox" id="installChk"></label>
+      <div id="shipBox"></div>
+      <div id="cartSum"></div>
+      <button class="btn block" form="orderForm" id="placeBtn"><i class="ico" data-i="lock"></i>Place order</button>
+      <div class="trustrow"><span><i class="ico" data-i="shield"></i>Secure checkout</span><span><i class="ico" data-i="truck"></i>Tracked delivery</span><span><i class="ico" data-i="wrench"></i>Install support</span></div>
+    </aside>
+  </div>
+  <div id="orderDone" class="card okcard" hidden></div>
+ </div>
+</section>
+
+<section class="cta">
+  <div class="cta-in reveal">
+    <div><h2>Thinking about solar for your home or business?</h2><p>Talk to us first. The site visit and quote are free, with no obligation.</p></div>
+    <a class="btn" href="#quote">Book a free site visit <i class="ico" data-i="arrow" data-c="go"></i></a>
+  </div>
+</section>
+
+<footer class="band">
+ <div class="inner">
+  <div class="fgrid">
+    <div><a class="logo" href="#home"><img class="mark" src="logo-icon.svg" alt="" width="48" height="48"><span class="brand">Gourav Bharat <b>Solar</b><small>Empowering India with Clean Energy</small></span></a><p class="about">Rooftop solar for homes, shops and factories. Design, installation and servicing by one team.</p><div id="bizContact"></div></div>
+    <div><h4>Explore</h4><ul><li><a href="#why">Why us</a></li><li><a href="#working">How it works</a></li><li><a href="#products">Shop</a></li><li><a href="#calculator">Calculator</a></li><li><a href="#faq">FAQ</a></li><li id="installLi" hidden><a href="#" id="installLink">Install the app</a></li></ul></div>
+    <div><h4>Solutions</h4><ul><li><a href="#solutions">Rooftop</a></li><li><a href="#solutions">Commercial</a></li><li><a href="#solutions">Industrial</a></li><li><a href="#solutions">Batteries</a></li><li><a href="#solutions">Maintenance</a></li></ul></div>
+    <div><h4>Stay updated</h4><p class="muted">Solar tips and offers, once a month.</p>
+      <form id="news"><input type="email" placeholder="Your email" required aria-label="Newsletter email"><button class="btn sm">Subscribe</button></form></div>
+  </div>
+  <div class="fbot"><span>© 2026 Gourav Bharat Solar. All rights reserved.</span><span>Rooftop · Commercial · Industrial · Batteries · Inverters</span></div>
+ </div>
+</footer>
+
+<!-- ============================ CART DRAWER ============================ -->
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-label="Shopping cart" inert>
+  <div class="dr-head"><h3>Your cart <small id="drCount"></small></h3><button class="x-btn" id="drClose" type="button" aria-label="Close cart"><i class="ico" data-i="close"></i></button></div>
+  <div class="dr-body" id="drBody"></div>
+  <div class="dr-foot" id="drFoot" hidden>
+    <div class="dr-tot"><span>Subtotal</span><b id="drSub">₹0</b></div>
+    <p class="muted" style="font-size:.8rem">GST, delivery and installation are calculated at checkout.</p>
+    <a class="btn block" href="#cart" id="drCheckout">Checkout <i class="ico" data-i="arrow" data-c="go"></i></a>
+    <button class="btn alt block" type="button" id="drContinue">Continue shopping</button>
+  </div>
+</aside>
+
+<!-- ============================ AUTH ============================ -->
+<dialog id="authDlg" aria-labelledby="authTitle">
+  <div class="auth-art">
+    <img class="mark" src="logo-icon.svg" alt="" width="72" height="72">
+    <div><h3>Your account</h3><p>See your enquiries and orders in one place, and check out faster next time.</p></div>
+    <ul><li><i class="ico" data-i="check"></i>Track enquiries and orders</li><li><i class="ico" data-i="check"></i>Faster checkout with saved details</li><li><i class="ico" data-i="check"></i>Personalised savings estimates</li></ul>
+    <small>Demo accounts are stored only in this browser.</small>
+  </div>
+  <div class="auth-main">
+    <button class="x-btn" id="authClose" type="button" aria-label="Close"><i class="ico" data-i="close"></i></button>
+    <div class="tabs" role="tablist" id="authTabs" data-m="login"><button type="button" role="tab" id="tabLogin" aria-selected="true">Log in</button><button type="button" role="tab" id="tabSignup" aria-selected="false">Sign up</button></div>
+    <h2 id="authTitle">Welcome back</h2><p class="sub" id="authSub">Log in to track enquiries and orders.</p>
+    <form id="authForm" novalidate data-mode="login">
+      <label class="fld su-only">Full name<span class="inp"><input name="name" autocomplete="name" placeholder="Your name"><i class="ico" data-i="user"></i></span></label>
+      <label class="fld">Email<span class="inp"><input name="email" type="email" autocomplete="email" placeholder="you@example.com"><i class="ico" data-i="mail"></i></span></label>
+      <label class="fld su-only"><span>Mobile <span class="muted" style="font-weight:600">(optional)</span></span><span class="inp"><input name="phone" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile"><i class="ico" data-i="phone"></i></span></label>
+      <div class="fld"><span class="lrow"><label for="aPass">Password</label><a href="#" id="forgot" class="li-only">Forgot password?</a></span><span class="inp"><input id="aPass" name="pass" type="password" autocomplete="current-password" placeholder="At least 6 characters"><i class="ico" data-i="lock"></i><button type="button" class="eye" id="eyeBtn" aria-label="Show password"></button></span></div>
+      <div class="meter su-only" id="meter" data-s="0" aria-live="polite"><i></i><i></i><i></i><i></i><small id="meterT"></small></div>
+      <div class="fld su-only" role="radiogroup" aria-label="Account type"><span>I am a</span><div class="seg role"><label><input type="radio" name="role" value="Customer" checked>Customer</label><label><input type="radio" name="role" value="Employee">Employee</label></div></div>
+      <label class="chk li-only"><input type="checkbox" name="remember" checked>Keep me signed in</label>
+      <label class="chk su-only"><input type="checkbox" name="terms">I agree to the terms and privacy policy</label>
+      <div id="authErr" class="auth-err" role="alert" hidden></div>
+      <div id="authInfo" class="auth-info" hidden>Password reset needs a server, which this demo doesn't have. Please contact us through the quote form and our team will help.</div>
+      <button class="btn block" id="authSubmit">Log in</button>
+      <p class="swp"><span id="swText">New here?</span> <a href="#" id="toggleAuth">Create an account</a></p>
+    </form>
+  </div>
+</dialog>
+
+<!-- ============================ CHATBOT ============================ -->
+<div class="fab-tip" id="fabTip" hidden>Questions about solar? Ask here</div>
+<button id="chatFab" type="button" aria-label="Open solar assistant" aria-expanded="false" aria-controls="chat"><i class="ico c1" data-i="chat"></i><i class="ico c2" data-i="close"></i></button>
+<section id="chat" aria-label="Solar assistant chat" inert>
+  <div class="ch-head"><img class="mark" src="logo-icon.svg" alt="" width="44" height="44"><div><b>Surya · Solar assistant</b><small><i></i>Online · replies instantly</small></div><button class="x-btn" id="chatClose" type="button" aria-label="Close chat"><i class="ico" data-i="close"></i></button></div>
+  <div class="ch-body" id="chatBody" aria-live="polite"></div>
+  <div class="ch-chips" id="chatChips"></div>
+  <form class="ch-form" id="chatForm"><input id="chatIn" autocomplete="off" placeholder="Ask about price, subsidy, battery…" aria-label="Message"><button aria-label="Send"><i class="ico" data-i="send"></i></button></form>
+  <div class="ch-note">Automated assistant · answers are estimates</div>
+</section>
+
+<!-- ============================ APP TAB BAR (mobile) + INSTALL BAR ============================ -->
+<nav id="tabbar" aria-label="App navigation">
+  <a href="#home"><i class="ico" data-i="home"></i><span>Home</span></a>
+  <a href="#products"><i class="ico" data-i="box"></i><span>Shop</span></a>
+  <a href="#calculator"><i class="ico" data-i="sun"></i><span>Savings</span></a>
+  <button type="button" id="tabCart"><i class="ico" data-i="cart"></i><span>Cart</span><span id="tabCount" hidden>0</span></button>
+  <button type="button" id="tabAcct"><i class="ico" data-i="user"></i><span id="tabAcctL">Account</span></button>
+</nav>
+<div class="install-bar" id="installBar" role="dialog" aria-label="Install the app" hidden>
+  <img src="icons/icon-192.png" alt="" width="44" height="44">
+  <div><b>Install the app</b><span id="installTxt">Open Gourav Bharat Solar from your home screen, even offline.</span></div>
+  <button class="btn sm" id="installBtn" type="button">Install</button>
+  <button class="x" id="installX" type="button" aria-label="Dismiss"><i class="ico" data-i="close"></i></button>
+</div>
+
+<div id="toasts" role="status" aria-live="polite"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+'use strict';
+const $=(s,r=document)=>r.querySelector(s),$$=(s,r=document)=>[...r.querySelectorAll(s)];
+const inr=n=>'₹'+Math.round(n).toLocaleString('en-IN');
+const lakh=n=>n>=1e5?'₹'+(n/1e5).toFixed(n>=1e7?0:2).replace(/\.00$/,'')+' L':inr(n);
+const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v??d}catch{return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch{}},del(k){try{localStorage.removeItem(k)}catch{}}};
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const REDUCE=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const clockStr=v=>{const m=Math.round(6*60+v*12*60);return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')};
+
+/* ---------- icons (inline SVG, stroke-based) ---------- */
+const IC={
+ sun:'<circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/>',
+ moon:'<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/>',
+ cart:'<path d="M3 4h2l2.4 11.2a2 2 0 0 0 2 1.6h7.7a2 2 0 0 0 2-1.5L21 8H6"/><circle cx="10" cy="20.5" r="1.3"/><circle cx="17" cy="20.5" r="1.3"/>',
+ user:'<circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/>',
+ chat:'<path d="M21 12a8 8 0 0 1-11.6 7.1L4 20l1-4.6A8 8 0 1 1 21 12z"/><path d="M8.5 12h.01M12 12h.01M15.5 12h.01"/>',
+ close:'<path d="M6 6l12 12M18 6L6 18"/>',
+ menu:'<path d="M4 7h16M4 12h16M4 17h10"/>',
+ arrow:'<path d="M5 12h14M13 6l6 6-6 6"/>',
+ back:'<path d="M19 12H5M11 18l-6-6 6-6"/>',
+ check:'<path d="M5 12.5l4.5 4.5L19 7.5"/>',
+ home:'<path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>',
+ building:'<rect x="4" y="3" width="16" height="18" rx="1.5"/><path d="M9 7h1M14 7h1M9 11h1M14 11h1M9 15h1M14 15h1M10 21v-3h4v3"/>',
+ factory:'<path d="M3 21V10l5 3v-3l5 3V7l8 4v10z"/><path d="M7 17h2M12 17h2M17 17h1"/>',
+ battery:'<rect x="2" y="7" width="17" height="10" rx="2"/><path d="M22 11v2M6 10v4M10 10v4"/>',
+ bolt:'<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>',
+ wrench:'<path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18l3 3 6.3-6.3a4 4 0 0 0 5.4-5.4l-2.6 2.6-2.4-.6-.6-2.4z"/>',
+ panel:'<path d="M4 4h16l-2 11H6z"/><path d="M9.3 4L8.7 15M14.7 4l.6 11M5 9.5h14"/><path d="M12 15v5M8 20h8"/>',
+ inverter:'<rect x="5" y="3" width="14" height="18" rx="2"/><path d="M9 7h6"/><path d="M12.5 10.5l-2 3.5h3l-2 3.5"/>',
+ tower:'<path d="M12 2L7 22M12 2l5 20M8.6 9h6.8M7.6 14h8.8M8.6 9l7.8 5M15.4 9l-7.8 5M3 6h18"/>',
+ box:'<path d="M3 7l9-4 9 4-9 4z"/><path d="M3 7v10l9 4 9-4V7M12 11v10"/>',
+ shield:'<path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6z"/><path d="M9 12l2 2 4-4"/>',
+ phone:'<rect x="7" y="2" width="10" height="20" rx="2.5"/><path d="M11 18h2"/>',
+ mail:'<rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M3.5 7l8.5 6 8.5-6"/>',
+ lock:'<rect x="5" y="11" width="14" height="10" rx="2.5"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/>',
+ eye:'<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7S2 12 2 12z"/><circle cx="12" cy="12" r="3"/>',
+ eyeoff:'<path d="M3 3l18 18M10.6 5.1A10 10 0 0 1 12 5c6.5 0 10 7 10 7a17 17 0 0 1-3.2 4M6.6 6.6C3.8 8.4 2 12 2 12s3.5 7 10 7a9.6 9.6 0 0 0 5.4-1.6M9.9 9.9a3 3 0 0 0 4.2 4.2"/>',
+ trash:'<path d="M4 7h16M9 7V4h6v3M6 7l1 13h10l1-13"/>',
+ truck:'<path d="M3 6h11v10H3zM14 10h4l3 3v3h-7"/><circle cx="7" cy="18" r="2"/><circle cx="17" cy="18" r="2"/>',
+ card:'<rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6 15h4"/>',
+ bank:'<path d="M3 10l9-6 9 6M5 10v8M9.5 10v8M14.5 10v8M19 10v8M3 21h18"/>',
+ send:'<path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/>',
+ search:'<circle cx="11" cy="11" r="7"/><path d="M20 20l-3.5-3.5"/>',
+ plus:'<path d="M12 5v14M5 12h14"/>',
+ info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
+ leaf:'<path d="M5 21c0-9 6-15 16-16-1 10-7 16-16 16z"/><path d="M5 21l8-8"/>',
+ tag:'<path d="M3 12V3h9l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>'
+};
+const ico=(n,c='')=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||''}</svg>`;
+$$('[data-i]').forEach(el=>{el.innerHTML=ico(el.dataset.i,el.dataset.c||'')});
+
+/* ---------- theme ---------- */
+const root=document.documentElement,darkMQ=matchMedia('(prefers-color-scheme: dark)');
+const curTheme=()=>root.dataset.theme||(darkMQ.matches?'dark':'light');
+function themeUI(){const d=curTheme()==='dark',b=$('#themeBtn');b.innerHTML=ico(d?'sun':'moon');b.setAttribute('aria-label',d?'Switch to light theme':'Switch to dark theme')}
+$('#themeBtn').onclick=()=>{root.dataset.theme=curTheme()==='dark'?'light':'dark';store.set('gbs_theme',root.dataset.theme);themeUI()};
+darkMQ.addEventListener?.('change',themeUI);themeUI();
+
+/* ---------- toast ---------- */
+function toast(m,o={}){const t=document.createElement('div');t.className='toast';t.innerHTML=ico(o.icon||'check')+`<span>${esc(m)}</span>`;
+  if(o.action){const b=document.createElement('button');b.type='button';b.textContent=o.label;b.onclick=()=>{o.action();t.remove()};t.append(b)}
+  $('#toasts').append(t);setTimeout(()=>t.remove(),o.ms||3400)}
+
+/* ---------- data ---------- */
+const SOL=[['home','Rooftop solar','Grid-tied systems for homes, sized to your bill.'],['building','Commercial solar','Cut office and retail running costs with fast payback.'],['factory','Industrial solar','Large rooftop and ground-mount plants, 100 kW and up.'],['battery','Battery storage','Keep power on through outages and use solar at night.'],['bolt','Inverters','Hybrid and string inverters with app monitoring.'],['wrench','Maintenance','Cleaning, inspection and performance reports.']];
+const PROD=[
+['p1','Mono PERC 550W Panel','Panels',9800,4.6],['p2','Bifacial 580W Panel','Panels',12400,4.8],['p3','Poly 335W Panel','Panels',6200,4.2],
+['p4','3 kW On-grid Inverter','Inverters',31000,4.5],['p5','5 kW Hybrid Inverter','Inverters',58000,4.7],['p6','10 kW Three-phase Inverter','Inverters',92000,4.6],
+['p7','5 kWh Lithium Battery','Batteries',72000,4.7],['p8','10 kWh Lithium Battery','Batteries',138000,4.8],['p9','Mounting Structure (per kW)','Accessories',7500,4.3],
+['p10','Smart Energy Meter','Accessories',4200,4.4],['p11','Home Kit 3 kW Complete','Kits',165000,4.7],['p12','Business Kit 10 kW Complete','Kits',520000,4.8]
+].map(([id,name,cat,price,rt])=>({id,name,cat,price,rt}));
+const byId=id=>PROD.find(p=>p.id===id);
+const CATI={Panels:'panel',Inverters:'inverter',Batteries:'battery',Accessories:'wrench',Kits:'box'};
+const RATE={Residential:55000,Commercial:48000,Industrial:42000};
+function sizeSystem(bill,tar,roof,type='Residential'){
+  const units=bill/tar,need=units/120,fit=roof/100,kw=+Math.max(1,Math.min(need,fit)).toFixed(1),cost=kw*RATE[type],gen=kw*4.5*30,save=Math.min(gen,units)*tar;
+  return{units,need,kw,cost,gen,save,payback:cost/(save*12),co2:gen*12*.82/1000,life:save*12*25,limited:fit<need}}
+const FAQ=[
+ ['How much does a rooftop solar system cost?','Roughly ₹55,000 per kW for homes, ₹48,000 for commercial and ₹42,000 for industrial projects, before subsidy. A typical 3 kW home system is about ₹1.65 lakh. Use the calculator for an estimate sized to your bill.'],
+ ['Is there a government subsidy?','Yes. Residential rooftop systems can qualify for central subsidy under the PM Surya Ghar scheme (up to ₹78,000 under the 2024 rules), and some states add more. We help you check eligibility and apply.'],
+ ['How long does installation take?','After the site survey and design, installing a home system usually takes 1–3 days. Net-metering approval from your DISCOM can take a few more weeks.'],
+ ['Will solar work during a power cut?','Only with a hybrid inverter and battery. A standard on-grid system switches off when the grid fails, to keep line workers safe.'],
+ ['How much maintenance is needed?','Very little. Clean the panels every 2–4 weeks and get a yearly inspection. Our maintenance plans cover cleaning, checks and performance reports.'],
+ ['What is net metering?','A two-way meter records the power you export to the grid and the power you import. You pay only for the net units, so surplus daytime solar lowers your bill.']
+];
+
+/* ---------- YOUR BUSINESS DETAILS: fill these in and they appear in the footer ---------- */
+const BIZ={phone:'',whatsapp:'',email:'',address:'',hours:''}; // e.g. phone:'+91 98xxxxxxxx', hours:'Mon–Sat, 9am–7pm'
+/* ---------- YOUR PROJECT PHOTOS: put real photos in an images/ folder; missing files are skipped ---------- */
+const WORK=[['images/project-1.jpg',''],['images/project-2.jpg',''],['images/project-3.jpg',''],['images/project-4.jpg',''],['images/project-5.jpg',''],['images/project-6.jpg','']]; // ['file','caption']
+(function(){const c=[];
+  if(BIZ.phone)c.push(`<li><a href="tel:${BIZ.phone.replace(/[^\d+]/g,'')}">${ico('phone')}${esc(BIZ.phone)}</a></li>`);
+  if(BIZ.whatsapp)c.push(`<li><a href="https://wa.me/${BIZ.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener">${ico('chat')}WhatsApp us</a></li>`);
+  if(BIZ.email)c.push(`<li><a href="mailto:${esc(BIZ.email)}">${ico('mail')}${esc(BIZ.email)}</a></li>`);
+  if(BIZ.address)c.push(`<li>${esc(BIZ.address)}</li>`);if(BIZ.hours)c.push(`<li class="muted">${esc(BIZ.hours)}</li>`);
+  if(c.length)$('#bizContact').innerHTML=`<ul class="contact">${c.join('')}</ul>`;
+  WORK.forEach(([src,cap])=>{const im=new Image();im.onload=()=>{const f=document.createElement('figure');im.alt=cap||'Rooftop solar installation by Gourav Bharat Solar';im.loading='lazy';f.append(im);if(cap){const fc=document.createElement('figcaption');fc.textContent=cap;f.append(fc)}$('#gallery').append(f);$('#work').hidden=false};im.src=src});
+})();
+
+/* ---------- solutions + FAQ ---------- */
+$('#solGrid').innerHTML=SOL.map(([i,t,d])=>`<article class="card sol reveal"><span class="ic-badge">${ico(i)}</span><h3>${t}</h3><p>${d}</p><a class="more" href="#quote" data-sol="${t}">Get a quote ${ico('arrow')}</a></article>`).join('');
+$('#faqList').innerHTML=FAQ.map(([q,a],i)=>`<details${i?'':' open'}><summary>${q}</summary><p>${a}</p></details>`).join('');
+document.addEventListener('click',e=>{const a=e.target.closest('[data-sol]');if(a)$('#quoteForm').elements.notes.value='Interested in: '+a.dataset.sol});
+
+/* ---------- cart state ---------- */
+let cart=store.get('sn_cart',{}),coupon=store.get('sn_coupon',''),install=false,placed=null;
+const COUPONS={SOLAR10:.10,FIRST5:.05},FREE=50000;
+function calc(){let sub=0,n=0;for(const id in cart){const p=byId(id);if(p&&cart[id]>0){sub+=p.price*cart[id];n+=cart[id]}else delete cart[id]}
+  const pct=COUPONS[coupon]||0,disc=sub*pct,tx=sub-disc,gst=tx*.12,ship=!sub||tx>=FREE?0:1500,ins=sub&&install?8000:0;
+  return{sub,n,pct,disc,tx,gst,ship,ins,total:tx+gst+ship+ins}}
+const saveCart=()=>store.set('sn_cart',cart);
+const stars=r=>'★'.repeat(Math.round(r))+'☆'.repeat(5-Math.round(r));
+const qtyHTML=(id,q)=>`<div class="qty"><button type="button" data-dec="${id}" aria-label="Decrease quantity">−</button><span>${q}</span><button type="button" data-inc="${id}" aria-label="Increase quantity">+</button></div>`;
+const thumb=p=>`<div class="thumb c-${p.cat}">${ico(CATI[p.cat])}</div>`;
+const lineHTML=(p,q,i)=>`<div class="line" style="animation-delay:${i*40}ms">${thumb(p)}<div class="nm"><b>${p.name}</b><small>${p.cat} · ${inr(p.price)} each</small>${qtyHTML(p.id,q)}</div><div class="lr"><b>${inr(p.price*q)}</b><button type="button" class="x" data-rm="${p.id}" aria-label="Remove ${p.name}">${ico('trash')}</button></div></div>`;
+const shipHTML=c=>{const left=FREE-c.tx,p=Math.min(100,c.tx/FREE*100);return `<div class="ship"><span>${left>0?`Add <b>${inr(left)}</b> more for <b>free delivery</b>`:'This order gets <b>free delivery</b>'}</span><div class="ship-bar"><i style="--p:${p}%"></i></div></div>`};
+const emptyHTML=`<div class="empty"><span class="eic">${ico('cart')}</span><h3>Your cart is empty</h3><p class="muted">Add panels, inverters, batteries or a complete kit.</p><a class="btn sm" href="#products" data-close>Browse products</a></div>`;
+
+/* ---------- products ---------- */
+let fcat='';
+$('#catChips').innerHTML=['',...new Set(PROD.map(p=>p.cat))].map(c=>`<button type="button" class="chip" data-cat="${c}" aria-pressed="${c===fcat}">${c||'All products'}</button>`).join('');
+$('#catChips').addEventListener('click',e=>{const b=e.target.closest('[data-cat]');if(!b)return;fcat=b.dataset.cat;$$('[data-cat]').forEach(x=>x.setAttribute('aria-pressed',x===b));renderProducts()});
+const pfootHTML=p=>`<div class="price">${inr(p.price)}</div>${cart[p.id]?qtyHTML(p.id,cart[p.id]):`<button type="button" class="btn sm" data-add="${p.id}">${ico('plus')}Add</button>`}`;
+function renderProducts(){
+  const q=$('#search').value.trim().toLowerCase(),s=$('#sort').value;
+  const l=PROD.filter(p=>(!fcat||p.cat===fcat)&&(!q||(p.name+' '+p.cat).toLowerCase().includes(q)));
+  if(s==='lo')l.sort((a,b)=>a.price-b.price);if(s==='hi')l.sort((a,b)=>b.price-a.price);if(s==='rt')l.sort((a,b)=>b.rt-a.rt);
+  $('#pcount').textContent=`Showing ${l.length} product${l.length===1?'':'s'}`;
+  $('#prodGrid').innerHTML=l.length?l.map((p,i)=>`<article class="card prod" style="animation-delay:${Math.min(i,8)*45}ms"><div class="pimg c-${p.cat}">${ico(CATI[p.cat])}<span class="tag">${p.cat}</span></div><div class="pbody"><h3>${p.name}</h3><div class="stars" aria-label="Rated ${p.rt} out of 5">${stars(p.rt)}<small>${p.rt}</small></div><div class="pfoot" data-pf="${p.id}">${pfootHTML(p)}</div></div></article>`).join('')
+    :'<p class="noresult">No products match. Try a different search or category.</p>';
+}
+const updateFoots=()=>$$('[data-pf]').forEach(el=>{el.innerHTML=pfootHTML(byId(el.dataset.pf))});
+let st;$('#search').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderProducts,150)});
+$('#sort').onchange=renderProducts;renderProducts();
+
+/* ---------- drawer ---------- */
+const drawer=$('#drawer'),scrim=$('#scrim');
+function renderDrawer(c=calc()){const ids=Object.keys(cart);
+  $('#drCount').textContent=c.n?`(${c.n})`:'';
+  $('#drBody').innerHTML=ids.length?shipHTML(c)+ids.map((id,i)=>lineHTML(byId(id),cart[id],i)).join(''):emptyHTML;
+  $('#drFoot').hidden=!ids.length;$('#drSub').textContent=inr(c.sub)}
+function openDrawer(){$('#toasts').innerHTML='';renderDrawer();drawer.removeAttribute('inert');drawer.classList.add('on');scrim.classList.add('on');document.body.style.overflow='hidden';setTimeout(()=>$('#drClose').focus(),60)}
+function closeDrawer(){if(!drawer.classList.contains('on'))return;drawer.classList.remove('on');scrim.classList.remove('on');drawer.setAttribute('inert','');document.body.style.overflow=''}
+$('#cartBtn').onclick=openDrawer;$('#drClose').onclick=closeDrawer;$('#drContinue').onclick=closeDrawer;scrim.onclick=closeDrawer;
+$('#drCheckout').addEventListener('click',closeDrawer);
+
+/* ---------- checkout ---------- */
+function renderCheckout(c=calc()){
+  const has=c.n>0;
+  $('#cartEmpty').hidden=has||!!placed;$('#cartLayout').hidden=!has||!!placed;$('#orderDone').hidden=!placed;$('#stepper').hidden=!has||!!placed;
+  $('#cartSub').textContent=has?`· ${c.n} item${c.n>1?'s':''}`:'';
+  $('#cartLines').innerHTML=Object.keys(cart).map((id,i)=>lineHTML(byId(id),cart[id],i)).join('')+(has?'<div class="cartfoot"><span class="muted">GST is added in the summary</span><button id="clearCart" type="button">Clear cart</button></div>':'');
+  const r=(l,v,k='')=>`<div class="${k}"><span>${l}</span><span>${v}</span></div>`;
+  $('#cartSum').innerHTML=r('Subtotal',inr(c.sub))+(c.pct?r(`Coupon ${coupon}`,'−'+inr(c.disc),'ok'):'')+r('GST (12%)',inr(c.gst))+r('Delivery',c.ship?inr(c.ship):'Free','ok')+(c.ins?r('Installation',inr(c.ins)):'')+r('Total',inr(c.total),'tot');
+  $('#shipBox').innerHTML=has?shipHTML(c):'';
+  $('#installChk').checked=install;
+  const tg=$('#couponTag');tg.hidden=!c.pct;if(c.pct)tg.innerHTML=`${ico('tag')}${coupon} · ${c.pct*100}% off<button type="button" id="rmCoupon" aria-label="Remove coupon">${ico('close')}</button>`;
+  const u=store.get('sn_user'),f=$('#orderForm');if(u&&!f.elements.name.value)f.elements.name.value=u.name;if(u?.phone&&!f.elements.phone.value)f.elements.phone.value=u.phone;
+  if(placed)$('#orderDone').innerHTML=`<svg class="tick" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="45"/><path d="M30 52l13 13 27-29"/></svg><h3>Order placed!</h3><span class="oid">${placed.id}</span><p class="muted">Total ${inr(placed.total)} · ${esc(placed.pay)}. We'll call ${esc(placed.phone)} to confirm delivery${placed.ins?' and installation':''}.</p><div class="row" style="justify-content:center"><a class="btn" href="#products">Continue shopping</a><a class="btn alt" href="#home">Back to home</a></div>`;
+}
+function refreshCart(){const c=calc(),cc=$('#cartCount');cc.textContent=c.n;cc.hidden=!c.n;updateFoots();
+  if(drawer.classList.contains('on'))renderDrawer(c);if(document.body.classList.contains('cartmode'))renderCheckout(c)}
+function setQty(id,q){if(q<1)delete cart[id];else cart[id]=q;saveCart();refreshCart()}
+document.addEventListener('click',e=>{
+  const cl=e.target.closest('[data-close]');if(cl){closeDrawer();return}
+  const b=e.target.closest('button');if(!b)return;const d=b.dataset;
+  if(d.add){cart[d.add]=(cart[d.add]||0)+1;saveCart();refreshCart();const cc=$('#cartCount');cc.classList.remove('bump');void cc.offsetWidth;cc.classList.add('bump');
+    toast(byId(d.add).name+' added',{icon:'cart',label:'View cart',action:openDrawer});return}
+  if(d.inc)return setQty(d.inc,cart[d.inc]+1);
+  if(d.dec)return setQty(d.dec,cart[d.dec]-1);
+  if(d.rm){const n=byId(d.rm).name;setQty(d.rm,0);toast(n+' removed',{icon:'trash'});return}
+  if(b.id==='clearCart'){cart={};saveCart();refreshCart()}
+  if(b.id==='rmCoupon'){coupon='';store.set('sn_coupon','');refreshCart()}
+});
+$('#installChk').onchange=e=>{install=e.target.checked;refreshCart()};
+$('#couponForm').addEventListener('submit',e=>{e.preventDefault();const c=$('#couponIn').value.trim().toUpperCase();if(!c)return;
+  if(COUPONS[c]){coupon=c;store.set('sn_coupon',c);$('#couponIn').value='';toast(`Coupon ${c} applied`,{icon:'tag'});refreshCart()}else toast('That coupon code is not valid',{icon:'info'})});
+$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f));$$('.err',f).forEach(x=>x.remove());let ok=true,first=null;
+  const rules={name:[v=>v.trim().length>1,'Enter your name'],phone:[v=>/^[6-9]\d{9}$/.test(v),'Enter a 10-digit mobile number'],addr:[v=>v.trim().length>5,'Enter your full address'],pin:[v=>/^\d{6}$/.test(v),'Enter a 6-digit pincode'],city:[v=>v.trim().length>1,'Enter your city']};
+  for(const k in rules){const i=f.elements[k],bad=!rules[k][0](d[k]||'');i.classList.toggle('bad',bad);i.setAttribute('aria-invalid',bad);if(bad){ok=false;first=first||i;i.insertAdjacentHTML('afterend',`<span class="err">${rules[k][1]}</span>`)}}
+  if(!ok){first.focus();toast('Please check your delivery details',{icon:'info'});return}
+  const c=calc();if(!c.n)return;
+  const id='ORD-'+Math.random().toString(36).slice(2,8).toUpperCase(),orders=store.get('sn_orders',{});
+  orders[id]={items:cart,total:c.total,...d,at:Date.now(),user:store.get('sn_user')?.email||null};store.set('sn_orders',orders);
+  placed={id,total:c.total,pay:d.pay,phone:d.phone,ins:c.ins};cart={};coupon='';install=false;saveCart();store.set('sn_coupon','');f.reset();refreshCart();renderCheckout();scrollTo(0,0)});
+
+/* ---------- routing (#cart = checkout page) ---------- */
+function route(){const on=location.hash==='#cart';document.body.classList.toggle('cartmode',on);
+  if(on){closeDrawer();if(calc().n)placed=null;renderCheckout();scrollTo(0,0)}
+  else{placed=null;const t=location.hash&&document.querySelector(location.hash);if(t)requestAnimationFrame(()=>t.scrollIntoView())}}
+addEventListener('hashchange',route);route();refreshCart();
+
+/* ---------- nav, progress, reveal, counters ---------- */
+$('#menuBtn').onclick=e=>{const o=$('#links').classList.toggle('open');e.currentTarget.setAttribute('aria-expanded',o)};
+$$('#links a').forEach(a=>a.addEventListener('click',()=>{$('#links').classList.remove('open');$('#menuBtn').setAttribute('aria-expanded',false)}));
+const navA=$$('#links a[href^="#"]:not([href="#"])');
+$$('main section[id]').forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navA.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50%'}).observe(s));
+const nav=$('#nav'),prog=$('#progress');
+function onScroll(){nav.classList.toggle('solid',scrollY>40);const h=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${h>0?scrollY/h:0})`}
+addEventListener('scroll',onScroll,{passive:true});onScroll();
+const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in','seen');rio.unobserve(t);setTimeout(()=>{t.classList.remove('reveal','in');t.style.transitionDelay=''},1500)}}),{threshold:.12,rootMargin:'0px 0px -40px'});
+$$('.reveal').forEach(el=>{const p=el.parentElement,sib=[...p.children].filter(x=>x.classList.contains('reveal'));el.style.transitionDelay=Math.min(sib.indexOf(el),6)*70+'ms';rio.observe(el)});
+const cio=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;cio.unobserve(e.target);const el=e.target,n=+el.dataset.n,s=el.dataset.s,t0=performance.now();
+  (function f(t){const k=REDUCE?1:Math.min(1,(t-t0)/1600);el.textContent=Math.round(n*(1-Math.pow(1-k,3))).toLocaleString('en-IN')+s;if(k<1)requestAnimationFrame(f)})(t0)}),{threshold:.5});
+$$('[data-n]').forEach(el=>cio.observe(el));
+$$('.tile').forEach(t=>t.addEventListener('pointermove',e=>{const r=t.getBoundingClientRect();t.style.setProperty('--mx',e.clientX-r.left+'px');t.style.setProperty('--my',e.clientY-r.top+'px')}));
+
+/* ---------- bento: live day curve (synced with hero slider) ---------- */
+(function(){const W=400,B=170,T=22,pts=[];for(let i=0;i<=60;i++){const x=i/60;pts.push(`${(x*W).toFixed(1)},${(B-Math.sin(Math.PI*x)*(B-T)).toFixed(1)}`)}
+  const d='M'+pts.join(' L');$('#dcLine').setAttribute('d',d);$('#dcArea').setAttribute('d',d+` L${W},${B} L0,${B} Z`);
+  const tod=$('#tod'),tod2=$('#tod2'),peak=12*.55*.95;
+  function upd(){const v=+tod.value/100,h=Math.sin(Math.PI*v),x=v*W,y=B-h*(B-T);
+    $('#dcDot').setAttribute('cx',x);$('#dcDot').setAttribute('cy',y);$('#dcRule').setAttribute('x1',x);$('#dcRule').setAttribute('x2',x);
+    $('#dcKw').textContent=(peak*h).toFixed(1);$('#dcKwh').textContent=(peak*12/Math.PI*(1-Math.cos(Math.PI*v))).toFixed(1);$('#dcTime').textContent=clockStr(v);
+    tod2.value=tod.value;tod2.style.setProperty('--p',tod.value+'%')}
+  tod2.addEventListener('input',()=>{tod.value=tod2.value;tod.dispatchEvent(new Event('input'))});
+  tod.addEventListener('input',()=>{upd();tod.style.setProperty('--p',tod.value+'%')});upd();tod.style.setProperty('--p','50%');
+})();
+
+/* ---------- how solar works: interactive energy-flow model ---------- */
+(function(){
+  const NODES=[['sun','Sun',90,70,'sun'],['pan','Solar panels',90,250,'panel'],['inv','Inverter',320,250,'inverter'],['home','Your home',550,250,'home'],['bat','Battery',320,430,'battery'],['grid','Grid',550,70,'tower']];
+  const WIRES={sun:'M90,114 L90,206',pan:'M134,250 L276,250',home:'M364,250 L506,250',bat:'M320,334 L320,386',grid:'M352,219 C410,150 465,100 508,84'};
+  const VAL={sun:[104,165,'start'],pan:[205,236,'middle'],home:[435,236,'middle'],bat:[334,366,'start'],grid:[448,128,'start']};
+  $('#diagram').innerHTML=`<svg viewBox="0 0 640 510" role="img" aria-label="Energy flow between sun, panels, inverter, home, battery and grid">
+   ${Object.entries(WIRES).map(([k,d])=>`<path class="wire" d="${d}"/><path class="flow" id="f-${k}" d="${d}"/>`).join('')}
+   ${NODES.map(([k,l,x,y,ic])=>`<g class="node" id="n-${k}" transform="translate(${x},${y})"><circle class="halo" r="56"/><circle class="bg" r="44"/><svg class="nic" x="-18" y="-18" width="36" height="36" viewBox="0 0 24 24">${IC[ic]}</svg><text y="70">${l}</text></g>`).join('')}
+   ${Object.entries(VAL).map(([k,[x,y,a]])=>`<text class="val" id="v-${k}" x="${x}" y="${y}" text-anchor="${a}"></text>`).join('')}
+  </svg>`;
+  const MODES={
+    day:{tag:'Scenario · Sunny day',title:'Daytime: the sun runs your home',text:'Panels turn sunlight into DC power. The inverter converts it to AC for your home. Extra energy charges the battery, and any surplus is exported to the grid through net metering.',
+      steps:['Panels generate DC power from sunlight','Inverter converts it to AC for your appliances','Your home uses solar first','Surplus charges the battery, then exports to the grid'],
+      on:{sun:'',pan:'',home:'',bat:'g',grid:'b'},rev:[],val:{sun:'Sunlight',pan:'5.2 kW',home:'2.1 kW',bat:'+1.5 kW',grid:'1.6 kW export'},
+      nodes:['sun','pan','inv','home','bat','grid'],ro:['5.2 kW','2.1 kW','Charging +1.5','Export 1.6 kW']},
+    night:{tag:'Scenario · Night',title:'Night: stored energy takes over',text:'With no sunlight, the battery powers your essentials. If you need more, the grid tops you up, and units you exported during the day offset what you import.',
+      steps:['Panels rest after sunset','Battery supplies stored solar energy','Grid tops up any extra demand','Net metering balances import against daytime export'],
+      on:{home:'',bat:'g',grid:'b'},rev:['bat','grid'],val:{home:'1.8 kW',bat:'−1.2 kW',grid:'0.6 kW import'},
+      nodes:['inv','home','bat','grid'],ro:['0 kW','1.8 kW','Supplying 1.2','Import 0.6 kW']},
+    cut:{tag:'Scenario · Power cut',title:'Power cut: you stay on',text:'When the grid fails, a hybrid inverter isolates your home from the grid for safety and keeps running on solar and battery. A standard on-grid system shuts down instead.',
+      steps:['Grid failure is detected in milliseconds','Hybrid inverter disconnects from the grid','Solar and battery keep your home running','Reconnects automatically when the grid returns'],
+      on:{sun:'',pan:'',home:'',bat:'g'},rev:[],val:{sun:'Sunlight',pan:'3.4 kW',home:'2.0 kW',bat:'+1.4 kW',grid:'Grid down'},
+      nodes:['sun','pan','inv','home','bat'],off:['grid'],ro:['3.4 kW','2.0 kW','Charging +1.4','Offline']}
+  };
+  function set(m){const M=MODES[m];
+    $$('.modes [data-mode]').forEach(b=>b.setAttribute('aria-selected',b.dataset.mode===m));
+    Object.keys(WIRES).forEach(k=>{const f=$('#f-'+k),on=k in M.on;f.setAttribute('class','flow'+(on?' on':'')+(M.on[k]?' '+M.on[k]:'')+(M.rev.includes(k)?' rev':''))});
+    NODES.forEach(([k])=>{$('#n-'+k).setAttribute('class','node'+(M.nodes.includes(k)?' on':'')+(M.off?.includes(k)?' off':''))});
+    Object.keys(VAL).forEach(k=>{const t=$('#v-'+k);t.textContent=M.val[k]||'';t.setAttribute('class','val'+(k==='bat'?' g':k==='grid'?(M.off?' r':' b'):''))});
+    $('#exTag').textContent=M.tag;$('#exTitle').textContent=M.title;$('#exText').textContent=M.text;
+    $('#exSteps').innerHTML=M.steps.map((s,i)=>`<li style="animation-delay:${i*70}ms">${s}</li>`).join('');
+    ['roSolar','roHome','roBat','roGrid'].forEach((id,i)=>$('#'+id).textContent=M.ro[i]);
+  }
+  $('.modes').addEventListener('click',e=>{const b=e.target.closest('[data-mode]');if(b)set(b.dataset.mode)});
+  set('day');
+})();
+
+/* ---------- calculator (live) ---------- */
+(function(){const f=$('#calcForm');let ptype='Residential',last=null;
+  const fill=r=>r.style.setProperty('--p',(r.value-r.min)/(r.max-r.min)*100+'%');
+  function run(){const bill=+f.elements.bill.value,tar=+f.elements.tariff.value,roof=+f.elements.roof.value;$$('input[type=range]',f).forEach(fill);
+    $('#billV').textContent=inr(bill);$('#tarV').textContent='₹'+tar.toFixed(1);$('#roofV').textContent=roof.toLocaleString('en-IN')+' sq ft';
+    const r=last=sizeSystem(bill,tar,roof,ptype);
+    $('#rKw').textContent=r.kw;$('#rSave').textContent=inr(r.save);$('#rCost').textContent=lakh(r.cost);$('#rPay').textContent=r.payback.toFixed(1)+' yrs';
+    $('#rGen').textContent=Math.round(r.gen).toLocaleString('en-IN');$('#rCo2').textContent=r.co2.toFixed(1)+' t';$('#rLife').textContent=lakh(r.life);$('#rWarn').hidden=!r.limited;
+    const W=340,H=130,L=8,R=W-8,T=14,Bm=H-22,max=Math.max(r.cost,r.life)*1.08,X=y=>L+(R-L)*y/25,Y=v=>Bm-(Bm-T)*v/max,yr=r.payback;
+    const sv=`M${X(0)},${Y(0)} L${X(25)},${Y(r.life)}`,be=yr<=25?`<circle cx="${X(yr)}" cy="${Y(r.cost)}" r="5" fill="#fff" stroke="#ff6914" stroke-width="3"/><text x="${Math.min(X(yr)+8,R-80)}" y="${Y(r.cost)-9}" style="fill:var(--ink)">Break-even · yr ${yr.toFixed(1)}</text>`:'';
+    $('#lchart').innerHTML=`<defs><linearGradient id="lcG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa51f" stop-opacity=".35"/><stop offset="1" stop-color="#ffa51f" stop-opacity="0"/></linearGradient></defs>
+      <path d="${sv} L${X(25)},${Bm} L${X(0)},${Bm} Z" fill="url(#lcG)"/><line class="cost" x1="${L}" x2="${R}" y1="${Y(r.cost)}" y2="${Y(r.cost)}"/><path class="sv" d="${sv}"/>${be}
+      <text x="${L}" y="${H-4}">Year 0</text><text x="${R}" y="${H-4}" text-anchor="end">Year 25</text><text x="${L}" y="${Y(r.cost)+14}">System cost ${lakh(r.cost)}</text>`;
+  }
+  f.addEventListener('input',run);f.addEventListener('submit',e=>e.preventDefault());
+  $('#ptype').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ptype=b.textContent;$$('#ptype button').forEach(x=>x.setAttribute('aria-pressed',x===b));run()});
+  $('#calcQuote').onclick=()=>{const q=$('#quoteForm');q.elements.ptype.value=ptype;q.elements.notes.value=`Interested in a ${last.kw} kW ${ptype.toLowerCase()} system. Current bill about ${inr(+f.elements.bill.value)}/month.`;location.hash='#quote';setTimeout(()=>q.elements.name.focus({preventScroll:true}),600)};
+  run();window.sizeSystem=sizeSystem;
+})();
+
+/* ---------- quote & tracking ---------- */
+const quotes=store.get('sn_quotes',{});
+$('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const form=e.target,d=Object.fromEntries(new FormData(form));let ok=true,first=null;
+  $$('.err',form).forEach(x=>x.remove());
+  const rules={name:[v=>v.trim().length>1,'Enter your name'],phone:[v=>/^[6-9]\d{9}$/.test(v),'Enter a 10-digit mobile number'],email:[v=>/^\S+@\S+\.\S+$/.test(v),'Enter a valid email'],city:[v=>v.trim().length>1,'Enter your city']};
+  for(const k in rules){const i=form.elements[k],bad=!rules[k][0](d[k]);i.classList.toggle('bad',bad);i.setAttribute('aria-invalid',bad);if(bad){ok=false;first=first||i;i.insertAdjacentHTML('afterend',`<span class="err">${rules[k][1]}</span>`)}}
+  if(!ok){first.focus();return}
+  const id='SN-'+Math.random().toString(36).slice(2,8).toUpperCase();
+  quotes[id]={...d,status:'Received',at:Date.now()};store.set('sn_quotes',quotes);form.reset();
+  toast('Enquiry '+id+' submitted',{ms:5000});$('#trackForm').elements.id.value=id;$('#trackOut').textContent=`Saved! Your enquiry ID is ${id}. Our team will call ${d.phone}.`});
+$('#trackForm').addEventListener('submit',e=>{e.preventDefault();const id=e.target.elements.id.value.trim().toUpperCase(),q=quotes[id];
+  $('#trackOut').textContent=q?`${id}: ${q.status}. Submitted ${new Date(q.at).toLocaleDateString('en-IN')}. Our team will call ${q.phone}.`:'No enquiry found for that ID. Check it and try again.'});
+$('#news').addEventListener('submit',e=>{e.preventDefault();e.target.reset();toast('Subscribed. Thank you!')});
+
+/* ---------- auth (demo: browser-only, not secure) ---------- */
+const dlg=$('#authDlg'),af=$('#authForm');let mode='login';
+const users=()=>store.get('sn_users',{});
+const sha=async s=>[...new Uint8Array(await crypto.subtle.digest('SHA-256',new TextEncoder().encode(s)))].map(b=>b.toString(16).padStart(2,'0')).join('');
+const initials=n=>n.trim().split(/\s+/).map(w=>w[0]).slice(0,2).join('').toUpperCase();
+function authMsg(m){const e=$('#authErr');e.innerHTML=m?ico('info')+esc(m):'';e.hidden=!m}
+function setMode(m){mode=m;const su=m==='signup';af.dataset.mode=m;$('#authTabs').dataset.m=m;$('#tabLogin').setAttribute('aria-selected',!su);$('#tabSignup').setAttribute('aria-selected',su);
+  $('#authTitle').textContent=su?'Create your account':'Welcome back';$('#authSub').textContent=su?'It takes less than a minute.':'Log in to track enquiries and orders.';
+  $('#authSubmit').textContent=su?'Create account':'Log in';$('#swText').textContent=su?'Already have an account?':'New here?';$('#toggleAuth').textContent=su?'Log in':'Create an account';
+  af.elements.pass.autocomplete=su?'new-password':'current-password';authMsg('');$('#authInfo').hidden=true;$$('.bad',af).forEach(x=>x.classList.remove('bad'))}
+function openAuth(m='login'){setMode(m);dlg.showModal();setTimeout(()=>af.elements[m==='signup'?'name':'email'].focus(),80)}
+$('#tabLogin').onclick=()=>setMode('login');$('#tabSignup').onclick=()=>setMode('signup');
+$('#toggleAuth').onclick=e=>{e.preventDefault();setMode(mode==='login'?'signup':'login')};
+$('#authClose').onclick=()=>dlg.close();dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+$('#forgot').onclick=e=>{e.preventDefault();$('#authInfo').hidden=false};
+const eye=$('#eyeBtn');eye.innerHTML=ico('eye');eye.onclick=()=>{const p=af.elements.pass,show=p.type==='password';p.type=show?'text':'password';eye.innerHTML=ico(show?'eyeoff':'eye');eye.setAttribute('aria-label',show?'Hide password':'Show password')};
+af.elements.pass.addEventListener('input',e=>{const v=e.target.value;let s=0;if(v.length>=6)s++;if(v.length>=10)s++;if(/[A-Z]/.test(v)&&/[a-z]/.test(v))s++;if(/\d/.test(v)&&/[^A-Za-z0-9]/.test(v))s++;if(v.length<6)s=v?1:0;
+  $('#meter').dataset.s=s;$('#meterT').textContent=v?['','Weak','Fair','Good','Strong'][s]:''});
+af.addEventListener('submit',async e=>{e.preventDefault();const f=Object.fromEntries(new FormData(af)),em=(f.email||'').trim().toLowerCase(),su=mode==='signup';
+  $$('.bad',af).forEach(x=>x.classList.remove('bad'));const bad=(n,m)=>{af.elements[n]?.classList.add('bad');af.elements[n]?.focus();authMsg(m)};
+  if(su&&(f.name||'').trim().length<2)return bad('name','Please enter your full name.');
+  if(!/^\S+@\S+\.\S+$/.test(em))return bad('email','Please enter a valid email address.');
+  if(su&&f.phone&&!/^[6-9]\d{9}$/.test(f.phone))return bad('phone','Mobile number should be 10 digits.');
+  if((f.pass||'').length<6)return bad('pass','Password must be at least 6 characters.');
+  if(su&&!f.terms)return authMsg('Please accept the terms to continue.');
+  const all=users(),h=await sha(f.pass);
+  if(su){if(all[em])return authMsg('An account with this email already exists. Log in instead.');all[em]={name:f.name.trim(),role:f.role,phone:f.phone||'',h};store.set('sn_users',all)}
+  else if(!all[em]||all[em].h!==h)return authMsg('Wrong email or password.');
+  const u={name:all[em].name,email:em,role:all[em].role,phone:all[em].phone||''};store.set('sn_user',u);
+  dlg.close();af.reset();$('#meter').dataset.s=0;$('#meterT').textContent='';sessionUI();toast(`Welcome${su?'':' back'}, ${u.name.split(' ')[0]}!`,{icon:'user'})});
+function sessionUI(){const u=store.get('sn_user'),b=$('#loginBtn');
+  if(u){b.innerHTML=`<span class="avatar">${esc(initials(u.name))}</span><span class="lbl">${esc(u.name.split(' ')[0])}</span>`;b.setAttribute('aria-label','Account menu');b.setAttribute('aria-haspopup','true')}
+  else{b.innerHTML=ico('user')+'<span class="lbl">Log in</span>';b.setAttribute('aria-label','Log in or sign up');b.removeAttribute('aria-haspopup')}
+  $('#loginLink').textContent=u?`Log out (${u.name.split(' ')[0]})`:'Log in / Sign up'}
+function acct(open){const m=$('#acctMenu'),u=store.get('sn_user');if(open&&!u)return;m.hidden=!open;$('#loginBtn').setAttribute('aria-expanded',!!open);if(!open)return;
+  const orders=Object.entries(store.get('sn_orders',{})).filter(([,o])=>!o.user||o.user===u.email).sort((a,b)=>b[1].at-a[1].at);
+  m.innerHTML=`<div class="acct-h"><span class="avatar lg">${esc(initials(u.name))}</span><div><b>${esc(u.name)}</b><small>${esc(u.email)} · ${esc(u.role)}</small></div></div>
+    <div class="acct-s"><div><b>${orders.length}</b><span>Orders</span></div><div><b>${Object.keys(quotes).length}</b><span>Enquiries</span></div><div><b>${calc().n}</b><span>In cart</span></div></div>
+    ${orders.length?`<div class="acct-o">${orders.slice(0,3).map(([id,o])=>`<div><span>${id}</span><b>${inr(o.total)}</b></div>`).join('')}</div>`:'<p class="muted" style="font-size:.85rem">No orders yet.</p>'}
+    <button type="button" class="btn dark block sm" id="logoutBtn">Log out</button>`;
+  $('#logoutBtn').onclick=logout}
+function logout(){store.del('sn_user');acct(false);sessionUI();toast('You have been logged out',{icon:'user'})}
+$('#loginBtn').onclick=e=>{e.stopPropagation();if(!store.get('sn_user'))return openAuth('login');acct($('#acctMenu').hidden)};
+$('#loginLink').onclick=e=>{e.preventDefault();$('#links').classList.remove('open');store.get('sn_user')?logout():openAuth('login')};
+document.addEventListener('click',e=>{if(!e.target.closest('#acctMenu')&&!e.target.closest('#loginBtn'))acct(false)});
+sessionUI();
+
+/* ---------- chatbot "Surya" (rule-based; works offline) ---------- */
+(function(){
+  const box=$('#chat'),fab=$('#chatFab'),body=$('#chatBody'),inp=$('#chatIn');let started=false,awaitBill=false;
+  const CHIPS=['Estimate my savings','Price per kW','Subsidy','Battery backup','How it works','Track my enquiry','Talk to an expert'];
+  const add=(h,who='bot')=>{const m=document.createElement('div');m.className='msg '+who;m.innerHTML=h;body.append(m);body.scrollTop=body.scrollHeight;return m};
+  const chips=a=>{$('#chatChips').innerHTML=(a||CHIPS).map(c=>`<button type="button" class="chip" data-q="${esc(c)}">${esc(c)}</button>`).join('')};
+  function say(h,c){const t=add('<span class="typing" aria-label="Surya is typing"><i></i><i></i><i></i></span>');
+    setTimeout(()=>{t.innerHTML=h;body.scrollTop=body.scrollHeight;chips(c)},REDUCE?0:450+Math.min(800,h.length*3))}
+  function estimate(bill){const r=sizeSystem(bill,8,1e6,'Residential');
+    return `For a <b>${inr(bill)}/month</b> bill (at ₹8/unit) I'd suggest about <b>${r.kw} kW</b>:<div class="mini"><div><b>${lakh(r.cost)}</b>Cost before subsidy</div><div><b>${inr(r.save)}</b>Savings / month</div><div><b>${r.payback.toFixed(1)} yrs</b>Payback</div><div><b>${lakh(r.life)}</b>25-year savings</div></div>Fine-tune roof area and tariff in the <a href="#calculator">calculator</a>.`}
+  function reply(q){const s=q.toLowerCase().trim(),num=+(s.replace(/[,₹]/g,'').match(/\d{3,6}/)||[0])[0];
+    const has=re=>re.test(s);
+    if(has(/\bsn-[a-z0-9]{6}\b/)){const id=s.match(/sn-[a-z0-9]{6}/)[0].toUpperCase(),x=quotes[id];return say(x?`Enquiry <b>${id}</b> is <b>${x.status}</b> (submitted ${new Date(x.at).toLocaleDateString('en-IN')}). Our team will call ${esc(x.phone)}.`:`I couldn't find <b>${id}</b>. Please check the ID, or <a href="#quote">submit a new enquiry</a>.`)}
+    if(has(/\bord-[a-z0-9]{6}\b/)){const id=s.match(/ord-[a-z0-9]{6}/)[0].toUpperCase(),o=store.get('sn_orders',{})[id];return say(o?`Order <b>${id}</b>: ${inr(o.total)} via ${esc(o.pay)}, placed ${new Date(o.at).toLocaleDateString('en-IN')}. We'll call ${esc(o.phone)} before delivery.`:`I couldn't find order <b>${id}</b> in this browser.`)}
+    if(num&&(awaitBill||has(/bill|₹|rs|rupee|bijli|month|mahin|saving|bachat|estimate/)||/^\d{3,6}$/.test(s.replace(/[,₹\s]/g,'')))){awaitBill=false;return say(estimate(num),['Subsidy','Battery backup','Get a quote'])}
+    if(has(/^(hi|hello|hey|hii+|namaste|namaskar|good (morning|evening|afternoon))\b/))return say('Namaste! I\'m Surya. I can work out your savings, explain prices and subsidy, or help you find a product. What would you like to know?');
+    if(has(/estimat|saving|bachat|calculat|kitna bach/)){awaitBill=true;return say('Sure! What is your average <b>monthly electricity bill</b> in ₹? (for example, 3500)',['₹2,000','₹4,000','₹8,000','₹15,000'])}
+    if(has(/price|cost|kitna|kharch|rate|per kw|budget|lakh|kimat|daam/))return say('Typical installed cost before subsidy:<div class="mini"><div><b>₹55,000/kW</b>Homes</div><div><b>₹48,000/kW</b>Commercial</div><div><b>₹42,000/kW</b>Industrial</div><div><b>~₹1.65 L</b>3 kW home kit</div></div>Tell me your monthly bill and I\'ll size a system for you.',['Estimate my savings','Subsidy','Shop kits']);
+    if(has(/subsid|yojana|surya ghar|scheme|sarkar|government|govt/))return say('Residential rooftop systems can get central subsidy under <b>PM Surya Ghar</b>: up to <b>₹78,000</b> under the 2024 rules, and some states add more. Amounts can change, so we confirm the current figure and help you apply.',['Price per kW','Get a quote']);
+    if(has(/battery|backup|power cut|outage|light (ja|chal)|bijli (ja|chal)|night|raat/))return say('Want power during cuts? You need a <b>hybrid inverter + battery</b>. A standard on-grid system switches off when the grid fails. Our 5 kWh lithium battery starts at ₹72,000. See it in action in <a href="#working">How it works → Power cut</a>.',['Shop batteries','Price per kW']);
+    if(has(/maint|clean|saaf|service|repair|safai/))return say('Maintenance is light: clean the panels every 2–4 weeks and get a yearly inspection. Our maintenance plans cover cleaning, checks and performance reports.');
+    if(has(/install|kitne din|how long|process|step|lagwa|lagane|time/))return say('Here\'s the process: <b>1.</b> free consultation → <b>2.</b> site survey & design → <b>3.</b> installation (usually 1–3 days for a home) → <b>4.</b> net-metering approval, which can take a few weeks.',['Get a quote','How it works']);
+    if(has(/warrant|guarantee|kitne saal|life|years|durab/))return say('Panels are built for <b>25+ years</b> of output, and panel makers usually give long performance warranties. Inverters and batteries carry their own warranties depending on the brand. We share exact terms in your quote.');
+    if(has(/net meter|export|sell|grid/))return say('With <b>net metering</b>, a two-way meter records what you export and import. You pay only for the net units, so surplus daytime solar lowers your bill.');
+    if(has(/how.*work|kaise|working|explain/))return say('Panels make DC power → the inverter converts it to AC → your home uses it first → extra charges a battery or goes to the grid. Try the interactive model in <a href="#working">How it works</a>.');
+    if(has(/shop|buy|product|kharid|panel|inverter|kit/))return say('Our marketplace has panels from ₹6,200, inverters from ₹31,000, batteries from ₹72,000 and complete kits from ₹1.65 L. <a href="#products">Open the shop →</a>',['Shop kits','Shop batteries']);
+    if(has(/cart|checkout|order/))return say(`You have <b>${calc().n}</b> item(s) in your cart. <a href="#cart">Go to checkout →</a>`);
+    if(has(/track|status|enquiry/))return say('Type your enquiry ID (it looks like <b>SN-AB12CD</b>) and I\'ll check its status.');
+    if(has(/expert|human|call|contact|talk|baat|quote|visit|survey|number/))return say('I\'ll connect you with our team. Fill the short <a href="#quote">quote form</a> and an expert will call you back to plan a free site survey.');
+    if(has(/\b(thanks?|thank you|shukriya|dhanyavad|ok|okay|great|nice)\b/))return say('Happy to help. Anything else?');
+    say('I can help with <b>savings estimates</b>, <b>prices</b>, <b>subsidy</b>, <b>battery backup</b>, <b>installation</b> and <b>shopping</b>. Try one of these:');
+  }
+  function send(q){q=q.trim();if(!q)return;add(esc(q),'me');inp.value='';
+    if(q==='Shop kits'||q==='Shop batteries'){const c=q.split(' ')[1];fcat=c[0].toUpperCase()+c.slice(1);$$('[data-cat]').forEach(x=>x.setAttribute('aria-pressed',x.dataset.cat===fcat));renderProducts();location.hash='#products';return say(`Showing <b>${fcat}</b> in the shop. Tap <b>Add</b> on anything you like.`)}
+    if(q==='Get a quote')return say('Great! Opening the <a href="#quote">quote form</a> for you.',null),setTimeout(()=>location.hash='#quote',700);
+    reply(q.replace(/^₹/,'bill ₹'))}
+  function open(){box.removeAttribute('inert');box.classList.add('on');fab.classList.add('on');fab.setAttribute('aria-expanded',true);fab.setAttribute('aria-label','Close solar assistant');$('#fabTip').hidden=true;
+    if(!started){started=true;add(`Namaste! I'm <b>Surya</b>, Gourav Bharat Solar's assistant.${store.get('sn_user')?` Good to see you, ${esc(store.get('sn_user').name.split(' ')[0])}!`:''} Ask me about prices, subsidy, batteries or your savings.`);chips()}
+    setTimeout(()=>inp.focus(),300)}
+  function close(){box.classList.remove('on');box.setAttribute('inert','');fab.classList.remove('on');fab.setAttribute('aria-expanded',false);fab.setAttribute('aria-label','Open solar assistant')}
+  fab.onclick=()=>box.classList.contains('on')?close():open();$('#chatClose').onclick=close;$('#fabTip').onclick=open;$('#faqChat').onclick=open;
+  $('#chatForm').addEventListener('submit',e=>{e.preventDefault();send(inp.value)});
+  $('#chatChips').addEventListener('click',e=>{const b=e.target.closest('[data-q]');if(b)send(b.dataset.q)});
+  body.addEventListener('click',e=>{if(e.target.closest('a[href^="#"]')&&innerWidth<720)close()});
+  addEventListener('keydown',e=>{if(e.key!=='Escape')return;if(box.classList.contains('on'))close();closeDrawer();acct(false);$('#links').classList.remove('open')});
+  try{if(!sessionStorage.getItem('gbs_tip'))setTimeout(()=>{if(!box.classList.contains('on')){$('#fabTip').hidden=false;sessionStorage.setItem('gbs_tip','1');setTimeout(()=>$('#fabTip').hidden=true,7000)}},6000)}catch{}
+})();
+
+/* ---------- app (PWA): service worker, install prompt, tab bar, offline ---------- */
+(function(){
+  const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+  if(standalone)document.documentElement.classList.add('app');
+  if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  /* tab bar */
+  $('#tabCart').onclick=openDrawer;
+  $('#tabAcct').onclick=e=>{e.stopPropagation();store.get('sn_user')?acct($('#acctMenu').hidden):openAuth('login')};
+  const syncTabs=()=>{const n=calc().n,t=$('#tabCount');t.textContent=n;t.hidden=!n;const u=store.get('sn_user');$('#tabAcctL').textContent=u?u.name.split(' ')[0]:'Account'};
+  syncTabs();new MutationObserver(syncTabs).observe($('#cartCount'),{childList:true,attributes:true});new MutationObserver(syncTabs).observe($('#loginBtn'),{childList:true});
+  const tabs=$$('#tabbar a');
+  $$('main section[id]').forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)tabs.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50%'}).observe(s));
+  /* install */
+  const bar=$('#installBar');let deferred=null,dismissed=false;try{dismissed=!!localStorage.getItem('gbs_install_x')}catch{}
+  const showBar=()=>{if(!standalone&&!dismissed&&!document.body.classList.contains('cartmode'))bar.hidden=false};
+  addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferred=e;$('#installLi').hidden=false;setTimeout(showBar,8000)});
+  async function install(){if(!deferred)return;bar.hidden=true;deferred.prompt();const r=await deferred.userChoice;deferred=null;if(r.outcome==='accepted')toast('Installing Gourav Bharat Solar')}
+  $('#installBtn').onclick=()=>deferred?install():(bar.hidden=true);
+  $('#installLink').onclick=e=>{e.preventDefault();install()};
+  $('#installX').onclick=()=>{bar.hidden=true;try{localStorage.setItem('gbs_install_x','1')}catch{}};
+  addEventListener('appinstalled',()=>{bar.hidden=true;$('#installLi').hidden=true;deferred=null});
+  /* iPhone/iPad Safari has no install prompt, so explain the two taps once */
+  const ios=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+  if(ios&&!standalone&&!dismissed){$('#installTxt').innerHTML='Tap <b style="display:inline">Share</b> then <b style="display:inline">Add to Home Screen</b>.';$('#installBtn').textContent='OK';$('#installBtn').onclick=()=>$('#installX').click();setTimeout(showBar,8000)}
+  /* connection status */
+  addEventListener('offline',()=>toast('You are offline. Pages you opened before still work.',{icon:'info',ms:4500}));
+  addEventListener('online',()=>toast('Back online'));
+})();
+
+/* ---------- 3D hero ---------- */
+(function(){
+  const cv=$('#scene'),tod=$('#tod');if(!window.THREE){cv.remove();return}
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  let R;try{R=new THREE.WebGLRenderer({canvas:cv,antialias:true,alpha:true})}catch{cv.remove();return}
+  R.setPixelRatio(Math.min(devicePixelRatio,2));
+  const S=new THREE.Scene(),cam=new THREE.PerspectiveCamera(45,1,.1,100);
+  S.add(new THREE.HemisphereLight(0x9ccfff,0x1a2a33,.7));
+  const sunL=new THREE.DirectionalLight(0xfff0cc,1.6);S.add(sunL);
+  /* panel texture */
+  const c=document.createElement('canvas');c.width=256;c.height=384;const g=c.getContext('2d');
+  const gr=g.createLinearGradient(0,0,256,384);gr.addColorStop(0,'#17428a');gr.addColorStop(1,'#0a1f4d');g.fillStyle=gr;g.fillRect(0,0,256,384);
+  g.strokeStyle='rgba(190,215,255,.45)';g.lineWidth=2;for(let x=0;x<=256;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,384);g.stroke()}
+  for(let y=0;y<=384;y+=32){g.beginPath();g.moveTo(0,y);g.lineTo(256,y);g.stroke()}
+  g.strokeStyle='rgba(255,255,255,.7)';for(let x=16;x<256;x+=32){g.beginPath();g.moveTo(x,0);g.lineTo(x,384);g.lineWidth=.6;g.stroke()}
+  const tex=new THREE.CanvasTexture(c);tex.anisotropy=4;
+  const cellMat=new THREE.MeshStandardMaterial({map:tex,metalness:.65,roughness:.22,emissive:0x0a2a6a,emissiveIntensity:.2});
+  const frameMat=new THREE.MeshStandardMaterial({color:0xc9d3da,metalness:.8,roughness:.4});
+  const array=new THREE.Group(),panels=[];
+  for(let r=0;r<3;r++)for(let k=0;k<4;k++){
+    const p=new THREE.Group();
+    p.add(new THREE.Mesh(new THREE.BoxGeometry(1.08,1.58,.06),frameMat));
+    const face=new THREE.Mesh(new THREE.PlaneGeometry(1,1.5),cellMat);face.position.z=.034;p.add(face);
+    p.position.set((k-1.5)*1.18,(1-r)*1.7,0);p.userData.i=r*4+k;array.add(p);panels.push(p);
+    p.scale.setScalar(reduce?1:.001);p.userData.t0=.25+(r*4+k)*.07;
+  }
+  array.position.y=.3;S.add(array);
+  const stand=new THREE.Mesh(new THREE.BoxGeometry(5.2,.08,.08),frameMat);stand.position.set(0,-1.45,-.25);array.add(stand);
+  /* ground */
+  const gm=new THREE.Mesh(new THREE.CircleGeometry(14,64),new THREE.MeshStandardMaterial({color:0x0e2a1f,roughness:1}));gm.rotation.x=-Math.PI/2;gm.position.y=-2.2;S.add(gm);
+  const grid=new THREE.GridHelper(28,28,0x2f6f5a,0x1d4a3b);grid.position.y=-2.19;S.add(grid);
+  /* realistic sun: textured photosphere + glow + rotating corona + atmosphere + lens flare */
+  const mkTex=(n,draw)=>{const cv2=document.createElement('canvas');cv2.width=cv2.height=n;draw(cv2.getContext('2d'),n);const tx=new THREE.CanvasTexture(cv2);return tx};
+  const radial=(x,n,stops)=>{const r=x.createRadialGradient(n/2,n/2,0,n/2,n/2,n/2);stops.forEach(([o,c])=>r.addColorStop(o,c));x.fillStyle=r;x.fillRect(0,0,n,n)};
+  const discTex=mkTex(512,(x,n)=>{
+    radial(x,n,[[0,'#fffef6'],[.55,'#fff3c4'],[.8,'#ffd36a'],[.9,'#ffaa2e'],[.94,'rgba(255,140,30,.9)'],[.97,'rgba(255,120,20,.3)'],[1,'rgba(255,120,20,0)']]);
+    x.save();x.beginPath();x.arc(n/2,n/2,n*.45,0,7);x.clip();
+    for(let i=0;i<2600;i++){const a=Math.random()*7,r=Math.sqrt(Math.random())*n*.45,px=n/2+Math.cos(a)*r,py=n/2+Math.sin(a)*r,s=1+Math.random()*3.2;
+      x.fillStyle=Math.random()<.5?`rgba(255,255,255,${.05+Math.random()*.12})`:`rgba(200,90,0,${.04+Math.random()*.08})`;x.beginPath();x.arc(px,py,s,0,7);x.fill()}
+    for(let i=0;i<5;i++){const a=Math.random()*7,r=Math.random()*n*.3;x.fillStyle='rgba(150,60,0,.18)';x.beginPath();x.arc(n/2+Math.cos(a)*r,n/2+Math.sin(a)*r,2+Math.random()*4,0,7);x.fill()}
+    x.restore()});
+  const glowTex=mkTex(256,(x,n)=>radial(x,n,[[0,'rgba(255,250,225,1)'],[.2,'rgba(255,225,140,.75)'],[.45,'rgba(255,180,70,.25)'],[1,'rgba(255,140,40,0)']]));
+  const atmoTex=mkTex(256,(x,n)=>radial(x,n,[[0,'rgba(255,190,90,.55)'],[.35,'rgba(255,150,60,.18)'],[1,'rgba(255,120,40,0)']]));
+  const rayTex=mkTex(512,(x,n)=>{x.translate(n/2,n/2);x.globalCompositeOperation='lighter';
+    for(let i=0;i<140;i++){const a=Math.random()*Math.PI*2,L=n*(.18+Math.random()*.32),w=.6+Math.random()*2.2;
+      const gr2=x.createLinearGradient(0,0,Math.cos(a)*L,Math.sin(a)*L);gr2.addColorStop(0,'rgba(255,235,180,.35)');gr2.addColorStop(1,'rgba(255,200,120,0)');
+      x.strokeStyle=gr2;x.lineWidth=w;x.beginPath();x.moveTo(0,0);x.lineTo(Math.cos(a)*L,Math.sin(a)*L);x.stroke()}});
+  const ringTex=mkTex(128,(x,n)=>radial(x,n,[[0,'rgba(255,255,255,0)'],[.7,'rgba(255,255,255,0)'],[.85,'rgba(255,255,255,.5)'],[1,'rgba(255,255,255,0)']]));
+  const spr=(map,s,o=1,add=true)=>{const m=new THREE.Sprite(new THREE.SpriteMaterial({map,transparent:true,opacity:o,depthWrite:false,blending:add?THREE.AdditiveBlending:THREE.NormalBlending}));m.scale.setScalar(s);return m};
+  const sun=new THREE.Group();S.add(sun);
+  const atmo=spr(atmoTex,16,.7),rays=spr(rayTex,9,.8),halo=spr(glowTex,4.2,1),disc=spr(discTex,1.7,1,false);
+  sun.add(atmo,rays,halo,disc);
+  const flares=[[.35,.5,'#ffd27a',.18],[.6,.28,'#8fd3ff',.14],[.85,.9,'#ffb066',.08],[1.15,.45,'#b6ffcf',.1]].map(([k,s,col,o])=>{const f=spr(k===.85?ringTex:glowTex,s,o);f.material.color.set(col);f.userData.k=k;f.userData.o=o;S.add(f);return f});
+  const noon=new THREE.Color(0xffffff),dusk=new THREE.Color(0xff7a2e),tint=new THREE.Color(),lNoon=new THREE.Color(0xfff4dc),lDusk=new THREE.Color(0xff9a4a);
+  /* floating energy particles */
+  const N=120,pg=new THREE.BufferGeometry(),pos=new Float32Array(N*3),sp=new Float32Array(N);
+  for(let i=0;i<N;i++){pos.set([(Math.random()-.5)*14,Math.random()*7-1,(Math.random()-.5)*8],i*3);sp[i]=.2+Math.random()*.5}
+  pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const pts=new THREE.Points(pg,new THREE.PointsMaterial({color:0xffd37a,size:.05,transparent:true,opacity:.7,depthWrite:false}));S.add(pts);
+  /* state */
+  let mx=0,my=0,cx=0,cy=0,sunT=+tod.value/100,sunV=sunT,vis=true,t0=performance.now(),scrollY=0;
+  addEventListener('pointermove',e=>{mx=e.clientX/innerWidth-.5;my=e.clientY/innerHeight-.5},{passive:true});
+  addEventListener('scroll',()=>scrollY=Math.min(1,pageYOffset/innerHeight),{passive:true});
+  tod.addEventListener('input',()=>sunT=+tod.value/100);
+  new IntersectionObserver(e=>vis=e[0].isIntersecting).observe($('.hero'));
+  function size(){const w=cv.clientWidth,h=cv.clientHeight;if(!w||!h)return;R.setSize(w,h,false);cam.aspect=w/h;cam.updateProjectionMatrix();
+    const wide=w>860;array.position.x=wide?2.6:0;array.position.y=wide?.3:1.3;array.scale.setScalar(wide?1:.7);cam.position.set(wide?0:0,1.2,wide?9.5:11);R.render(S,cam)}
+  new ResizeObserver(size).observe(cv);size();
+  const clock=v=>{const m=Math.round(6*60+v*12*60);return String(Math.floor(m/60)).padStart(2,'0')+':'+String(m%60).padStart(2,'0')};
+  const kw=$('#kw'),ck=$('#clock'),sky=$('.hero');
+  function frame(now){
+    requestAnimationFrame(frame);if(!vis||document.hidden)return;
+    const t=(now-t0)/1000;sunV+=(sunT-sunV)*.08;cx+=(mx-cx)*.05;cy+=(my-cy)*.05;
+    /* sun arcs east to west */
+    const a=Math.PI*(1-sunV),sx=Math.cos(a)*8,sy=Math.sin(a)*4.6-.9;
+    sun.position.set(sx,sy,-3);sunL.position.set(sx,Math.max(sy,.5)+2,6);
+    const h=Math.max(0,Math.sin(Math.PI*sunV));sunL.intensity=.2+h*1.6;
+    sky.style.setProperty('--k',h);
+    /* panels track the sun and respond to pointer */
+    array.rotation.y=-.45+cx*.5+(sx/8)*.25;array.rotation.x=-.1+cy*.2+(-.25+(1-sunV)*.1);
+    array.position.y+=((innerWidth>860?.3:1.3)+Math.sin(t*.8)*.06-array.position.y)*.1;
+    panels.forEach(p=>{const k=Math.min(1,Math.max(0,(t-p.userData.t0)/.6)),e=1-Math.pow(1-k,3);if(!reduce&&p.scale.x<1)p.scale.setScalar(Math.max(.001,e));});
+    cellMat.emissiveIntensity=.1+h*.9;
+    /* sun looks warmer and larger near the horizon, white-hot at noon; corona slowly turns and pulses */
+    const warm=1-Math.pow(h,.6);tint.copy(noon).lerp(dusk,warm);
+    [disc,halo,rays,atmo].forEach(m=>m.material.color.copy(tint));sunL.color.copy(lNoon).lerp(lDusk,warm);
+    const pulse=reduce?1:1+Math.sin(t*1.3)*.03;disc.scale.setScalar(1.7*(1+warm*.25));halo.scale.setScalar(4.2*(1+warm*.3)*pulse);
+    atmo.scale.setScalar(16*(1+warm*.4));atmo.material.opacity=.45+warm*.4;
+    if(!reduce){rays.material.rotation=t*.03;halo.material.rotation=-t*.01}rays.material.opacity=.45+h*.45;
+    /* lens-flare ghosts along the line from the sun through the view centre */
+    const tgx=array.position.x*.5,tgy=0;flares.forEach(f=>{const k=f.userData.k;f.position.set(sx+(tgx-sx)*k*2,sy+(tgy-sy)*k*2,-2.9+k);f.material.opacity=f.userData.o*(.3+h*.9)})
+    const p=pg.attributes.position;for(let i=0;i<N;i++){let y=p.getY(i)+sp[i]*.008*(reduce?0:1);if(y>6)y=-1;p.setY(i,y)}p.needsUpdate=true;
+    cam.position.x=cx*.8;cam.position.y=1.2-cy*.5-scrollY*1.2;cam.lookAt(array.position.x*.5,0,0);
+    kw.textContent=(12*.55*h*.95).toFixed(1);ck.textContent=clock(sunV);
+    R.render(S,cam);
+  }
+  requestAnimationFrame(frame);
+})();
+</script>
+</body>
+</html>
