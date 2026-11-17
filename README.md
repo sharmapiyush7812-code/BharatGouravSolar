@@ -5,7 +5,7 @@
 It is a static site: one `index.html` with inline CSS and JavaScript, plus a service worker, a manifest and icons. There is no build step. Enquiries, orders and newsletter sign-ups can go to a **Google Sheet** through a small Google Apps Script backend in [`backend/Code.gs`](backend/Code.gs).
 
 - **Live site (Netlify, free):** https://bharatgouravsolar.netlify.app/
-- **Repository:** https://github.com/sharmapiyush7812-code/GouravBharatSolar
+- **Repository:** https://github.com/sharmapiyush7812-code/BharatGouravSolar
 
 ---
 
