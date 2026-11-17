@@ -1,10 +1,10 @@
-# Gourav Bharat Solar
+# Bharat Gourav Solar
 
-**Empowering India with Clean Energy.** This is the website and installable app for Gourav Bharat Solar, a rooftop solar business for homes, shops and factories.
+**Empowering India with Clean Energy.** This is the website and installable app for Bharat Gourav Solar, a rooftop solar business for homes, shops and factories.
 
 It is a static site: one `index.html` with inline CSS and JavaScript, plus a service worker, a manifest and icons. There is no build step. Enquiries, orders and newsletter sign-ups can go to a **Google Sheet** through a small Google Apps Script backend in [`backend/Code.gs`](backend/Code.gs).
 
-- **Live site (Netlify, free):** https://gouravbharatsolar.netlify.app/
+- **Live site (Netlify, free):** https://bharatgouravsolar.netlify.app/
 - **Repository:** https://github.com/sharmapiyush7812-code/GouravBharatSolar
 
 ---
@@ -101,7 +101,7 @@ The only outside libraries are **three.js r128** (from cdnjs) and **Google Fonts
 The service worker and the share/copy buttons need a real web server, not a `file://` page.
 
 ```bash
-cd "Gourav Bharat Solar "
+cd "Bharat Gourav Solar "
 python3 -m http.server 8000
 # open http://localhost:8000
 ```
@@ -137,7 +137,7 @@ const WORK=[['images/project-1.jpg',''], …];   // ['file','caption']
   Keep 3–9 reels; newest first works best. The footer Instagram link and the Google data (`sameAs`) are already set.
 - **`WORK`:** create an `images/` folder and add `project-1.jpg` … `project-6.jpg`. The "Our work" gallery appears by itself, and missing files are skipped.
 - **Stats in "Why us":** 10,000+ installs, 500 MW, 98%, 100+ cities and 25+ years are placeholders. Change them to your real numbers in the `data-n` attributes.
-- **Name order:** the logo artwork reads "Bharat Gourav Solar" while the site says "Gourav Bharat Solar". Make them match.
+- **Name order:** the logo artwork reads "Bharat Gourav Solar" while the site says "Bharat Gourav Solar". Make them match.
 
 ---
 
@@ -208,7 +208,7 @@ After editing the script, go to **Deploy → Manage deployments → ✏️ → V
 
 ## Deploy (Netlify)
 
-The site is hosted free on Netlify at **https://gouravbharatsolar.netlify.app** (project name `gouravbharatsolar`). `netlify.toml` turns off caching for `sw.js` and adds basic security headers.
+The site is hosted free on Netlify at **https://bharatgouravsolar.netlify.app** (project name `bharatgouravsolar`). `netlify.toml` turns off caching for `sw.js` and adds basic security headers.
 
 To publish changes:
 
@@ -224,7 +224,7 @@ To publish changes:
 
 To have every `git push` publish automatically, open Netlify → *Project configuration → Build & deploy → Link repository* and choose this GitHub repo, with no build command and publish directory `.`.
 
-**Custom domain later:** buy `gouravbharatsolar.in` or `.com` (about ₹500–900 a year), then go to Netlify → *Domain management → Add a domain*. HTTPS is free. If you do, change the URL in `index.html` (canonical, `og:` tags, JSON-LD), `robots.txt` and `sitemap.xml`.
+**Custom domain later:** buy `bharatgouravsolar.in` or `.com` (about ₹500–900 a year), then go to Netlify → *Domain management → Add a domain*. HTTPS is free. If you do, change the URL in `index.html` (canonical, `og:` tags, JSON-LD), `robots.txt` and `sitemap.xml`.
 
 **Netlify settings to keep:**
 - The site must stay public. Under *Project configuration → Access & security → Visitor access*, keep team-login protection off, or visitors and Google see a login page.
@@ -233,17 +233,17 @@ To have every `git push` publish automatically, open Netlify → *Project config
 ### Show up on Google search (free)
 The site already has a title, a description, structured data, `robots.txt` and `sitemap.xml`. To get Google to list it:
 
-1. Open [Google Search Console](https://search.google.com/search-console) and choose **Add property → URL prefix**. Enter `https://gouravbharatsolar.netlify.app/`.
+1. Open [Google Search Console](https://search.google.com/search-console) and choose **Add property → URL prefix**. Enter `https://bharatgouravsolar.netlify.app/`.
 2. Verify ownership with the **HTML tag** option. Copy the `<meta name="google-site-verification" …>` tag, paste it in `<head>` of `index.html`, push, then press **Verify**.
 3. Go to **Sitemaps**, submit `sitemap.xml`, then use **URL inspection → Request indexing** on the home page.
-4. Google usually lists a new site within a few days to two weeks. Search `site:gouravbharatsolar.netlify.app` to check.
+4. Google usually lists a new site within a few days to two weeks. Search `site:bharatgouravsolar.netlify.app` to check.
 
-After that, the site shows up when people search for the brand name "Gourav Bharat Solar". Ranking for general searches like "solar company in <city>" takes longer. What helps most:
+After that, the site shows up when people search for the brand name "Bharat Gourav Solar". Ranking for general searches like "solar company in <city>" takes longer. What helps most:
 - a free **Google Business Profile** with your address and phone number
 - real project photos and customer reviews
 - links to the site from your WhatsApp, Instagram and Facebook pages
 
-A custom domain such as `gouravbharatsolar.in` (about ₹500–900 a year) also looks more trustworthy than the `netlify.app` address, and Netlify connects it for free.
+A custom domain such as `bharatgouravsolar.in` (about ₹500–900 a year) also looks more trustworthy than the `netlify.app` address, and Netlify connects it for free.
 
 ---
 

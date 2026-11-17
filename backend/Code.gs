@@ -1,5 +1,5 @@
 /**
- * Gourav Bharat Solar – backend on Google Sheets (Google Apps Script)
+ * Bharat Gourav Solar – backend on Google Sheets (Google Apps Script)
  *
  * What it does
  *   POST  {type:'quote'|'order'|'newsletter', ...}  → saves a row in the matching sheet tab and emails you
@@ -16,7 +16,7 @@
  */
 
 const CONFIG = {
-  BUSINESS_NAME: 'Gourav Bharat Solar',
+  BUSINESS_NAME: 'Bharat Gourav Solar',
   NOTIFY_EMAIL: '',        // where new enquiry / order emails go. Empty = the Google account that owns this script.
   SEND_EMAILS: true,       // set false to stop email alerts
   MAX_PER_10_MIN: 5        // max submissions per phone/email in 10 minutes (spam guard)

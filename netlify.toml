@@ -1,4 +1,4 @@
-# Netlify settings for Gourav Bharat Solar (static site, no build step)
+# Netlify settings for Bharat Gourav Solar (static site, no build step)
 [build]
   publish = "."
 

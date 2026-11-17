@@ -1,6 +1,6 @@
 {
-  "name": "Gourav Bharat Solar",
-  "short_name": "GB Solar",
+  "name": "Bharat Gourav Solar",
+  "short_name": "BG Solar",
   "description": "Rooftop solar for homes, shops and factories. Savings calculator, shop and free quotes.",
   "id": "./index.html",
   "start_url": "./index.html?source=app",

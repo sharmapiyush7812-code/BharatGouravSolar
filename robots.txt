@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://gouravbharatsolar.netlify.app/sitemap.xml
+Sitemap: https://bharatgouravsolar.netlify.app/sitemap.xml
