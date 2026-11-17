@@ -80,9 +80,9 @@ It is a static site: one `index.html` with inline CSS and JavaScript, plus a ser
 index.html             The whole website: markup, styles and scripts
 sw.js                  Service worker (offline support and caching). Bump VERSION after every change.
 manifest.webmanifest   App name, icons, colours and shortcuts (Calculator, Shop, Quote)
-logo.svg               Full logo
-logo-icon.svg          Round logo mark (favicon)
-icons/                 PNG app icons: 192, 512, maskable 512, Apple touch icon
+logo.png               Official logo (transparent PNG, cut from the logo artwork). Show it on a light background.
+logo-mark.png          Logo inside a round white badge (navbar, chat, login, Instagram card)
+icons/                 App icons made from the logo: 192, 512, maskable 512, Apple touch icon, favicon-64
 robots.txt             Tells search engines they may index the site, and where the sitemap is
 sitemap.xml            List of pages for Google Search Console
 backend/Code.gs        Google Apps Script backend (copy it into your Google Sheet)
@@ -216,7 +216,7 @@ To publish changes:
 2. Run this from the project folder. It uploads only the site files, not the backups:
    ```bash
    rm -rf /tmp/gbs-deploy && mkdir /tmp/gbs-deploy && \
-   cp -R index.html sw.js manifest.webmanifest logo.svg logo-icon.svg icons robots.txt sitemap.xml netlify.toml /tmp/gbs-deploy/ && \
+   cp -R index.html sw.js manifest.webmanifest logo.png logo-mark.png icons robots.txt sitemap.xml netlify.toml /tmp/gbs-deploy/ && \
    (cd /tmp/gbs-deploy && npx netlify-cli deploy --dir . --prod --site 9c91dc04-26af-488a-8406-bf87748fd90c)
    ```
    Add `images` to the `cp` list once you have project photos.
