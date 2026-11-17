@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://sharmapiyush7812-code.github.io/GouravBharatSolar/sitemap.xml

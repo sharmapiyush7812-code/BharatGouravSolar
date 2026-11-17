@@ -7,6 +7,13 @@
 <meta name="description" content="Gourav Bharat Solar – Empowering India with Clean Energy. Rooftop, commercial and industrial solar, batteries, inverters, a free savings calculator and quotes.">
 <meta property="og:title" content="Gourav Bharat Solar – Power Your Future With Clean Solar Energy">
 <meta property="og:type" content="website">
+<meta property="og:description" content="Rooftop solar for homes, shops and factories. See your savings with PM Surya Ghar subsidy and EMI, shop panels and batteries, and book a free site visit.">
+<meta property="og:url" content="https://sharmapiyush7812-code.github.io/GouravBharatSolar/">
+<meta property="og:image" content="https://sharmapiyush7812-code.github.io/GouravBharatSolar/icons/icon-512.png">
+<meta property="og:site_name" content="Gourav Bharat Solar"><meta property="og:locale" content="en_IN">
+<meta name="twitter:card" content="summary">
+<link rel="canonical" href="https://sharmapiyush7812-code.github.io/GouravBharatSolar/">
+<script type="application/ld+json">{"@context":"https://schema.org","@graph":[{"@type":"Organization","@id":"https://sharmapiyush7812-code.github.io/GouravBharatSolar/#org","name":"Gourav Bharat Solar","url":"https://sharmapiyush7812-code.github.io/GouravBharatSolar/","logo":"https://sharmapiyush7812-code.github.io/GouravBharatSolar/icons/icon-512.png","slogan":"Empowering India with Clean Energy","areaServed":"IN","description":"Rooftop solar design, installation and servicing for homes, shops and factories."},{"@type":"WebSite","name":"Gourav Bharat Solar","url":"https://sharmapiyush7812-code.github.io/GouravBharatSolar/","publisher":{"@id":"https://sharmapiyush7812-code.github.io/GouravBharatSolar/#org"},"inLanguage":"en-IN"},{"@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does a rooftop solar system cost?","acceptedAnswer":{"@type":"Answer","text":"Roughly ₹55,000 per kW for homes, ₹48,000 for commercial and ₹42,000 for industrial projects, before subsidy. A typical 3 kW home system is about ₹1.65 lakh. Use the calculator for an estimate sized to your bill."}},{"@type":"Question","name":"Is there a government subsidy?","acceptedAnswer":{"@type":"Answer","text":"Yes. Residential rooftop systems can qualify for central subsidy under the PM Surya Ghar scheme (up to ₹78,000 under the 2024 rules), and some states add more. We help you check eligibility and apply."}},{"@type":"Question","name":"How long does installation take?","acceptedAnswer":{"@type":"Answer","text":"After the site survey and design, installing a home system usually takes 1–3 days. Net-metering approval from your DISCOM can take a few more weeks."}},{"@type":"Question","name":"Will solar work during a power cut?","acceptedAnswer":{"@type":"Answer","text":"Only with a hybrid inverter and battery. A standard on-grid system switches off when the grid fails, to keep line workers safe."}},{"@type":"Question","name":"How much maintenance is needed?","acceptedAnswer":{"@type":"Answer","text":"Very little. Clean the panels every 2–4 weeks and get a yearly inspection. Our maintenance plans cover cleaning, checks and performance reports."}},{"@type":"Question","name":"What is net metering?","acceptedAnswer":{"@type":"Answer","text":"A two-way meter records the power you export to the grid and the power you import. You pay only for the net units, so surplus daytime solar lowers your bill."}},{"@type":"Question","name":"Can I pay for solar in EMIs?","acceptedAnswer":{"@type":"Answer","text":"Yes. Many banks offer rooftop solar loans. The calculator shows an example EMI next to your monthly savings, but the real rate and term depend on your lender. We help with the paperwork when you go ahead."}}]}]}</script>
 <meta name="theme-color" content="#0a131a">
 <link rel="icon" type="image/svg+xml" href="logo-icon.svg">
 <link rel="manifest" href="manifest.webmanifest">
@@ -92,13 +99,25 @@ i.ico{display:inline-flex;font-style:normal}
 @keyframes pop{from{opacity:0;transform:translateY(-8px) scale(.97)}}
 
 /* =====================================================================  BUTTONS & FIELDS */
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:13px 22px;border-radius:8px;border:0;background:var(--sun2);color:#1a0f00;font:700 .95rem var(--fb);text-decoration:none;cursor:pointer;transition:background .15s;white-space:nowrap}
-.btn:hover{background:#ff8a3d}.btn:active{transform:translateY(1px)}
-.btn .ic{transition:transform .2s}.btn:hover .ic.go{transform:translateX(4px)}
-.btn.alt{background:transparent;color:inherit;box-shadow:inset 0 0 0 1.5px var(--line)}.btn.alt:hover{background:var(--surface2)}
-.btn.dark{background:var(--ink);color:var(--bg);box-shadow:none}
-.btn.sm{padding:10px 18px;font-size:.86rem}.btn.block{width:100%}
-.btn:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn{--b:var(--sun2);--f:#1a0f00;--e:rgba(0,0,0,.2);position:relative;display:inline-flex;align-items:center;justify-content:center;gap:9px;min-height:48px;padding:0 22px;border-radius:10px;border:0;background:var(--b);color:var(--f);font:700 .95rem/1.1 var(--fb);letter-spacing:.01em;text-decoration:none;text-align:center;cursor:pointer;white-space:nowrap;box-shadow:inset 0 -3px 0 var(--e),0 1px 2px rgba(0,0,0,.12);transition:background-color .15s,box-shadow .12s,transform .12s,color .15s;-webkit-user-select:none;user-select:none;touch-action:manipulation}
+.btn:hover{--b:#ff8236}
+.btn:active{transform:translateY(2px);box-shadow:inset 0 -1px 0 var(--e)}
+.btn:focus-visible{outline:3px solid var(--sun);outline-offset:3px}
+.btn .ic{width:18px;height:18px;transition:transform .2s}.btn:hover .ic.go{transform:translateX(3px)}
+.btn.alt{--b:transparent;--f:var(--ink);--e:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}
+.btn.alt:hover{--b:var(--surface2);box-shadow:inset 0 0 0 1.5px var(--mut)}.btn.alt:active{box-shadow:inset 0 0 0 1.5px var(--mut)}
+.btn.dark{--b:var(--ink);--f:var(--surface);--e:rgba(0,0,0,.4)}.btn.dark:hover{--b:var(--ink2)}
+.btn.green{--b:#1f9d5c;--f:#fff;--e:rgba(0,0,0,.25)}.btn.green:hover{--b:#178a4f}
+.btn.link{--b:transparent;--f:var(--sun2);--e:transparent;min-height:0;padding:8px 2px;box-shadow:none}.btn.link:hover{text-decoration:underline}.btn.link:active{transform:none}
+.btn.sm{min-height:40px;padding:0 16px;font-size:.86rem;border-radius:9px;gap:7px}.btn.sm .ic{width:16px;height:16px}
+.btn.lg{min-height:56px;padding:0 28px;font-size:1.02rem;border-radius:12px}
+.btn.block{width:100%}
+.btn:disabled,.btn[aria-disabled="true"]{opacity:.55;cursor:not-allowed;transform:none}
+.btn.is-loading{color:transparent!important;pointer-events:none}.btn.is-loading .ic{opacity:0}
+.btn.is-loading::after{content:"";position:absolute;inset:0;margin:auto;width:18px;height:18px;border-radius:50%;border:2.5px solid var(--f);border-right-color:transparent;animation:spin .7s linear infinite}
+.btn.is-done{--b:#1f9d5c;--f:#fff;--e:rgba(0,0,0,.25)}
+@keyframes spin{to{transform:rotate(360deg)}}
+.btn-pair{display:grid;grid-template-columns:1fr 1fr;gap:10px}
 input,select,textarea{font:500 .95rem var(--fb);color:var(--ink);background:var(--surface2);border:1.5px solid transparent;border-radius:var(--rs);padding:13px 15px;width:100%;transition:border-color .2s,box-shadow .2s,background .2s}
 input::placeholder,textarea::placeholder{color:var(--mut);opacity:.8}
 input:focus,select:focus,textarea:focus{outline:none;border-color:var(--sun);background:var(--surface);box-shadow:0 0 0 5px rgba(255,165,31,.16)}
@@ -127,7 +146,7 @@ input[type=range]::-moz-range-thumb{width:20px;height:20px;border-radius:50%;bac
 .hero h1 .hl{color:#ffb547}
 .lead{font-size:1.16rem;max-width:44ch;color:rgba(255,255,255,.76);margin:26px 0 34px}
 .row{display:flex;flex-wrap:wrap;gap:12px}
-.hero .btn.alt{color:#fff;box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.3);background:rgba(255,255,255,.05);backdrop-filter:blur(6px)}.hero .btn.alt:hover{background:rgba(255,255,255,.14)}
+.hero .btn.alt{--f:#fff;--b:rgba(255,255,255,.06);box-shadow:inset 0 0 0 1.5px rgba(255,255,255,.32);backdrop-filter:blur(6px)}.hero .btn.alt:hover{background:rgba(255,255,255,.14)}
 .trust{display:flex;flex-wrap:wrap;gap:10px 24px;margin:34px 0 0;padding:0;list-style:none;font-size:.88rem;color:rgba(255,255,255,.75);font-weight:600}
 .trust li{display:flex;align-items:center;gap:8px}.trust .ic{color:#3fcf8e}
 .sunbar{position:absolute;z-index:3;left:max(20px,5vw);right:max(20px,5vw);bottom:30px;display:grid;grid-template-columns:auto 1fr auto;gap:24px;align-items:center;padding:16px 24px;border-radius:12px;background:rgba(8,18,24,.6);border:1px solid rgba(255,255,255,.12);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);box-shadow:0 24px 50px -24px rgba(0,0,0,.7)}
@@ -494,7 +513,7 @@ body.cartmode #cartView{display:block}body.cartmode main,body.cartmode .cta{disp
   .paygrid{grid-template-columns:1fr}
   #authDlg[open]{grid-template-columns:1fr}.auth-art{display:none}.auth-main{padding:28px 22px}
   .faq details p{padding-right:0}
-  #toasts{bottom:auto;top:84px}#chat{right:12px;bottom:88px;height:calc(100svh - 110px)}#chatFab{right:16px;bottom:16px;width:58px;height:58px}.fab-tip{right:86px;bottom:26px}
+  #toasts{bottom:auto;top:84px}#chat{right:12px;bottom:88px;height:calc(100svh - 110px)}#chatFab{right:16px;bottom:16px;width:58px;height:58px}.fab-tip{right:86px;bottom:26px}.wafab{right:21px;bottom:86px}
   .line{grid-template-columns:56px 1fr auto}.thumb{width:56px;height:56px}
 }
 @media(max-width:520px){
@@ -525,10 +544,67 @@ body{overscroll-behavior-y:none}
   .hero-text{padding-bottom:330px}
   #chatFab{bottom:calc(80px + env(safe-area-inset-bottom))}
   .fab-tip{bottom:calc(90px + env(safe-area-inset-bottom))}
+  .wafab{bottom:calc(150px + env(safe-area-inset-bottom))}
   #chat{left:0;right:0;top:0;bottom:calc(68px + env(safe-area-inset-bottom));width:auto;height:auto;border-radius:0;border:0}
   .ch-head{padding-top:max(16px,env(safe-area-inset-top))}
   .install-bar{bottom:calc(80px + env(safe-area-inset-bottom))}
   .drawer{padding-bottom:env(safe-area-inset-bottom)}
+}
+
+/* =====================================================================  BUTTON EXTRAS */
+.fly{position:fixed;z-index:200;width:16px;height:16px;margin:-8px 0 0 -8px;border-radius:50%;background:var(--sun2);box-shadow:0 0 0 4px rgba(255,105,20,.25);pointer-events:none;transition:transform .6s cubic-bezier(.45,-.25,.7,1),opacity .6s}
+.qty.pop{animation:qpop .45s}@keyframes qpop{40%{transform:scale(1.12)}}
+.pimg{cursor:pointer}
+.qv{position:absolute;z-index:2;bottom:12px;left:50%;transform:translate(-50%,8px);opacity:0;padding:7px 12px;border-radius:8px;background:rgba(0,0,0,.6);color:#fff;font:700 .78rem var(--fb);transition:opacity .2s,transform .2s;display:inline-flex;gap:6px;align-items:center;white-space:nowrap}
+.qv .ic{width:14px;height:14px}
+.prod:hover .qv,.pimg:focus-visible .qv{opacity:1;transform:translate(-50%,0)}
+.pname{all:unset;cursor:pointer}.pname:hover{color:var(--sun2)}.pname:focus-visible{outline:3px solid var(--sun);outline-offset:2px;border-radius:4px}
+.totop{position:fixed;left:22px;bottom:22px;z-index:80;width:48px;height:48px;border-radius:12px;border:1px solid var(--line);background:var(--surface);color:var(--ink);box-shadow:var(--sh);display:grid;place-items:center;cursor:pointer;opacity:0;transform:translateY(12px);pointer-events:none;transition:opacity .2s,transform .2s}
+.totop.on{opacity:1;transform:none;pointer-events:auto}.totop:hover{border-color:var(--sun)}.totop .ic{width:20px;height:20px}
+.qsuccess{display:grid;grid-template-columns:auto 1fr;gap:12px 14px;align-items:start;padding:16px;border-radius:12px;background:rgba(31,157,92,.1);border:1px solid rgba(31,157,92,.35)}
+.qsuccess>.ic{width:26px;height:26px;padding:4px;border-radius:50%;background:#1f9d5c;color:#fff;box-sizing:content-box}
+.qsuccess b{display:block;margin-bottom:4px}.qsuccess span{color:var(--ink2);font-size:.9rem}.qsuccess code{font:800 .95rem var(--fd);background:var(--surface);padding:2px 8px;border-radius:6px}
+.qsuccess .row{grid-column:1/-1}
+/* ---------- enhancements: subsidy/EMI, WhatsApp, delivery estimate ---------- */
+.metrics .sub b{color:var(--green)}
+.emi{display:grid;grid-template-columns:1fr 1fr;gap:8px;padding:16px;border-radius:16px;border:1px dashed var(--line);animation:up .35s both}
+.emi div b{display:block;font:800 1.35rem var(--fd);letter-spacing:-.02em;font-variant-numeric:tabular-nums}.emi div span{font-size:.74rem;color:var(--mut);font-weight:700}
+.emi p{grid-column:1/-1;margin:4px 0 0;font-size:.85rem;font-weight:600}.emi p.good{color:var(--green)}.emi small{grid-column:1/-1;font-size:.72rem;color:var(--mut)}
+.wafab{position:fixed;right:30px;bottom:98px;z-index:85;width:48px;height:48px;border-radius:50%;background:#1faa59;color:#fff;display:grid;place-items:center;box-shadow:0 10px 24px -10px rgba(0,0,0,.45);transition:transform .2s,opacity .2s}
+.wafab:hover{transform:scale(1.06)}.wafab .ic{width:24px;height:24px}
+#chatFab.on~.wafab{opacity:0;pointer-events:none}
+.eta{display:flex;align-items:center;gap:6px;margin-top:6px;font-size:.78rem;font-weight:700;color:var(--green)}.eta:empty{display:none}.eta .ic{width:16px;height:16px}
+@media(max-width:720px){.metrics div:last-child{grid-column:1/-1}}
+.hp{position:absolute!important;left:-9999px;width:1px;height:1px;opacity:0}
+.calc-actions{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+#pv{padding:0;border:0;border-radius:16px;width:min(840px,94vw);max-height:92vh;background:var(--surface);color:var(--ink);overflow:hidden;box-shadow:0 50px 100px -30px rgba(0,0,0,.6)}
+#pv[open]{display:grid;grid-template-columns:1fr 1.15fr;animation:dlg .35s cubic-bezier(.2,.8,.2,1)}
+#pv::backdrop{background:rgba(4,10,14,.6);backdrop-filter:blur(4px)}
+.pv-img{position:relative;display:grid;place-items:center;color:#fff;min-height:340px;overflow:hidden}
+.pv-img::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.08) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.08) 1px,transparent 1px);background-size:30px 30px}
+.pv-img .ic{width:120px;height:120px;stroke-width:1.1;position:relative;z-index:1;filter:drop-shadow(0 14px 24px rgba(0,0,0,.35))}
+.pv-body{padding:30px;display:flex;flex-direction:column;gap:12px;position:relative;overflow:auto;max-height:92vh}
+.pv-body .x-btn{position:absolute;top:16px;right:16px}
+.pv-cat{font:700 .85rem var(--fb);color:var(--sun2)}
+#pvTitle{font-size:1.75rem;padding-right:50px}
+.pv-pts{margin:2px 0;padding:0;list-style:none;display:grid;gap:8px;font-size:.92rem}.pv-pts li{display:flex;gap:10px;align-items:flex-start}.pv-pts .ic{color:var(--green);margin-top:2px}
+.pv-price{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}.pv-price b{font:800 2rem var(--fd);letter-spacing:-.02em}
+.pv-qty{display:flex;align-items:center;justify-content:space-between;padding:10px 12px 10px 16px;border-radius:12px;background:var(--surface2);font-weight:700}
+#pvNote{font-size:.85rem;color:var(--green);font-weight:700;min-height:1.2em}
+@media(max-width:720px){
+  .hero .row{display:grid;grid-template-columns:1fr}.hero .row .btn{min-height:52px}
+  .totop{left:16px;bottom:calc(80px + env(safe-area-inset-bottom))}
+  #pv[open]{grid-template-columns:1fr;width:100vw;max-width:100vw;max-height:94svh;margin:auto 0 0;border-radius:18px 18px 0 0}
+  .pv-img{min-height:160px}.pv-img .ic{width:80px;height:80px}
+  .pv-body{padding:22px 20px calc(22px + env(safe-area-inset-bottom))}#pvTitle{font-size:1.4rem}
+}
+@media print{
+  body.print-calc *{visibility:hidden}
+  body.print-calc #calculator,body.print-calc #calculator *{visibility:visible}
+  body.print-calc #calculator{position:absolute;inset:0 0 auto;padding:24px;background:#fff!important;color:#111;--ink:#111;--ink2:#333;--mut:#555;--surface:#fff;--surface2:#f2f2f2;--line:#ccc}
+  body.print-calc #calculator::before{content:"Gourav Bharat Solar · Savings estimate";display:block;visibility:visible;font:800 20px var(--fd);margin-bottom:12px}
+  body.print-calc .calc-actions,body.print-calc #calcQuote,body.print-calc .head>p{display:none!important}
+  body.print-calc .card{box-shadow:none;border:1px solid #ccc}
 }
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}.js .reveal{opacity:1;transform:none}.ring .rf{stroke-dashoffset:0}.ba i{transform:none}}
 </style>
@@ -559,11 +635,12 @@ body{overscroll-behavior-y:none}
   <canvas id="scene" aria-hidden="true"></canvas>
   <div class="hero-text">
     <span class="pill"><i class="dot"></i>Free site visit before every quote</span>
-    <h1 lang="hi-Latn">Apni chhat se,<br><span class="hl">apni bijli.</span></h1>
-    <p class="lead">Your roof, your power. We design, install and look after rooftop solar for homes, shops and factories. From the first site visit to yearly cleaning, it's one team you can call.</p>
+    <h1>Your roof,<br><span class="hl">your power.</span></h1>
+    <p class="lead">We design, install and look after rooftop solar for homes, shops and factories. From the first site visit to yearly cleaning, it's one team you can call.</p>
     <div class="row">
       <a class="btn" href="#calculator">Check your savings <i class="ico" data-i="arrow" data-c="go"></i></a>
       <a class="btn alt" href="#working">See how it works</a>
+      <a class="btn alt" id="heroCall" href="#quote" hidden><i class="ico" data-i="phone"></i>Call us</a>
     </div>
     <ul class="trust">
       <li><i class="ico" data-i="check"></i>25-year system life</li><li><i class="ico" data-i="check"></i>App monitoring</li><li><i class="ico" data-i="check"></i>End-to-end installation</li>
@@ -688,6 +765,8 @@ body{overscroll-behavior-y:none}
       <div class="rng"><div class="top"><span>Shade-free roof area</span><output id="roofV">600 sq ft</output></div><input name="roof" type="range" min="100" max="5000" step="50" value="600" aria-label="Roof area in square feet"></div>
       <div class="rng"><div class="top"><span>Property type</span></div>
         <div class="seg" role="group" aria-label="Property type" id="ptype"><button type="button" aria-pressed="true">Residential</button><button type="button" aria-pressed="false">Commercial</button><button type="button" aria-pressed="false">Industrial</button></div></div>
+      <div class="rng"><div class="top"><span>How you'll pay</span></div>
+        <div class="seg" role="group" aria-label="Payment plan" id="fin"><button type="button" aria-pressed="true" data-y="0">Upfront</button><button type="button" aria-pressed="false" data-y="3">EMI 3 yrs</button><button type="button" aria-pressed="false" data-y="5">EMI 5 yrs</button></div></div>
       <button type="button" class="btn" id="calcQuote">Get a quote for this system <i class="ico" data-i="arrow" data-c="go"></i></button>
     </form>
     <div class="card calc-out reveal" aria-live="polite">
@@ -696,13 +775,18 @@ body{overscroll-behavior-y:none}
       <div class="metrics">
         <div class="hl"><b id="rSave">–</b><span>Savings / month</span></div>
         <div><b id="rCost">–</b><span>Cost before subsidy</span></div>
+        <div class="sub"><b id="rSub">–</b><span id="rSubL">PM Surya Ghar subsidy</span></div>
+        <div><b id="rNet">–</b><span>Your cost after subsidy</span></div>
         <div><b id="rPay">–</b><span>Payback</span></div>
+        <div><b id="rLife">–</b><span>25-year savings</span></div>
         <div><b id="rGen">–</b><span>Units / month</span></div>
         <div><b id="rCo2">–</b><span>CO₂ avoided / yr</span></div>
-        <div><b id="rLife">–</b><span>25-year savings</span></div>
+        <div><b id="rTree">–</b><span>Same as planting trees</span></div>
       </div>
+      <div class="emi" id="emiBox" aria-live="polite" hidden></div>
       <svg class="lchart" id="lchart" viewBox="0 0 340 130" aria-label="Cumulative savings over 25 years compared with system cost"></svg>
-      <p class="note">Estimate only. Assumes 4.5 sun-hours a day and today's tariff. Final design needs a site survey.</p>
+      <div class="calc-actions"><button type="button" class="btn alt sm" id="calcShare"><i class="ico" data-i="share"></i>Share estimate</button><button type="button" class="btn alt sm" id="calcPrint"><i class="ico" data-i="print"></i>Print / save PDF</button></div>
+      <p class="note">Estimate only. Assumes 4.5 sun-hours a day and today's tariff. Subsidy follows the PM Surya Ghar 2024 rules for homes (₹30,000/kW for the first 2 kW, ₹18,000 for the 3rd kW, up to ₹78,000) and may change. Final design needs a site survey.</p>
     </div>
   </div>
  </div>
@@ -729,7 +813,9 @@ body{overscroll-behavior-y:none}
     <label class="fld">Property type<select name="ptype"><option>Residential</option><option>Commercial</option><option>Industrial</option></select></label>
     <label class="fld">Preferred date<input name="date" type="date"></label>
     <label class="fld full">Requirements<textarea name="notes" rows="3" placeholder="Roof type, monthly bill, battery backup needs…"></textarea></label>
+    <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
     <button class="btn">Submit enquiry <i class="ico" data-i="arrow" data-c="go"></i></button>
+    <div class="qsuccess full" id="qOk" role="status" hidden></div>
   </form>
   <div class="side-q">
     <div class="card why reveal">
@@ -741,9 +827,9 @@ body{overscroll-behavior-y:none}
       </ul>
     </div>
     <form id="trackForm" class="card form reveal" style="padding:28px">
-      <h3>Track your enquiry</h3>
-      <label class="fld full">Enquiry ID<input name="id" placeholder="SN-XXXXXX" required></label>
-      <button class="btn alt">Track enquiry</button><p id="trackOut" class="full" aria-live="polite"></p>
+      <h3>Track your enquiry or order</h3>
+      <label class="fld full">Enquiry or order ID<input name="id" placeholder="SN-XXXXXX or ORD-XXXXXX" required></label>
+      <button class="btn alt">Track</button><p id="trackOut" class="full" aria-live="polite"></p>
     </form>
   </div>
   </div>
@@ -771,8 +857,9 @@ body{overscroll-behavior-y:none}
           <label class="fld">Full name<input name="name" autocomplete="name" required></label>
           <label class="fld">Phone<input name="phone" inputmode="numeric" maxlength="10" autocomplete="tel" placeholder="10-digit mobile" required></label>
           <label class="fld full">Address<textarea name="addr" rows="2" autocomplete="street-address" required></textarea></label>
-          <label class="fld">Pincode<input name="pin" inputmode="numeric" maxlength="6" autocomplete="postal-code" required></label>
+          <label class="fld">Pincode<input name="pin" inputmode="numeric" maxlength="6" autocomplete="postal-code" required><small class="eta" id="eta" aria-live="polite"></small></label>
           <label class="fld">City<input name="city" autocomplete="address-level2" required></label>
+          <input class="hp" name="website" tabindex="-1" autocomplete="off" aria-hidden="true">
           <fieldset class="full paygrid" id="paySec"><legend><span class="n" style="display:inline-grid;margin-right:8px">3</span>Payment method</legend>
             <label class="payopt"><input type="radio" name="pay" value="UPI" checked><span><i class="ico" data-i="phone"></i>UPI</span></label>
             <label class="payopt"><input type="radio" name="pay" value="Card"><span><i class="ico" data-i="card"></i>Credit / debit card</span></label>
@@ -831,6 +918,25 @@ body{overscroll-behavior-y:none}
 </aside>
 
 <!-- ============================ AUTH ============================ -->
+<!-- ============================ PRODUCT QUICK VIEW ============================ -->
+<dialog id="pv" aria-labelledby="pvTitle">
+  <div class="pv-img" id="pvImg"></div>
+  <div class="pv-body">
+    <button class="x-btn" id="pvClose" type="button" aria-label="Close"><i class="ico" data-i="close"></i></button>
+    <span class="pv-cat" id="pvCat"></span>
+    <h2 id="pvTitle"></h2>
+    <div class="stars" id="pvStars"></div>
+    <p class="muted" id="pvDesc"></p>
+    <ul class="pv-pts" id="pvPts"></ul>
+    <div class="pv-price"><b id="pvPrice"></b><span class="muted">+ 12% GST</span></div>
+    <div class="pv-qty"><span>Quantity</span><div class="qty"><button type="button" id="pvDec" aria-label="Decrease quantity">−</button><span id="pvQ">1</span><button type="button" id="pvInc" aria-label="Increase quantity">+</button></div></div>
+    <p id="pvNote" aria-live="polite"></p>
+    <div class="btn-pair"><button type="button" class="btn" id="pvAdd"><i class="ico" data-i="cart"></i>Add to cart</button><button type="button" class="btn dark" id="pvBuy">Buy now</button></div>
+    <button type="button" class="btn link" id="pvAsk">Have a question about this product? Ask us</button>
+  </div>
+</dialog>
+<button class="totop" id="toTop" type="button" aria-label="Back to top"><i class="ico" data-i="up"></i></button>
+
 <dialog id="authDlg" aria-labelledby="authTitle">
   <div class="auth-art">
     <img class="mark" src="logo-icon.svg" alt="" width="72" height="72">
@@ -934,7 +1040,11 @@ const IC={
  plus:'<path d="M12 5v14M5 12h14"/>',
  info:'<circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/>',
  leaf:'<path d="M5 21c0-9 6-15 16-16-1 10-7 16-16 16z"/><path d="M5 21l8-8"/>',
- tag:'<path d="M3 12V3h9l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>'
+ tag:'<path d="M3 12V3h9l9 9-9 9z"/><circle cx="7.5" cy="7.5" r="1.5"/>',
+ copy:'<rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a1 1 0 0 1 1-1h10"/>',
+ share:'<circle cx="18" cy="5" r="2.5"/><circle cx="6" cy="12" r="2.5"/><circle cx="18" cy="19" r="2.5"/><path d="M8.2 10.8l7.6-4.4M8.2 13.2l7.6 4.4"/>',
+ print:'<path d="M7 9V3h10v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M7 14h10v7H7z"/>',
+ up:'<path d="M12 19V5M6 11l6-6 6 6"/>'
 };
 const ico=(n,c='')=>`<svg class="ic ${c}" viewBox="0 0 24 24" aria-hidden="true">${IC[n]||''}</svg>`;
 $$('[data-i]').forEach(el=>{el.innerHTML=ico(el.dataset.i,el.dataset.c||'')});
@@ -947,6 +1057,28 @@ $('#themeBtn').onclick=()=>{root.dataset.theme=curTheme()==='dark'?'light':'dark
 darkMQ.addEventListener?.('change',themeUI);themeUI();
 
 /* ---------- toast ---------- */
+/* button states: busy spinner and a short success confirmation */
+function busy(b,on){if(!b)return;b.classList.toggle('is-loading',on);b.disabled=on;b.setAttribute('aria-busy',on)}
+function done(b,label,ms=1800){if(!b)return;if(!b.dataset.html)b.dataset.html=b.innerHTML;const h=b.dataset.html;b.classList.add('is-done');b.innerHTML=ico('check')+esc(label);clearTimeout(b._t);b._t=setTimeout(()=>{b.classList.remove('is-done');b.innerHTML=h;delete b.dataset.html},ms)}
+const wait=ms=>new Promise(r=>setTimeout(r,REDUCE?0:ms));
+/* ---------- backend calls: send to Google Sheets, queue on this device when offline ---------- */
+const newId=p=>p+'-'+[...crypto.getRandomValues(new Uint8Array(6))].map(b=>'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'[b%32]).join('');
+async function apiFetch(url,opt={}){const ctl=new AbortController(),t=setTimeout(()=>ctl.abort(),15000);
+  try{const r=await fetch(url,{...opt,signal:ctl.signal});return await r.json()}finally{clearTimeout(t)}}
+async function apiSend(type,data){if(!API)return{ok:true,local:true};
+  const body=JSON.stringify({type,...data,source:document.documentElement.classList.contains('app')?'app':'web'});
+  try{return await apiFetch(API,{method:'POST',headers:{'Content-Type':'text/plain;charset=utf-8'},body})}catch{return{ok:false,offline:true}}}
+const outbox={list:()=>store.get('gbs_outbox',[]),busy:false,
+  add(type,data){const q=outbox.list();q.push({type,data});store.set('gbs_outbox',q.slice(-25))},
+  async flush(){if(!API||outbox.busy||!navigator.onLine)return;const q=outbox.list();if(!q.length)return;outbox.busy=true;const keep=[];
+    for(const m of q){const r=await apiSend(m.type,m.data);if(r.offline)keep.push(m)}
+    store.set('gbs_outbox',keep);outbox.busy=false;if(keep.length<q.length)toast('Your saved details have been sent')}};
+async function send(type,data){const r=await apiSend(type,data);if(r.offline){outbox.add(type,data);return{ok:true,queued:true}}return r}
+async function lookup(id){let r=null;if(API){try{r=await apiFetch(API+'?action=track&id='+encodeURIComponent(id))}catch{}}
+  if(r?.ok&&r.found)return{status:r.status,at:r.at,remote:true};
+  const l=store.get('sn_quotes',{})[id]||store.get('sn_orders',{})[id];return l?{status:l.status||'Received',at:l.at,phone:l.phone}:null}
+addEventListener('online',()=>outbox.flush());setTimeout(()=>outbox.flush(),4000);
+
 function toast(m,o={}){const t=document.createElement('div');t.className='toast';t.innerHTML=ico(o.icon||'check')+`<span>${esc(m)}</span>`;
   if(o.action){const b=document.createElement('button');b.type='button';b.textContent=o.label;b.onclick=()=>{o.action();t.remove()};t.append(b)}
   $('#toasts').append(t);setTimeout(()=>t.remove(),o.ms||3400)}
@@ -963,26 +1095,36 @@ const byId=id=>PROD.find(p=>p.id===id);
 const CATI={Panels:'panel',Inverters:'inverter',Batteries:'battery',Accessories:'wrench',Kits:'box'};
 const RATE={Residential:55000,Commercial:48000,Industrial:42000};
 function sizeSystem(bill,tar,roof,type='Residential'){
-  const units=bill/tar,need=units/120,fit=roof/100,kw=+Math.max(1,Math.min(need,fit)).toFixed(1),cost=kw*RATE[type],gen=kw*4.5*30,save=Math.min(gen,units)*tar;
-  return{units,need,kw,cost,gen,save,payback:cost/(save*12),co2:gen*12*.82/1000,life:save*12*25,limited:fit<need}}
+  const units=bill/tar,need=units/120,fit=roof/100,kw=+Math.max(1,Math.min(need,fit)).toFixed(1),cost=kw*RATE[type],gen=kw*4.5*30,save=Math.min(gen,units)*tar,sub=subsidyFor(kw,type),net=cost-sub;
+  return{units,need,kw,cost,sub,net,gen,save,payback:net/(save*12),co2:gen*12*.82/1000,life:save*12*25,limited:fit<need}}
+/* PM Surya Ghar (2024 rules, homes only): ₹30k/kW up to 2 kW, ₹18k for the 3rd kW, capped at ₹78k */
+function subsidyFor(kw,type){return type!=='Residential'?0:Math.round(kw<=2?30000*kw:kw<=3?60000+18000*(kw-2):78000)}
+/* monthly EMI for a loan of p at a yearly rate over y years */
+const emiFor=(p,y,rate=.10)=>{const r=rate/12,n=y*12;return p*r*Math.pow(1+r,n)/(Math.pow(1+r,n)-1)};
 const FAQ=[
  ['How much does a rooftop solar system cost?','Roughly ₹55,000 per kW for homes, ₹48,000 for commercial and ₹42,000 for industrial projects, before subsidy. A typical 3 kW home system is about ₹1.65 lakh. Use the calculator for an estimate sized to your bill.'],
  ['Is there a government subsidy?','Yes. Residential rooftop systems can qualify for central subsidy under the PM Surya Ghar scheme (up to ₹78,000 under the 2024 rules), and some states add more. We help you check eligibility and apply.'],
  ['How long does installation take?','After the site survey and design, installing a home system usually takes 1–3 days. Net-metering approval from your DISCOM can take a few more weeks.'],
  ['Will solar work during a power cut?','Only with a hybrid inverter and battery. A standard on-grid system switches off when the grid fails, to keep line workers safe.'],
  ['How much maintenance is needed?','Very little. Clean the panels every 2–4 weeks and get a yearly inspection. Our maintenance plans cover cleaning, checks and performance reports.'],
- ['What is net metering?','A two-way meter records the power you export to the grid and the power you import. You pay only for the net units, so surplus daytime solar lowers your bill.']
+ ['What is net metering?','A two-way meter records the power you export to the grid and the power you import. You pay only for the net units, so surplus daytime solar lowers your bill.'],
+ ['Can I pay for solar in EMIs?','Yes. Many banks offer rooftop solar loans. The calculator shows an example EMI next to your monthly savings, but the real rate and term depend on your lender. We help with the paperwork when you go ahead.']
 ];
 
 /* ---------- YOUR BUSINESS DETAILS: fill these in and they appear in the footer ---------- */
 const BIZ={phone:'',whatsapp:'',email:'',address:'',hours:''}; // e.g. phone:'+91 98xxxxxxxx', hours:'Mon–Sat, 9am–7pm'
+/* ---------- YOUR BACKEND: paste your Google Apps Script web-app URL (ends in /exec). See README.md → Backend.
+   Empty = enquiries and orders are only saved in the visitor's own browser. ---------- */
+const API='';
 /* ---------- YOUR PROJECT PHOTOS: put real photos in an images/ folder; missing files are skipped ---------- */
 const WORK=[['images/project-1.jpg',''],['images/project-2.jpg',''],['images/project-3.jpg',''],['images/project-4.jpg',''],['images/project-5.jpg',''],['images/project-6.jpg','']]; // ['file','caption']
 (function(){const c=[];
   if(BIZ.phone)c.push(`<li><a href="tel:${BIZ.phone.replace(/[^\d+]/g,'')}">${ico('phone')}${esc(BIZ.phone)}</a></li>`);
+  if(BIZ.whatsapp)document.body.insertAdjacentHTML('beforeend',`<a class="wafab" href="https://wa.me/${BIZ.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hi, I want to know about rooftop solar')}" target="_blank" rel="noopener" aria-label="Chat with us on WhatsApp">${ico('chat')}</a>`);
   if(BIZ.whatsapp)c.push(`<li><a href="https://wa.me/${BIZ.whatsapp.replace(/\D/g,'')}" target="_blank" rel="noopener">${ico('chat')}WhatsApp us</a></li>`);
   if(BIZ.email)c.push(`<li><a href="mailto:${esc(BIZ.email)}">${ico('mail')}${esc(BIZ.email)}</a></li>`);
   if(BIZ.address)c.push(`<li>${esc(BIZ.address)}</li>`);if(BIZ.hours)c.push(`<li class="muted">${esc(BIZ.hours)}</li>`);
+  if(BIZ.phone){const hc=$('#heroCall');hc.href='tel:'+BIZ.phone.replace(/[^\d+]/g,'');hc.hidden=false}
   if(c.length)$('#bizContact').innerHTML=`<ul class="contact">${c.join('')}</ul>`;
   WORK.forEach(([src,cap])=>{const im=new Image();im.onload=()=>{const f=document.createElement('figure');im.alt=cap||'Rooftop solar installation by Gourav Bharat Solar';im.loading='lazy';f.append(im);if(cap){const fc=document.createElement('figcaption');fc.textContent=cap;f.append(fc)}$('#gallery').append(f);$('#work').hidden=false};im.src=src});
 })();
@@ -1016,12 +1158,37 @@ function renderProducts(){
   const l=PROD.filter(p=>(!fcat||p.cat===fcat)&&(!q||(p.name+' '+p.cat).toLowerCase().includes(q)));
   if(s==='lo')l.sort((a,b)=>a.price-b.price);if(s==='hi')l.sort((a,b)=>b.price-a.price);if(s==='rt')l.sort((a,b)=>b.rt-a.rt);
   $('#pcount').textContent=`Showing ${l.length} product${l.length===1?'':'s'}`;
-  $('#prodGrid').innerHTML=l.length?l.map((p,i)=>`<article class="card prod" style="animation-delay:${Math.min(i,8)*45}ms"><div class="pimg c-${p.cat}">${ico(CATI[p.cat])}<span class="tag">${p.cat}</span></div><div class="pbody"><h3>${p.name}</h3><div class="stars" aria-label="Rated ${p.rt} out of 5">${stars(p.rt)}<small>${p.rt}</small></div><div class="pfoot" data-pf="${p.id}">${pfootHTML(p)}</div></div></article>`).join('')
+  $('#prodGrid').innerHTML=l.length?l.map((p,i)=>`<article class="card prod" style="animation-delay:${Math.min(i,8)*45}ms"><div class="pimg c-${p.cat}" data-view="${p.id}" role="button" tabindex="0" aria-label="Quick view: ${p.name}">${ico(CATI[p.cat])}<span class="tag">${p.cat}</span><span class="qv">${ico('eye')}Quick view</span></div><div class="pbody"><h3><button type="button" class="pname" data-view="${p.id}">${p.name}</button></h3><div class="stars" aria-label="Rated ${p.rt} out of 5">${stars(p.rt)}<small>${p.rt}</small></div><div class="pfoot" data-pf="${p.id}">${pfootHTML(p)}</div></div></article>`).join('')
     :'<p class="noresult">No products match. Try a different search or category.</p>';
 }
 const updateFoots=()=>$$('[data-pf]').forEach(el=>{el.innerHTML=pfootHTML(byId(el.dataset.pf))});
 let st;$('#search').addEventListener('input',()=>{clearTimeout(st);st=setTimeout(renderProducts,150)});
 $('#sort').onchange=renderProducts;renderProducts();
+
+
+/* ---------- product quick view ---------- */
+const PDESC={
+  Panels:['A solar panel for rooftop and ground-mount systems. We will help you work out how many your roof needs.',['Sold per panel','Works with on-grid, off-grid and hybrid systems','Add professional installation at checkout']],
+  Inverters:['Converts the DC power from your panels into AC for your home or business.',['Choose a hybrid inverter if you want battery backup','We match the inverter size to your panels','Add professional installation at checkout']],
+  Batteries:['Stores solar energy for the evening and for power cuts. Needs a hybrid inverter.',['Lithium battery','Keeps essentials running during outages','Add professional installation at checkout']],
+  Accessories:['Parts to complete, protect or upgrade a solar system.',['Fits standard rooftop systems','Ask us if you are not sure what fits','Ships with the rest of your order']],
+  Kits:['A complete system in one order. We confirm the exact parts list with you before dispatch.',['Panels, inverter and mounting in one order','Free site visit to check your roof first','Add professional installation at checkout']]
+};
+const pv=$('#pv');let pvId=null,pvQ=1,pvAdded=false;
+function openPV(id){const p=byId(id);if(!p)return;pvId=id;pvQ=1;pvAdded=false;const [desc,pts]=PDESC[p.cat];
+  $('#pvImg').className='pv-img c-'+p.cat;$('#pvImg').innerHTML=ico(CATI[p.cat]);$('#pvCat').textContent=p.cat;$('#pvTitle').textContent=p.name;
+  $('#pvStars').innerHTML=`${stars(p.rt)}<small>${p.rt} out of 5</small>`;$('#pvDesc').textContent=desc;
+  $('#pvPts').innerHTML=pts.map(t=>`<li>${ico('check')}<span>${esc(t)}</span></li>`).join('');
+  $('#pvPrice').textContent=inr(p.price);$('#pvQ').textContent=1;$('#pvNote').textContent=cart[id]?`${cart[id]} already in your cart`:'';
+  pv.showModal()}
+const pvSet=q=>{pvQ=Math.min(99,Math.max(1,q));pvAdded=false;$('#pvQ').textContent=pvQ};
+$('#pvDec').onclick=()=>pvSet(pvQ-1);$('#pvInc').onclick=()=>pvSet(pvQ+1);
+const pvPut=()=>{cart[pvId]=(cart[pvId]||0)+pvQ;pvAdded=true;saveCart();refreshCart();bumpCart()};
+$('#pvAdd').onclick=e=>{pvPut();done(e.currentTarget,'Added to cart',1400);$('#pvNote').textContent=`${cart[pvId]} in your cart`};
+$('#pvBuy').onclick=()=>{if(!pvAdded)pvPut();pv.close();location.hash='#cart'};
+$('#pvAsk').onclick=()=>{const p=byId(pvId);pv.close();const q=$('#quoteForm');q.elements.notes.value=`Question about: ${p.name}`;location.hash='#quote';setTimeout(()=>q.elements.name.focus({preventScroll:true}),600)};
+$('#pvClose').onclick=()=>pv.close();pv.addEventListener('click',e=>{if(e.target===pv)pv.close()});
+document.addEventListener('keydown',e=>{if((e.key==='Enter'||e.key===' ')&&e.target.matches?.('.pimg[data-view]')){e.preventDefault();openPV(e.target.dataset.view)}});
 
 /* ---------- drawer ---------- */
 const drawer=$('#drawer'),scrim=$('#scrim');
@@ -1049,12 +1216,20 @@ function renderCheckout(c=calc()){
   if(placed)$('#orderDone').innerHTML=`<svg class="tick" viewBox="0 0 100 100" aria-hidden="true"><circle cx="50" cy="50" r="45"/><path d="M30 52l13 13 27-29"/></svg><h3>Order placed!</h3><span class="oid">${placed.id}</span><p class="muted">Total ${inr(placed.total)} · ${esc(placed.pay)}. We'll call ${esc(placed.phone)} to confirm delivery${placed.ins?' and installation':''}.</p><div class="row" style="justify-content:center"><a class="btn" href="#products">Continue shopping</a><a class="btn alt" href="#home">Back to home</a></div>`;
 }
 function refreshCart(){const c=calc(),cc=$('#cartCount');cc.textContent=c.n;cc.hidden=!c.n;updateFoots();
+  if('setAppBadge' in navigator)(c.n?navigator.setAppBadge(c.n):navigator.clearAppBadge()).catch(()=>{});
   if(drawer.classList.contains('on'))renderDrawer(c);if(document.body.classList.contains('cartmode'))renderCheckout(c)}
+function bumpCart(){const cc=$('#cartCount');cc.classList.remove('bump');void cc.offsetWidth;cc.classList.add('bump')}
+function flyToCart(from){if(REDUCE||!from)return;const tgt=innerWidth<=720?$('#tabCart'):$('#cartBtn');if(!tgt)return;const t=tgt.getBoundingClientRect(),f=from.getBoundingClientRect(),x=f.left+f.width/2,y=f.top+f.height/2;
+  const dot=document.createElement('i');dot.className='fly';dot.style.left=x+'px';dot.style.top=y+'px';document.body.append(dot);
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{dot.style.transform=`translate(${t.left+t.width/2-x}px,${t.top+t.height/2-y}px) scale(.5)`;dot.style.opacity='.3'}));setTimeout(()=>dot.remove(),650)}
+function copyText(t){const fb=()=>new Promise((ok,no)=>{const a=document.createElement('textarea');a.value=t;a.style.position='fixed';a.style.opacity='0';document.body.append(a);a.select();try{document.execCommand('copy')?ok():no()}catch(e){no(e)}a.remove()});return navigator.clipboard&&isSecureContext?navigator.clipboard.writeText(t).catch(fb):fb()}
 function setQty(id,q){if(q<1)delete cart[id];else cart[id]=q;saveCart();refreshCart()}
 document.addEventListener('click',e=>{
   const cl=e.target.closest('[data-close]');if(cl){closeDrawer();return}
+  const vw=e.target.closest('[data-view]');if(vw){openPV(vw.dataset.view);return}
   const b=e.target.closest('button');if(!b)return;const d=b.dataset;
-  if(d.add){cart[d.add]=(cart[d.add]||0)+1;saveCart();refreshCart();const cc=$('#cartCount');cc.classList.remove('bump');void cc.offsetWidth;cc.classList.add('bump');
+  if(d.copy){copyText(d.copy).then(()=>done(b,'Copied',1500)).catch(()=>toast('Copy this ID: '+d.copy,{icon:'info',ms:6000}));return}
+  if(d.add){flyToCart(b);navigator.vibrate?.(12);cart[d.add]=(cart[d.add]||0)+1;saveCart();refreshCart();bumpCart();$(`[data-pf="${d.add}"] .qty`)?.classList.add('pop');
     toast(byId(d.add).name+' added',{icon:'cart',label:'View cart',action:openDrawer});return}
   if(d.inc)return setQty(d.inc,cart[d.inc]+1);
   if(d.dec)return setQty(d.dec,cart[d.dec]-1);
@@ -1062,16 +1237,29 @@ document.addEventListener('click',e=>{
   if(b.id==='clearCart'){cart={};saveCart();refreshCart()}
   if(b.id==='rmCoupon'){coupon='';store.set('sn_coupon','');refreshCart()}
 });
+/* delivery estimate: 4–7 working days (Sundays off) once a 6-digit pincode is typed */
+const addWorkdays=(d,n)=>{d=new Date(d);while(n>0){d.setDate(d.getDate()+1);if(d.getDay()!==0)n--}return d};
+const dmy=d=>d.toLocaleDateString('en-IN',{weekday:'short',day:'numeric',month:'short'});
+$('#orderForm').elements.pin.addEventListener('input',e=>{$('#eta').innerHTML=/^\d{6}$/.test(e.target.value)?ico('truck')+`Delivery by ${dmy(addWorkdays(new Date(),4))} – ${dmy(addWorkdays(new Date(),7))}`:''});
+/* forms: digits only in number fields, and clear an error as soon as the field is edited */
+document.addEventListener('input',e=>{const i=e.target;if(!(i instanceof HTMLInputElement||i instanceof HTMLTextAreaElement))return;
+  if(i.inputMode==='numeric'){const v=i.value.replace(/\D/g,'');if(v!==i.value)i.value=v}
+  if(i.classList.contains('bad')){i.classList.remove('bad');i.removeAttribute('aria-invalid');const n=i.nextElementSibling;if(n?.classList.contains('err'))n.remove()}},true);
 $('#installChk').onchange=e=>{install=e.target.checked;refreshCart()};
 $('#couponForm').addEventListener('submit',e=>{e.preventDefault();const c=$('#couponIn').value.trim().toUpperCase();if(!c)return;
-  if(COUPONS[c]){coupon=c;store.set('sn_coupon',c);$('#couponIn').value='';toast(`Coupon ${c} applied`,{icon:'tag'});refreshCart()}else toast('That coupon code is not valid',{icon:'info'})});
-$('#orderForm').addEventListener('submit',e=>{e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f));$$('.err',f).forEach(x=>x.remove());let ok=true,first=null;
+  if(COUPONS[c]){coupon=c;store.set('sn_coupon',c);$('#couponIn').value='';done(e.target.querySelector('button'),'Applied',1400);toast(`Coupon ${c} applied`,{icon:'tag'});refreshCart()}else toast('That coupon code is not valid',{icon:'info'})});
+$('#orderForm').addEventListener('submit',async e=>{e.preventDefault();const f=e.target,d=Object.fromEntries(new FormData(f));$$('.err',f).forEach(x=>x.remove());let ok=true,first=null;
   const rules={name:[v=>v.trim().length>1,'Enter your name'],phone:[v=>/^[6-9]\d{9}$/.test(v),'Enter a 10-digit mobile number'],addr:[v=>v.trim().length>5,'Enter your full address'],pin:[v=>/^\d{6}$/.test(v),'Enter a 6-digit pincode'],city:[v=>v.trim().length>1,'Enter your city']};
   for(const k in rules){const i=f.elements[k],bad=!rules[k][0](d[k]||'');i.classList.toggle('bad',bad);i.setAttribute('aria-invalid',bad);if(bad){ok=false;first=first||i;i.insertAdjacentHTML('afterend',`<span class="err">${rules[k][1]}</span>`)}}
   if(!ok){first.focus();toast('Please check your delivery details',{icon:'info'});return}
   const c=calc();if(!c.n)return;
-  const id='ORD-'+Math.random().toString(36).slice(2,8).toUpperCase(),orders=store.get('sn_orders',{});
-  orders[id]={items:cart,total:c.total,...d,at:Date.now(),user:store.get('sn_user')?.email||null};store.set('sn_orders',orders);
+  const pb=$('#placeBtn');busy(pb,true);
+  const id=newId('ORD'),items=Object.entries(cart).map(([k,q])=>({id:k,name:byId(k).name,qty:q,price:byId(k).price}));
+  const[r]=await Promise.all([send('order',{id,...d,items,install:!!c.ins,coupon,total:Math.round(c.total)}),wait(API?0:900)]);busy(pb,false);
+  if(!r.ok){toast(r.error||'Could not place the order. Please try again.',{icon:'info',ms:5000});return}
+  if(r.queued)toast('You are offline. Your order is saved and will be sent when you are back online.',{icon:'info',ms:6000});
+  const orders=store.get('sn_orders',{}),{website,...od}=d;
+  orders[id]={items:cart,total:c.total,...od,status:'Received',at:Date.now(),user:store.get('sn_user')?.email||null};store.set('sn_orders',orders);
   placed={id,total:c.total,pay:d.pay,phone:d.phone,ins:c.ins};cart={};coupon='';install=false;saveCart();store.set('sn_coupon','');f.reset();refreshCart();renderCheckout();scrollTo(0,0)});
 
 /* ---------- routing (#cart = checkout page) ---------- */
@@ -1086,7 +1274,8 @@ $$('#links a').forEach(a=>a.addEventListener('click',()=>{$('#links').classList.
 const navA=$$('#links a[href^="#"]:not([href="#"])');
 $$('main section[id]').forEach(s=>new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting)navA.forEach(a=>a.classList.toggle('on',a.hash==='#'+e.target.id))}),{rootMargin:'-45% 0px -50%'}).observe(s));
 const nav=$('#nav'),prog=$('#progress');
-function onScroll(){nav.classList.toggle('solid',scrollY>40);const h=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${h>0?scrollY/h:0})`}
+const toTop=$('#toTop');toTop.onclick=()=>scrollTo({top:0,behavior:REDUCE?'auto':'smooth'});
+function onScroll(){nav.classList.toggle('solid',scrollY>40);toTop.classList.toggle('on',scrollY>innerHeight*1.2&&!document.body.classList.contains('cartmode'));const h=document.documentElement.scrollHeight-innerHeight;prog.style.transform=`scaleX(${h>0?scrollY/h:0})`}
 addEventListener('scroll',onScroll,{passive:true});onScroll();
 const rio=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){const t=e.target;t.classList.add('in','seen');rio.unobserve(t);setTimeout(()=>{t.classList.remove('reveal','in');t.style.transitionDelay=''},1500)}}),{threshold:.12,rootMargin:'0px 0px -40px'});
 $$('.reveal').forEach(el=>{const p=el.parentElement,sib=[...p.children].filter(x=>x.classList.contains('reveal'));el.style.transitionDelay=Math.min(sib.indexOf(el),6)*70+'ms';rio.observe(el)});
@@ -1145,38 +1334,66 @@ $$('.tile').forEach(t=>t.addEventListener('pointermove',e=>{const r=t.getBoundin
 })();
 
 /* ---------- calculator (live) ---------- */
-(function(){const f=$('#calcForm');let ptype='Residential',last=null;
+(function(){const f=$('#calcForm');let ptype='Residential',yrs=0,last=null;
   const fill=r=>r.style.setProperty('--p',(r.value-r.min)/(r.max-r.min)*100+'%');
   function run(){const bill=+f.elements.bill.value,tar=+f.elements.tariff.value,roof=+f.elements.roof.value;$$('input[type=range]',f).forEach(fill);
     $('#billV').textContent=inr(bill);$('#tarV').textContent='₹'+tar.toFixed(1);$('#roofV').textContent=roof.toLocaleString('en-IN')+' sq ft';
     const r=last=sizeSystem(bill,tar,roof,ptype);
     $('#rKw').textContent=r.kw;$('#rSave').textContent=inr(r.save);$('#rCost').textContent=lakh(r.cost);$('#rPay').textContent=r.payback.toFixed(1)+' yrs';
+    $('#rSub').textContent=r.sub?'− '+inr(r.sub):'Not eligible';$('#rSubL').textContent=r.sub?'PM Surya Ghar subsidy':'Subsidy (homes only)';$('#rNet').textContent=lakh(r.net);
+    $('#rTree').textContent=Math.round(r.co2*1000/21).toLocaleString('en-IN');
+    const eb=$('#emiBox');if(yrs){const m=emiFor(r.net,yrs),d=r.save-m;
+      eb.innerHTML=`<div><b>${inr(m)}</b><span>EMI / month for ${yrs} years</span></div><div><b>${inr(r.save)}</b><span>Bill savings / month</span></div>
+        <p class="${d>=0?'good':''}">${d>=0?`Your savings cover the EMI. You're about ${inr(d)} a month ahead from the first month.`:`You pay about ${inr(-d)} a month more than you save for ${yrs} years. After that, all the savings are yours.`}</p>
+        <small>Example only: loan on the cost after subsidy at 10% a year. Your bank's rate decides the real EMI.</small>`}
+    eb.hidden=!yrs;
+    store.set('gbs_calc',{bill,tariff:tar,roof,type:ptype,emi:yrs});
     $('#rGen').textContent=Math.round(r.gen).toLocaleString('en-IN');$('#rCo2').textContent=r.co2.toFixed(1)+' t';$('#rLife').textContent=lakh(r.life);$('#rWarn').hidden=!r.limited;
-    const W=340,H=130,L=8,R=W-8,T=14,Bm=H-22,max=Math.max(r.cost,r.life)*1.08,X=y=>L+(R-L)*y/25,Y=v=>Bm-(Bm-T)*v/max,yr=r.payback;
-    const sv=`M${X(0)},${Y(0)} L${X(25)},${Y(r.life)}`,be=yr<=25?`<circle cx="${X(yr)}" cy="${Y(r.cost)}" r="5" fill="#fff" stroke="#ff6914" stroke-width="3"/><text x="${Math.min(X(yr)+8,R-80)}" y="${Y(r.cost)-9}" style="fill:var(--ink)">Break-even · yr ${yr.toFixed(1)}</text>`:'';
+    const W=340,H=130,L=8,R=W-8,T=14,Bm=H-22,max=Math.max(r.net,r.life)*1.08,X=y=>L+(R-L)*y/25,Y=v=>Bm-(Bm-T)*v/max,yr=r.payback;
+    const sv=`M${X(0)},${Y(0)} L${X(25)},${Y(r.life)}`,be=yr<=25?`<circle cx="${X(yr)}" cy="${Y(r.net)}" r="5" fill="#fff" stroke="#ff6914" stroke-width="3"/><text x="${Math.min(X(yr)+8,R-80)}" y="${Y(r.net)-9}" style="fill:var(--ink)">Break-even · yr ${yr.toFixed(1)}</text>`:'';
     $('#lchart').innerHTML=`<defs><linearGradient id="lcG" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffa51f" stop-opacity=".35"/><stop offset="1" stop-color="#ffa51f" stop-opacity="0"/></linearGradient></defs>
-      <path d="${sv} L${X(25)},${Bm} L${X(0)},${Bm} Z" fill="url(#lcG)"/><line class="cost" x1="${L}" x2="${R}" y1="${Y(r.cost)}" y2="${Y(r.cost)}"/><path class="sv" d="${sv}"/>${be}
-      <text x="${L}" y="${H-4}">Year 0</text><text x="${R}" y="${H-4}" text-anchor="end">Year 25</text><text x="${L}" y="${Y(r.cost)+14}">System cost ${lakh(r.cost)}</text>`;
+      <path d="${sv} L${X(25)},${Bm} L${X(0)},${Bm} Z" fill="url(#lcG)"/><line class="cost" x1="${L}" x2="${R}" y1="${Y(r.net)}" y2="${Y(r.net)}"/><path class="sv" d="${sv}"/>${be}
+      <text x="${L}" y="${H-4}">Year 0</text><text x="${R}" y="${H-4}" text-anchor="end">Year 25</text><text x="${L}" y="${Y(r.net)+14}">Your cost ${lakh(r.net)}</text>`;
   }
   f.addEventListener('input',run);f.addEventListener('submit',e=>e.preventDefault());
   $('#ptype').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;ptype=b.textContent;$$('#ptype button').forEach(x=>x.setAttribute('aria-pressed',x===b));run()});
-  $('#calcQuote').onclick=()=>{const q=$('#quoteForm');q.elements.ptype.value=ptype;q.elements.notes.value=`Interested in a ${last.kw} kW ${ptype.toLowerCase()} system. Current bill about ${inr(+f.elements.bill.value)}/month.`;location.hash='#quote';setTimeout(()=>q.elements.name.focus({preventScroll:true}),600)};
+  $('#fin').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;yrs=+b.dataset.y;$$('#fin button').forEach(x=>x.setAttribute('aria-pressed',x===b));run()});
+  /* restore inputs: a shared link (?bill=…) wins over what this visitor used last time */
+  (()=>{const qs=new URLSearchParams(location.search),sv=store.get('gbs_calc',{}),get=k=>qs.has(k)?qs.get(k):sv[k];
+    for(const k of ['bill','tariff','roof']){const v=parseFloat(get(k));if(isFinite(v))f.elements[k].value=v}
+    const t=get('type');if(RATE[t]){ptype=t;$$('#ptype button').forEach(x=>x.setAttribute('aria-pressed',x.textContent===t))}
+    const y=+get('emi');if([3,5].includes(y)){yrs=y;$$('#fin button').forEach(x=>x.setAttribute('aria-pressed',+x.dataset.y===y))}})();
+  const shareURL=()=>{const q=new URLSearchParams({bill:f.elements.bill.value,tariff:f.elements.tariff.value,roof:f.elements.roof.value,type:ptype});if(yrs)q.set('emi',yrs);return location.origin+location.pathname+'?'+q+'#calculator'};
+  $('#calcQuote').onclick=()=>{const q=$('#quoteForm');q.elements.ptype.value=ptype;q.elements.notes.value=`Interested in a ${last.kw} kW ${ptype.toLowerCase()} system. Current bill about ${inr(+f.elements.bill.value)}/month.${yrs?` Would like EMI over ${yrs} years.`:''}`;location.hash='#quote';setTimeout(()=>q.elements.name.focus({preventScroll:true}),600)};
+  const estText=()=>`My rooftop solar estimate from Gourav Bharat Solar: a ${last.kw} kW ${ptype.toLowerCase()} system, about ${lakh(last.net)}${last.sub?' after subsidy':''}, saving around ${inr(last.save)} a month with payback in ${last.payback.toFixed(1)} years.`;
+  $('#calcShare').onclick=async e=>{const b=e.currentTarget,url=shareURL();
+    if(navigator.share){try{await navigator.share({title:'My solar savings estimate',text:estText(),url})}catch{}return}
+    copyText(estText()+' '+url).then(()=>done(b,'Copied to clipboard',1600)).catch(()=>toast('Could not copy',{icon:'info'}))};
+  $('#calcPrint').onclick=()=>{document.body.classList.add('print-calc');addEventListener('afterprint',()=>document.body.classList.remove('print-calc'),{once:true});print()};
   run();window.sizeSystem=sizeSystem;
 })();
 
 /* ---------- quote & tracking ---------- */
 const quotes=store.get('sn_quotes',{});
-$('#quoteForm').addEventListener('submit',e=>{e.preventDefault();const form=e.target,d=Object.fromEntries(new FormData(form));let ok=true,first=null;
+$('#quoteForm').addEventListener('submit',async e=>{e.preventDefault();const form=e.target,d=Object.fromEntries(new FormData(form));let ok=true,first=null;
   $$('.err',form).forEach(x=>x.remove());
   const rules={name:[v=>v.trim().length>1,'Enter your name'],phone:[v=>/^[6-9]\d{9}$/.test(v),'Enter a 10-digit mobile number'],email:[v=>/^\S+@\S+\.\S+$/.test(v),'Enter a valid email'],city:[v=>v.trim().length>1,'Enter your city']};
   for(const k in rules){const i=form.elements[k],bad=!rules[k][0](d[k]);i.classList.toggle('bad',bad);i.setAttribute('aria-invalid',bad);if(bad){ok=false;first=first||i;i.insertAdjacentHTML('afterend',`<span class="err">${rules[k][1]}</span>`)}}
   if(!ok){first.focus();return}
-  const id='SN-'+Math.random().toString(36).slice(2,8).toUpperCase();
-  quotes[id]={...d,status:'Received',at:Date.now()};store.set('sn_quotes',quotes);form.reset();
-  toast('Enquiry '+id+' submitted',{ms:5000});$('#trackForm').elements.id.value=id;$('#trackOut').textContent=`Saved! Your enquiry ID is ${id}. Our team will call ${d.phone}.`});
-$('#trackForm').addEventListener('submit',e=>{e.preventDefault();const id=e.target.elements.id.value.trim().toUpperCase(),q=quotes[id];
-  $('#trackOut').textContent=q?`${id}: ${q.status}. Submitted ${new Date(q.at).toLocaleDateString('en-IN')}. Our team will call ${q.phone}.`:'No enquiry found for that ID. Check it and try again.'});
-$('#news').addEventListener('submit',e=>{e.preventDefault();e.target.reset();toast('Subscribed. Thank you!')});
+  const btn=form.querySelector('button.btn');busy(btn,true);$('#qOk').hidden=true;
+  const id=newId('SN'),[r]=await Promise.all([send('quote',{id,...d}),wait(API?0:800)]);busy(btn,false);
+  if(!r.ok){toast(r.error||'Could not send your enquiry. Please try again.',{icon:'info',ms:5000});return}
+  {const{website,...keep}=d;quotes[id]={...keep,status:'Received',at:Date.now()}}store.set('sn_quotes',quotes);form.reset();sessionUI();done(btn,r.queued?'Saved':'Enquiry sent',2200);
+    $('#trackForm').elements.id.value=id;$('#trackOut').textContent='';
+    const okBox=$('#qOk'),wa=BIZ.whatsapp?`<a class="btn sm green" target="_blank" rel="noopener" href="https://wa.me/${BIZ.whatsapp.replace(/\D/g,'')}?text=${encodeURIComponent('Hi, my enquiry ID is '+id)}">${ico('chat')}WhatsApp us</a>`:'';
+    okBox.innerHTML=`${ico('check')}<div><b>Thank you, ${esc(d.name.trim().split(' ')[0])}! We've got your enquiry.</b><span>Your enquiry ID is <code>${id}</code>. We'll call ${esc(d.phone)} to fix a date for the site visit.${r.queued?' You seem to be offline, so it is saved on this device and will be sent automatically when you are back online.':''}</span></div><div class="row"><button type="button" class="btn sm dark" data-copy="${id}">${ico('copy')}Copy ID</button>${wa}</div>`;
+    okBox.hidden=false;okBox.scrollIntoView({block:'nearest',behavior:REDUCE?'auto':'smooth'})});
+const trackText=(id,q)=>q?`${id}: ${q.status}. Submitted ${new Date(q.at).toLocaleDateString('en-IN')}. ${q.phone?`Our team will call ${q.phone}.`:'Our team will be in touch.'}`:'Nothing found for that ID. Check it and try again.';
+$('#trackForm').addEventListener('submit',async e=>{e.preventDefault();const tb=e.target.querySelector('button.btn'),id=e.target.elements.id.value.trim().toUpperCase();
+  busy(tb,true);const[q]=await Promise.all([lookup(id),wait(API?0:450)]);busy(tb,false);$('#trackOut').textContent=trackText(id,q)});
+$('#news').addEventListener('submit',async e=>{e.preventDefault();const nb=e.target.querySelector('button'),email=e.target.querySelector('input').value.trim();busy(nb,true);
+  const[r]=await Promise.all([send('newsletter',{email}),wait(API?0:600)]);busy(nb,false);
+  if(!r.ok)return toast(r.error||'Could not subscribe. Please try again.',{icon:'info'});e.target.reset();done(nb,'Subscribed',2000)});
 
 /* ---------- auth (demo: browser-only, not secure) ---------- */
 const dlg=$('#authDlg'),af=$('#authForm');let mode='login';
@@ -1203,6 +1420,7 @@ af.addEventListener('submit',async e=>{e.preventDefault();const f=Object.fromEnt
   if(su&&f.phone&&!/^[6-9]\d{9}$/.test(f.phone))return bad('phone','Mobile number should be 10 digits.');
   if((f.pass||'').length<6)return bad('pass','Password must be at least 6 characters.');
   if(su&&!f.terms)return authMsg('Please accept the terms to continue.');
+  const sb=$('#authSubmit');busy(sb,true);await wait(450);busy(sb,false);
   const all=users(),h=await sha(f.pass);
   if(su){if(all[em])return authMsg('An account with this email already exists. Log in instead.');all[em]={name:f.name.trim(),role:f.role,phone:f.phone||'',h};store.set('sn_users',all)}
   else if(!all[em]||all[em].h!==h)return authMsg('Wrong email or password.');
@@ -1211,7 +1429,8 @@ af.addEventListener('submit',async e=>{e.preventDefault();const f=Object.fromEnt
 function sessionUI(){const u=store.get('sn_user'),b=$('#loginBtn');
   if(u){b.innerHTML=`<span class="avatar">${esc(initials(u.name))}</span><span class="lbl">${esc(u.name.split(' ')[0])}</span>`;b.setAttribute('aria-label','Account menu');b.setAttribute('aria-haspopup','true')}
   else{b.innerHTML=ico('user')+'<span class="lbl">Log in</span>';b.setAttribute('aria-label','Log in or sign up');b.removeAttribute('aria-haspopup')}
-  $('#loginLink').textContent=u?`Log out (${u.name.split(' ')[0]})`:'Log in / Sign up'}
+  $('#loginLink').textContent=u?`Log out (${u.name.split(' ')[0]})`:'Log in / Sign up';
+  if(u)for(const fm of [$('#quoteForm'),$('#orderForm')]){const el=fm.elements;if(!el.name.value)el.name.value=u.name;if(el.email&&!el.email.value)el.email.value=u.email}}
 function acct(open){const m=$('#acctMenu'),u=store.get('sn_user');if(open&&!u)return;m.hidden=!open;$('#loginBtn').setAttribute('aria-expanded',!!open);if(!open)return;
   const orders=Object.entries(store.get('sn_orders',{})).filter(([,o])=>!o.user||o.user===u.email).sort((a,b)=>b[1].at-a[1].at);
   m.innerHTML=`<div class="acct-h"><span class="avatar lg">${esc(initials(u.name))}</span><div><b>${esc(u.name)}</b><small>${esc(u.email)} · ${esc(u.role)}</small></div></div>
@@ -1234,16 +1453,16 @@ sessionUI();
   function say(h,c){const t=add('<span class="typing" aria-label="Surya is typing"><i></i><i></i><i></i></span>');
     setTimeout(()=>{t.innerHTML=h;body.scrollTop=body.scrollHeight;chips(c)},REDUCE?0:450+Math.min(800,h.length*3))}
   function estimate(bill){const r=sizeSystem(bill,8,1e6,'Residential');
-    return `For a <b>${inr(bill)}/month</b> bill (at ₹8/unit) I'd suggest about <b>${r.kw} kW</b>:<div class="mini"><div><b>${lakh(r.cost)}</b>Cost before subsidy</div><div><b>${inr(r.save)}</b>Savings / month</div><div><b>${r.payback.toFixed(1)} yrs</b>Payback</div><div><b>${lakh(r.life)}</b>25-year savings</div></div>Fine-tune roof area and tariff in the <a href="#calculator">calculator</a>.`}
+    return `For a <b>${inr(bill)}/month</b> bill (at ₹8/unit) I'd suggest about <b>${r.kw} kW</b>:<div class="mini"><div><b>${lakh(r.net)}</b>Cost after ${lakh(r.sub)} subsidy</div><div><b>${inr(r.save)}</b>Savings / month</div><div><b>${r.payback.toFixed(1)} yrs</b>Payback</div><div><b>${lakh(r.life)}</b>25-year savings</div></div>Fine-tune roof area and tariff in the <a href="#calculator">calculator</a>.`}
   function reply(q){const s=q.toLowerCase().trim(),num=+(s.replace(/[,₹]/g,'').match(/\d{3,6}/)||[0])[0];
     const has=re=>re.test(s);
-    if(has(/\bsn-[a-z0-9]{6}\b/)){const id=s.match(/sn-[a-z0-9]{6}/)[0].toUpperCase(),x=quotes[id];return say(x?`Enquiry <b>${id}</b> is <b>${x.status}</b> (submitted ${new Date(x.at).toLocaleDateString('en-IN')}). Our team will call ${esc(x.phone)}.`:`I couldn't find <b>${id}</b>. Please check the ID, or <a href="#quote">submit a new enquiry</a>.`)}
-    if(has(/\bord-[a-z0-9]{6}\b/)){const id=s.match(/ord-[a-z0-9]{6}/)[0].toUpperCase(),o=store.get('sn_orders',{})[id];return say(o?`Order <b>${id}</b>: ${inr(o.total)} via ${esc(o.pay)}, placed ${new Date(o.at).toLocaleDateString('en-IN')}. We'll call ${esc(o.phone)} before delivery.`:`I couldn't find order <b>${id}</b> in this browser.`)}
+    if(has(/\bsn-[a-z0-9]{6}\b/)){const id=s.match(/sn-[a-z0-9]{6}/)[0].toUpperCase();return lookup(id).then(x=>say(x?`Enquiry <b>${id}</b> is <b>${esc(x.status)}</b> (submitted ${new Date(x.at).toLocaleDateString('en-IN')}). ${x.phone?`Our team will call ${esc(x.phone)}.`:'Our team will be in touch.'}`:`I couldn't find <b>${id}</b>. Please check the ID, or <a href="#quote">submit a new enquiry</a>.`))}
+    if(has(/\bord-[a-z0-9]{6}\b/)){const id=s.match(/ord-[a-z0-9]{6}/)[0].toUpperCase(),o=store.get('sn_orders',{})[id];return o?say(`Order <b>${id}</b>: ${inr(o.total)} via ${esc(o.pay)}, placed ${new Date(o.at).toLocaleDateString('en-IN')}. We'll call ${esc(o.phone)} before delivery.`):lookup(id).then(x=>say(x?`Order <b>${id}</b> is <b>${esc(x.status)}</b> (placed ${new Date(x.at).toLocaleDateString('en-IN')}).`:`I couldn't find order <b>${id}</b>. Please check the ID.`))}
     if(num&&(awaitBill||has(/bill|₹|rs|rupee|bijli|month|mahin|saving|bachat|estimate/)||/^\d{3,6}$/.test(s.replace(/[,₹\s]/g,'')))){awaitBill=false;return say(estimate(num),['Subsidy','Battery backup','Get a quote'])}
-    if(has(/^(hi|hello|hey|hii+|namaste|namaskar|good (morning|evening|afternoon))\b/))return say('Namaste! I\'m Surya. I can work out your savings, explain prices and subsidy, or help you find a product. What would you like to know?');
+    if(has(/^(hi|hello|hey|hii+|namaste|namaskar|good (morning|evening|afternoon))\b/))return say('Hello! I\'m Surya. I can work out your savings, explain prices and subsidy, or help you find a product. What would you like to know?');
     if(has(/estimat|saving|bachat|calculat|kitna bach/)){awaitBill=true;return say('Sure! What is your average <b>monthly electricity bill</b> in ₹? (for example, 3500)',['₹2,000','₹4,000','₹8,000','₹15,000'])}
     if(has(/price|cost|kitna|kharch|rate|per kw|budget|lakh|kimat|daam/))return say('Typical installed cost before subsidy:<div class="mini"><div><b>₹55,000/kW</b>Homes</div><div><b>₹48,000/kW</b>Commercial</div><div><b>₹42,000/kW</b>Industrial</div><div><b>~₹1.65 L</b>3 kW home kit</div></div>Tell me your monthly bill and I\'ll size a system for you.',['Estimate my savings','Subsidy','Shop kits']);
-    if(has(/subsid|yojana|surya ghar|scheme|sarkar|government|govt/))return say('Residential rooftop systems can get central subsidy under <b>PM Surya Ghar</b>: up to <b>₹78,000</b> under the 2024 rules, and some states add more. Amounts can change, so we confirm the current figure and help you apply.',['Price per kW','Get a quote']);
+    if(has(/subsid|yojana|surya ghar|scheme|sarkar|government|govt/))return say('Residential rooftop systems can get central subsidy under <b>PM Surya Ghar</b>: up to <b>₹78,000</b> under the 2024 rules, and some states add more. Amounts can change, so we confirm the current figure and help you apply. The <a href="#calculator">calculator</a> shows your subsidy and EMI.',['Price per kW','Get a quote']);
     if(has(/battery|backup|power cut|outage|light (ja|chal)|bijli (ja|chal)|night|raat/))return say('Want power during cuts? You need a <b>hybrid inverter + battery</b>. A standard on-grid system switches off when the grid fails. Our 5 kWh lithium battery starts at ₹72,000. See it in action in <a href="#working">How it works → Power cut</a>.',['Shop batteries','Price per kW']);
     if(has(/maint|clean|saaf|service|repair|safai/))return say('Maintenance is light: clean the panels every 2–4 weeks and get a yearly inspection. Our maintenance plans cover cleaning, checks and performance reports.');
     if(has(/install|kitne din|how long|process|step|lagwa|lagane|time/))return say('Here\'s the process: <b>1.</b> free consultation → <b>2.</b> site survey & design → <b>3.</b> installation (usually 1–3 days for a home) → <b>4.</b> net-metering approval, which can take a few weeks.',['Get a quote','How it works']);
@@ -1262,7 +1481,7 @@ sessionUI();
     if(q==='Get a quote')return say('Great! Opening the <a href="#quote">quote form</a> for you.',null),setTimeout(()=>location.hash='#quote',700);
     reply(q.replace(/^₹/,'bill ₹'))}
   function open(){box.removeAttribute('inert');box.classList.add('on');fab.classList.add('on');fab.setAttribute('aria-expanded',true);fab.setAttribute('aria-label','Close solar assistant');$('#fabTip').hidden=true;
-    if(!started){started=true;add(`Namaste! I'm <b>Surya</b>, Gourav Bharat Solar's assistant.${store.get('sn_user')?` Good to see you, ${esc(store.get('sn_user').name.split(' ')[0])}!`:''} Ask me about prices, subsidy, batteries or your savings.`);chips()}
+    if(!started){started=true;add(`Hello! I'm <b>Surya</b>, Gourav Bharat Solar's assistant.${store.get('sn_user')?` Good to see you, ${esc(store.get('sn_user').name.split(' ')[0])}!`:''} Ask me about prices, subsidy, batteries or your savings.`);chips()}
     setTimeout(()=>inp.focus(),300)}
   function close(){box.classList.remove('on');box.setAttribute('inert','');fab.classList.remove('on');fab.setAttribute('aria-expanded',false);fab.setAttribute('aria-label','Open solar assistant')}
   fab.onclick=()=>box.classList.contains('on')?close():open();$('#chatClose').onclick=close;$('#fabTip').onclick=open;$('#faqChat').onclick=open;
@@ -1277,7 +1496,8 @@ sessionUI();
 (function(){
   const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
   if(standalone)document.documentElement.classList.add('app');
-  if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol))addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+  if('serviceWorker' in navigator&&/^https?:$/.test(location.protocol)){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+    if(navigator.serviceWorker.controller){let shown=false;navigator.serviceWorker.addEventListener('controllerchange',()=>{if(shown)return;shown=true;toast('A new version of the site is ready',{icon:'bolt',label:'Refresh',action:()=>location.reload(),ms:15000})})}}
   /* tab bar */
   $('#tabCart').onclick=openDrawer;
   $('#tabAcct').onclick=e=>{e.stopPropagation();store.get('sn_user')?acct($('#acctMenu').hidden):openAuth('login')};
