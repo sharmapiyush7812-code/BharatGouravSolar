@@ -48,6 +48,7 @@ It is a static site: one `index.html` with inline CSS and JavaScript, plus a ser
 | **Why us** (`#why`) | Bento grid with:<br>• a daily generation curve you can drag through the day<br>• counters, the 25-year life ring and the battery tile<br>• a before/after bill example |
 | **How it works** (`#working`) | An animated energy-flow diagram with three modes: **Sunny day**, **Night** and **Power cut**. Each mode explains the flow step by step and shows readouts, with a 4-step installation process below. |
 | **Solutions** (`#solutions`) | Six service cards: rooftop, commercial, industrial, battery, inverters and maintenance. Clicking one pre-fills the quote form. |
+| **Videos** (`#videos`) | Instagram section with a *Follow on Instagram* card for [@bharatgouravsolar](https://www.instagram.com/bharatgouravsolar/). Reels listed in `INSTA.reels` show as official Instagram embeds. They load only when the visitor scrolls near them, and they swipe sideways on phones. |
 | **Our work** (`#work`) | A photo gallery. It stays hidden until real photos are added (see below). |
 | **Shop** (`#products`) | 12 products with:<br>• category chips, search and sort<br>• a quick-view pop-up with details, quantity, *Add to cart*, *Buy now* and *Ask us*<br>• a quantity stepper on each card, plus a "fly to cart" animation and a vibration on phones |
 | **Savings calculator** (`#calculator`) | Inputs: bill, tariff, roof area, property type and payment plan (Upfront / EMI 3 yrs / EMI 5 yrs).<br>Results: recommended kW, savings per month, cost, **PM Surya Ghar subsidy** (homes only), cost after subsidy, payback, 25-year savings, units per month, CO₂ avoided and the number of trees that equals.<br>Extras:<br>• an EMI vs savings comparison and a 25-year break-even chart<br>• **Share estimate**, which sends a link that reopens with the same numbers<br>• **Print / save PDF**<br>• the last inputs are remembered |
@@ -119,11 +120,21 @@ const BIZ={phone:'',whatsapp:'',email:'',address:'',hours:''};
 
 const API='';   // your Google Apps Script URL (see Backend below)
 
+const INSTA={handle:'bharatgouravsolar',reels:[]};   // Instagram reel links
+
 const WORK=[['images/project-1.jpg',''], …];   // ['file','caption']
 ```
 
 - **`BIZ`:** your contact details. Filling them in turns on the footer contact list, the hero *Call us* button, the floating WhatsApp button and *WhatsApp us* after an enquiry.
 - **`API`:** connects forms to your Google Sheet.
+- **`INSTA`:** Instagram videos for the Videos section. On Instagram, open a reel, tap **⋯ / Share → Copy link**, and paste it into the list:
+  ```js
+  const INSTA={handle:'bharatgouravsolar',reels:[
+    'https://www.instagram.com/reel/ABC123xyz/',
+    'https://www.instagram.com/reel/DEF456uvw/',
+  ]};
+  ```
+  Keep 3–9 reels; newest first works best. The footer Instagram link and the Google data (`sameAs`) are already set.
 - **`WORK`:** create an `images/` folder and add `project-1.jpg` … `project-6.jpg`. The "Our work" gallery appears by itself, and missing files are skipped.
 - **Stats in "Why us":** 10,000+ installs, 500 MW, 98%, 100+ cities and 25+ years are placeholders. Change them to your real numbers in the `data-n` attributes.
 - **Name order:** the logo artwork reads "Bharat Gourav Solar" while the site says "Gourav Bharat Solar". Make them match.

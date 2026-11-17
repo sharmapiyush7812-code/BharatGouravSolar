@@ -1,7 +1,7 @@
 /* Gourav Bharat Solar – service worker
    Makes the site installable and lets it open offline.
    When you change index.html or other files, bump VERSION so users get the update. */
-const VERSION = 'gbs-v7';
+const VERSION = 'gbs-v8';
 const SHELL = [
   './',
   './index.html',
